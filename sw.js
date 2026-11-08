@@ -1,4 +1,0 @@
-const C='safety-v9';
-self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(k=>Promise.all(k.filter(x=>x!==C).map(x=>caches.delete(x)))).then(()=>self.clients.claim())));
-self.addEventListener('install',e=>{self.skipWaiting();e.waitUntil(caches.open(C).then(c=>c.addAll(['./','index.html','seed.js','timesheet.html','timesheet.html?v=9','tb.png','jha.png','manifest.json','icon.png','lux-elevator.jpg','photo-toolbox.jpg','photo-hazard.jpg','photo-timesheet.jpg','photo-files.jpg']))) });
-self.addEventListener('fetch',e=>{if(e.request.method!='GET'||e.request.url.includes('supabase'))return;e.respondWith(fetch(e.request).then(r=>{const k=r.clone();caches.open(C).then(c=>c.put(e.request,k));return r}).catch(()=>caches.match(e.request)))});
