@@ -552,6 +552,21 @@ input,select,textarea{max-width:100%!important;min-width:0!important;font-size:1
 .card,.summary-card,.receipts-card{border:1px solid #3c607d!important;background:linear-gradient(145deg,#112c45,#081a2e)!important}
 button.primary{background:linear-gradient(100deg,#087ab8,#0ca9d7 70%,#e5ad62)!important;box-shadow:0 7px 20px #009bdb3a!important}
 @media(prefers-reduced-motion:no-preference){main.fwd{animation:ts-next .4s cubic-bezier(.2,.8,.2,1) both!important}main.back{animation:ts-back .4s cubic-bezier(.2,.8,.2,1) both!important}}
+
+/* V8: shared premium inner-screen components, viewport-safe */
+html,body{width:100%!important;max-width:100%!important;overflow-x:hidden!important}
+#app{width:100%!important;max-width:100%!important;min-width:0!important;height:100dvh!important;overflow:hidden!important}
+header{width:100%!important;max-width:100%!important;overflow:hidden!important}
+header .logo{width:min(100%,150px)!important;max-width:150px!important;height:46px!important}
+header .logo img{width:100%!important;max-width:100%!important;height:100%!important;object-fit:contain!important}
+main{width:100%!important;max-width:100%!important;min-width:0!important;padding:22px 18px 130px!important;overflow-x:hidden!important;background:radial-gradient(ellipse at 95% 0%,#123d60,transparent 54%),#020d1b!important}
+main h1{font-size:clamp(26px,7vw,36px)!important;letter-spacing:-.035em!important}
+main input,main select,main textarea{min-height:56px!important;max-width:100%!important;box-sizing:border-box!important;background:linear-gradient(135deg,#102b44,#081a2c)!important;border:1px solid #476782!important;border-radius:15px!important;color:#fff!important}
+main label{color:#e9ba77!important;letter-spacing:.14em!important;font-size:11px!important}
+footer{width:100%!important;max-width:100%!important;box-sizing:border-box!important;box-shadow:0 -10px 24px #0005!important}
+footer button,button.primary{border:1px solid #69c5eb!important;background:linear-gradient(100deg,#0879b6,#11a5d2 75%,#e8b16b)!important;color:#fff!important;box-shadow:0 8px 25px #007eb53d!important}
+@media(min-width:650px){#app{max-width:520px!important;margin:auto!important}footer{max-width:520px!important}}
+@media(prefers-reduced-motion:no-preference){main{animation:ts-premium-in .35s ease both!important}@keyframes ts-premium-in{from{opacity:.4;filter:blur(3px)}to{opacity:1;filter:none}}}
 </style>
 </head>
 <body>
