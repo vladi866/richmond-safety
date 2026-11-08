@@ -534,6 +534,24 @@ footer{background:linear-gradient(180deg,#07192bec,#051321f9)!important;border-t
 button.primary,footer .primary{background:linear-gradient(115deg,#0679b6,#15b6e8)!important;color:#fff!important;border:1px solid #4bbfee!important;border-radius:15px!important;box-shadow:0 8px 22px #009fff36!important;min-height:55px;transition:transform .2s,filter .2s}button:active{transform:scale(.97);filter:brightness(1.12)}
 .card,.summary-card,.receipts-card{background:linear-gradient(145deg,#102c45,#081b2f)!important;border:1px solid #365d7e!important;border-radius:18px!important;box-shadow:0 10px 25px #0004}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+/* ATELIER V7: inner screens are first-class pages */
+html,body{width:100%;max-width:100%;overflow-x:hidden}
+#app{width:100%;max-width:520px;overflow-x:hidden}
+header{display:grid!important;grid-template-columns:65px minmax(0,1fr) 65px!important;grid-template-rows:auto auto!important;gap:8px!important;align-items:center!important;justify-items:center!important;min-height:0!important;padding:calc(env(safe-area-inset-top,0px) + 12px) 16px 18px!important;text-align:center!important;border-radius:0!important;overflow:hidden!important;background:linear-gradient(140deg,#061525,#10314d)!important;border-bottom:1px solid #315574!important}
+.ts-back{position:static!important;grid-column:1!important;grid-row:1!important;justify-self:start!important;width:44px!important;height:42px!important;display:grid!important;place-items:center!important;font-size:26px!important;text-decoration:none!important;border:1px solid #375b78!important;border-radius:12px!important;background:#0c2741!important;color:#f0c27d!important}
+.logo{grid-column:2!important;grid-row:1!important;justify-self:center!important;width:min(100%,170px)!important;max-width:170px!important;height:50px!important;min-height:0!important;padding:6px!important;border-radius:10px!important;overflow:hidden!important;display:flex!important;align-items:center!important;justify-content:center!important;transform:none!important;animation:none!important}
+.logo img{display:block!important;width:100%!important;max-width:100%!important;height:100%!important;max-height:40px!important;object-fit:contain!important}
+.brand{grid-column:1/-1!important;grid-row:2!important;width:100%!important;min-width:0!important;text-align:center!important;margin:0!important;padding:4px 0 0!important}
+.brand strong{font-size:clamp(19px,5.7vw,27px)!important;line-height:1.15!important;overflow-wrap:anywhere!important}
+.shaft-wrap{padding:12px 20px 12px!important}
+main{width:100%!important;min-width:0!important;padding:25px 20px 135px!important;overflow-x:hidden!important;background:radial-gradient(ellipse at 100% 0%,#103455,transparent 58%),#020d1b!important}
+main h1{font-size:clamp(28px,7vw,36px)!important}
+footer{max-width:520px!important;margin:auto!important;left:0!important;right:0!important;transform:none!important;padding:12px 18px calc(12px + env(safe-area-inset-bottom,0px))!important}
+input,select,textarea{max-width:100%!important;min-width:0!important;font-size:16px!important}
+.card,.summary-card,.receipts-card{border:1px solid #3c607d!important;background:linear-gradient(145deg,#112c45,#081a2e)!important}
+button.primary{background:linear-gradient(100deg,#087ab8,#0ca9d7 70%,#e5ad62)!important;box-shadow:0 7px 20px #009bdb3a!important}
+@media(prefers-reduced-motion:no-preference){main.fwd{animation:ts-next .4s cubic-bezier(.2,.8,.2,1) both!important}main.back{animation:ts-back .4s cubic-bezier(.2,.8,.2,1) both!important}}
 </style>
 </head>
 <body>

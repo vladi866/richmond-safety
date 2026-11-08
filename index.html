@@ -78,6 +78,37 @@ input::placeholder,textarea::placeholder{color:#879fb5}.m{color:#a9bbce;line-hei
 .lux-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.lux-pair .lux-card{grid-template-columns:1fr 18px;grid-template-rows:auto auto;gap:7px;min-height:154px;padding:15px 12px;align-content:center}.lux-pair .lux-icon{width:43px;height:43px;grid-column:1/3}.lux-pair .lux-icon svg{width:23px;height:23px}.lux-pair .lux-card b{font-size:15px}.lux-pair .lux-card small{font-size:11px}.lux-pair .lux-arrow{grid-column:2;grid-row:2;width:18px;height:18px;font-size:17px}.lux-pair .lux-copy{grid-column:1;grid-row:2}
 @media(max-width:350px){.lux-card{gap:9px;padding:12px 10px;grid-template-columns:48px minmax(0,1fr) 22px}.lux-icon{width:48px;height:48px}.lux-pair .lux-card b{font-size:13px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+/* ATELIER V7: viewport-safe, consistent components */
+html,body{width:100%;max-width:100%;overflow-x:hidden}
+#app{width:100%;max-width:520px;overflow:hidden}
+.top{flex:0 0 auto;min-width:0;background:linear-gradient(155deg,#061525,#0c2a45 75%,#071525);border-bottom:1px solid #365a78;box-shadow:0 8px 25px #0005}
+.nav{display:grid;grid-template-columns:minmax(76px,1fr) minmax(0,150px) minmax(50px,1fr);gap:5px;align-items:center;min-width:0;padding:calc(var(--top) + 12px) 14px 12px;min-height:70px}
+.nav a{font-size:13px!important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:7px 2px!important}
+.nav .lg{min-width:0;display:flex;justify-content:center;align-items:center;max-width:150px;width:100%;overflow:hidden}
+.nav .lg img{display:block;width:100%;max-width:145px;height:auto;max-height:46px;object-fit:contain;background:#f3f4f5;border-radius:8px;padding:5px}
+.pt{font-size:clamp(25px,7vw,34px);line-height:1.14;letter-spacing:-.035em;margin:0;padding:12px 20px 20px;overflow-wrap:anywhere;color:#f6f8ff}
+.home-main{padding:0 16px 28px!important;width:100%;overflow-x:hidden}
+.lux-hero{min-height:285px;padding:22px 12px 22px}
+.lux-brand{width:min(65%,210px);max-height:70px;margin-bottom:25px}
+.lux-stack{gap:12px}
+.lux-card{grid-template-columns:54px minmax(0,1fr);min-height:118px;padding:16px 14px;gap:13px;width:100%;text-decoration:none;color:#fff}
+.lux-card b{font-size:clamp(16px,4.5vw,20px);overflow-wrap:anywhere}
+.lux-card small{font-size:12px}
+.lux-card::before{background:linear-gradient(90deg,#041424f9 0%,#071b2df2 44%,#06182d8c 72%,#06182d40 100%),var(--photo) center/cover no-repeat}
+.lux-pair{gap:10px}
+.lux-pair .lux-card{min-width:0;grid-template-columns:1fr;grid-template-rows:auto auto;min-height:154px;padding:13px;gap:8px}
+.lux-pair .lux-icon{grid-column:1;grid-row:1}
+.lux-pair .lux-copy{grid-column:1;grid-row:2}
+.lux-pair .lux-card b{font-size:14px}
+.lux-pair .lux-card small{font-size:11px}
+.lux-pair .lux-card::before{background:linear-gradient(90deg,#061a2bf5,#061a2bdc),var(--photo) center/cover no-repeat}
+main:not(.home-main){background:radial-gradient(ellipse at 100% 0%,#103454 0%,transparent 60%),#020d1b;padding:22px 20px 36px}
+main:not(.home-main) input,main:not(.home-main) textarea{font-size:16px}
+.bar{flex:0 0 auto}
+.toast{max-width:calc(100vw - 40px);overflow:hidden;text-overflow:ellipsis;font-size:13px;top:calc(var(--top) + 80px)}
+@media(max-width:370px){.nav{grid-template-columns:76px minmax(0,125px) 65px;padding-left:10px;padding-right:10px}.lux-card{grid-template-columns:46px minmax(0,1fr);gap:9px;padding:12px}.lux-icon{width:46px;height:46px}.lux-card b{font-size:16px}}
+@media(prefers-reduced-motion:no-preference){.lux-card{animation:card-rise .48s cubic-bezier(.16,1,.3,1) both}.lux-card:active{transform:scale(.98)}main:not(.home-main){animation:page-arrive .38s cubic-bezier(.2,.8,.2,1) both}}
 </style></head><body><div id="app"></div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="seed.js"></script>
@@ -189,7 +220,7 @@ document.querySelectorAll('[data-p]').forEach(e=>{const p=e.dataset.p,jb=/(^|\.)
 function home(){if(S&&!S.done)toast('Draft saved. Resume anytime.');S=null;let p=K('profile')||{};if(!p.name){const x=(K('forms')||[]).find(x=>x.name||x.foreman||x.days?.[0]?.foreman),nm=x&&(x.name||x.foreman||x.days?.[0]?.foreman);if(nm){saveName(nm);p={name:nm.trim()}}}
 const dr=K('draft');
 const sym={tool:`<rect x="4" y="8" width="16" height="12" rx="2"/><path d="M9 8V5h6v3M4 13h16M11 12v3h2v-3"/>`,haz:`<path d="M12 3L2.5 20h19zM12 9v5M12 17h.01"/>`,time:`<circle cx="12" cy="12" r="9"/><path d="M12 7v5l4 2"/>`,folder:`<path d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v9H3z"/>`,resume:`<rect x="4" y="3" width="16" height="18" rx="3"/><path d="M10 8l6 4-6 4z"/>`};
-const lux=(fn,kind,tag,title,sub,photo,gold=false)=>`<a class="lux-card ${gold?'gold':''}" onclick="${fn}" style="--photo:url('${photo}')" aria-label="${title}"><span class="lux-icon"><svg viewBox="0 0 24 24">${sym[kind]}</svg></span><span class="lux-copy"><span class="lux-eyebrow">${tag}</span><b>${title}</b><small>${sub}</small></span><span class="lux-arrow" aria-hidden="true">›</span></a>`;
+const lux=(fn,kind,tag,title,sub,photo,gold=false)=>`<a class="lux-card ${gold?'gold':''}" onclick="${fn}" style="--photo:url('${photo}')" aria-label="${title}"><span class="lux-icon"><svg viewBox="0 0 24 24">${sym[kind]}</svg></span><span class="lux-copy"><span class="lux-eyebrow">${tag}</span><b>${title}</b><small>${sub}</small></span></a>`;
 $('#app').innerHTML=`<main class="home-main"><section class="lux-hero"><img class="lux-brand" src="${LOGO}" alt="Richmond Elevator"><div class="lux-kicker">FIELD OPERATIONS PORTAL</div><div class="lux-accent"></div><h2>Welcome</h2><p>Your safety, reporting and time tracking <em>in one place.</em></p></section><section class="lux-stack">${lux("start('tb')",'tool','TOOLBOX MEETING','ToolBox Meeting','Weekly safety talk report','lux-toolbox.jpg')}${lux("start('jha')",'haz','SAFETY','Daily Hazard Assessment','Job hazard analysis, 2 days per page','lux-hazard.jpg',true)}${lux('ts()','time','TIME TRACKING','Timesheet','Two-week pay period, PDF with receipts','lux-timesheet.jpg')}<div class="lux-pair">${lux('hist()','folder','YOUR FILES','History','Everything saved on this phone','lux-files.jpg')}${dr?lux('resume()','resume','CONTINUE','Resume unfinished form','Pick up where you left off','lux-files.jpg'):''}</div></section></main>`}
 // ===== timesheet (original app, embedded) =====
 function ts(rec){const p=K('profile')||{};$('#app').innerHTML='<iframe id="tsf" style="flex:1;min-height:0;width:100%;border:0;background:var(--bg)"></iframe><div style="flex:none;height:var(--bot);background:var(--bg)"></div>';const f=$('#tsf');f.onload=()=>f.contentWindow.postMessage({rem:'init',name:p.name||'',load:rec||null,id:rec?rec.id:uid()},'*');tsSet(f)}
