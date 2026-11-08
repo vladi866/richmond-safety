@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover"><meta name="theme-color" content="#000000"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="Safety"><meta name="format-detection" content="telephone=no"><link rel="manifest" href="manifest.json"><link rel="apple-touch-icon" href="icon.png"><title>Richmond Elevator Safety</title>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover"><meta name="theme-color" content="#0b2545"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="Safety"><meta name="format-detection" content="telephone=no"><link rel="manifest" href="manifest.json"><link rel="apple-touch-icon" href="icon.png"><title>Richmond Elevator Safety</title>
 <style>
 :root{--bg:#15181c;--cell:#1d2126;--cell2:#262b33;--sep:#353c46;--tx:#eef0f2;--dim:#9aa3af;--amber:#f2a71b;--red:#ff5d4d;--top:env(safe-area-inset-top,0px);--bot:env(safe-area-inset-bottom,0px)}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -31,39 +31,100 @@ canvas{display:block;width:100%;background:#fff;border-radius:12px;touch-action:
 .sh{width:100%;max-width:520px;margin:auto;padding:12px 12px calc(var(--bot) + 12px)}.sh .box{background:var(--cell);border-radius:14px;padding:16px;text-align:center;margin-bottom:8px}.sh button{width:100%;margin-bottom:8px}
 .toast{position:fixed;top:calc(var(--top) + 58px);left:50%;transform:translateX(-50%);background:var(--cell2);padding:10px 18px;border-radius:22px;z-index:30;font-size:15px;box-shadow:0 6px 24px rgba(0,0,0,.4);animation:f .2s;white-space:nowrap}
 .bad{box-shadow:inset 0 0 0 1.5px var(--red)!important}
-/* ================= iOS NATIVE THEME (visual layer only) ================= */
-:root{--bg:#000;--cell:#1c1c1e;--cell2:#2c2c2e;--sep:rgba(84,84,88,.55);--tx:#fff;--dim:#8e8e93;--amber:#ff9f0a;--red:#ff453a;
-  --curve:cubic-bezier(.32,.72,0,1);--mat:rgba(28,28,30,.72)}
-html,body,#app{background:#000}
+/* ================= RICHMOND DESIGN SYSTEM v2 (shared across every screen) ================= */
+:root{--bg:#eef1f6;--cell:#fff;--cell2:#e7ebf2;--sep:rgba(14,26,43,.1);--tx:#0e1a2b;--dim:#66758a;--amber:#0a63c9;--red:#e5392d;
+  --grad:linear-gradient(135deg,#0d3b78,#0a63c9);--shadow:0 1px 2px rgba(11,37,69,.06),0 8px 24px rgba(11,37,69,.07);
+  --curve:cubic-bezier(.32,.72,0,1);--spring:cubic-bezier(.34,1.4,.5,1);--barbg:rgba(238,241,246,.86)}
+@media (prefers-color-scheme:dark){:root{--bg:#0a1220;--cell:#131d30;--cell2:#1d2a43;--sep:rgba(255,255,255,.1);--tx:#eef3fb;--dim:#8fa0b8;--amber:#4d9bff;--red:#ff6b5e;
+  --shadow:0 1px 0 rgba(255,255,255,.05) inset,0 8px 24px rgba(0,0,0,.4);--barbg:rgba(10,18,32,.86)}}
+html,body,#app{background:var(--bg)}
 body{letter-spacing:-.01em}
-.nav{background:var(--mat);-webkit-backdrop-filter:saturate(180%) blur(24px);backdrop-filter:saturate(180%) blur(24px);border-bottom:.5px solid var(--sep)}
-.nav b{font-weight:600}.nav a{color:var(--amber);transition:opacity .2s}.nav a:active{opacity:.4}
-.prog{height:2px;background:rgba(120,120,128,.28)}.prog i{background:var(--amber);transition:width .5s var(--curve)}
-main{animation:enter .4s var(--curve) both}
-@keyframes enter{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
-.bar{background:var(--mat);-webkit-backdrop-filter:saturate(180%) blur(24px);backdrop-filter:saturate(180%) blur(24px);border-top:.5px solid var(--sep)}
-.lt{font-size:34px;letter-spacing:-.03em}
-.grp{border-radius:12px;background:var(--cell)}
-.grp,.n,.h{animation:enter .45s var(--curve) both}
-.grp:nth-of-type(2){animation-delay:.05s}.grp:nth-of-type(3){animation-delay:.1s}
-.li{transition:background .2s}.li:active{background:var(--cell2)}
-.li::after{color:#48484a;font-size:24px}
-.ic{border-radius:8px;width:32px;height:32px;font-size:17px}
-.li+.li::before{left:60px;border-top:.5px solid var(--sep)}
-input,textarea{border:none;border-radius:12px;background:var(--cell);transition:box-shadow .25s var(--curve)}
-input:focus,textarea:focus{box-shadow:0 0 0 2px var(--amber)}
-.n,.h{border-radius:12px}
-button{border-radius:14px;transition:transform .25s var(--curve),opacity .2s!important}
-button:not(.g):not(.r){background:var(--amber);color:#000}
-button.g,.row button,.h .row button{background:rgba(118,118,128,.28);color:#fff}
-button:active{transform:scale(.98)!important;opacity:.8}
-.ov{background:rgba(0,0,0,.4)}
-.sh{animation:sheet .5s var(--curve) both}
-.sh .box{background:rgba(44,44,46,.88);-webkit-backdrop-filter:saturate(180%) blur(40px);backdrop-filter:saturate(180%) blur(40px);border-radius:22px}
+
+/* ---- shared brand header ---- */
+.top{flex:none;position:relative;z-index:6;padding-top:var(--top);border-radius:0 0 28px 28px;overflow:hidden;
+  background:radial-gradient(120% 90% at 85% -10%,rgba(80,150,255,.5),transparent 55%),linear-gradient(160deg,#0b2545,#0f4c97);box-shadow:0 10px 30px rgba(11,37,69,.22)}
+.nav{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:6px 10px 0;min-height:52px;background:none;border:0;-webkit-backdrop-filter:none;backdrop-filter:none}
+.nav a{color:#bcd6ff;padding:10px 8px;font-weight:500;transition:opacity .2s}.nav a:active{opacity:.45}.nav a:last-child{text-align:right}
+.lg{display:flex;height:38px;background:#eceded;border-radius:12px;padding:6px 14px;box-shadow:0 6px 18px rgba(0,0,0,.25);animation:logo-in .7s var(--spring) backwards}
+.lg img{height:100%;width:auto;display:block}
+@keyframes logo-in{from{opacity:0;transform:translateY(-10px) scale(.9)}}
+h1.pt{margin:8px 16px 0;padding-bottom:14px;text-align:center;color:#fff;font-size:22px;font-weight:700;letter-spacing:-.02em;line-height:1.15}
+.prog{height:4px;margin:0 22px 16px;border-radius:4px;background:rgba(255,255,255,.2);overflow:hidden}
+.prog i{background:linear-gradient(90deg,#7dbaff,#fff);border-radius:4px;transition:width .7s var(--curve)}
+.top:not(:has(.prog)) h1.pt{padding-bottom:18px}
+
+main{padding:20px 16px 28px;animation:enter .5s var(--curve) backwards}
+@keyframes enter{from{opacity:0;transform:translateY(14px)}}
+.bar{background:var(--barbg);-webkit-backdrop-filter:saturate(180%) blur(22px);backdrop-filter:saturate(180%) blur(22px);border-top:.5px solid var(--sep);padding-top:12px}
+
+/* ---- home ---- */
+.hero{position:relative;overflow:hidden;text-align:center;color:#fff;padding:calc(var(--top) + 26px) 22px 66px;border-radius:0 0 36px 36px;
+  background:radial-gradient(120% 90% at 85% -10%,rgba(80,150,255,.5),transparent 55%),linear-gradient(160deg,#0b2545,#0f4c97)}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 35%,rgba(255,255,255,.1) 50%,transparent 65%);transform:translateX(-120%);animation:sheen 8s ease-in-out 1.2s infinite}
+@keyframes sheen{40%,100%{transform:translateX(120%)}}
+.hero .lgb{display:inline-flex;height:62px;background:#eceded;border-radius:18px;padding:10px 22px;box-shadow:0 12px 30px rgba(0,0,0,.3);animation:logo-in .8s var(--spring) backwards}
+.hero .lgb img{height:100%;width:auto}
+.hero small{display:block;margin:18px 0 6px;color:rgba(255,255,255,.7);font-size:11.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase}
+.hero h2{margin:0;font-size:30px;font-weight:800;letter-spacing:-.03em;line-height:1.1;animation:enter .7s var(--curve) .1s backwards}
+.stack{position:relative;z-index:2;margin:-38px 16px 0;padding-bottom:28px}
+.sec{margin:24px 6px 10px;color:var(--dim);font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase}.stack .sec:first-child{display:none}
+.grp{background:none;border-radius:0;overflow:visible;margin-bottom:0}
+.li{background:var(--cell);border-radius:20px;padding:14px 16px;margin-bottom:10px;gap:14px;box-shadow:var(--shadow);animation:enter .6s var(--curve) backwards;transition:transform .3s var(--curve)}
+.li+.li::before{display:none}.li:active{background:var(--cell);transform:scale(.98)}
+.grp:nth-of-type(1) .li:nth-child(2){animation-delay:.05s}.grp:nth-of-type(1) .li:nth-child(3){animation-delay:.1s}
+.grp:nth-of-type(2) .li{animation-delay:.18s}
+.li b{font-size:17px;font-weight:650}.li small{font-size:13.5px}
+.li::after{content:"›";color:var(--dim);font-size:26px;opacity:.7}
+.ic{width:48px;height:48px;border-radius:15px;box-shadow:0 6px 14px rgba(11,37,69,.2)}
+.ic svg{width:24px;height:24px;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+/* ---- forms ---- */
+label{margin:22px 4px 8px;font-size:12px;font-weight:600;letter-spacing:.06em}
+input,textarea{border:1.5px solid transparent;border-radius:16px;padding:15px 16px;min-height:54px;background:var(--cell);box-shadow:var(--shadow);transition:border-color .25s,box-shadow .3s var(--curve)}
+input:focus,textarea:focus{border-color:var(--amber);box-shadow:0 0 0 4px rgba(10,99,201,.16),var(--shadow)}
+input::placeholder,textarea::placeholder{color:#9aa6b8}
+.bad{box-shadow:0 0 0 2px var(--red)!important;animation:shake .4s var(--curve)}
+@keyframes shake{20%{transform:translateX(-7px)}40%{transform:translateX(6px)}60%{transform:translateX(-4px)}80%{transform:translateX(2px)}}
+canvas{border-radius:16px;box-shadow:var(--shadow)}
+.n,.h{background:var(--cell);border-radius:20px;box-shadow:var(--shadow);animation:enter .55s var(--curve) backwards}
+.n{padding:14px 16px}.h{padding:16px}
+.n:nth-child(2),.h:nth-child(2){animation-delay:.05s}.n:nth-child(3),.h:nth-child(3){animation-delay:.1s}.n:nth-child(n+4),.h:nth-child(n+4){animation-delay:.14s}
+
+/* ---- buttons ---- */
+button{height:54px;border-radius:18px;font-weight:700;background:var(--grad);color:#fff;box-shadow:0 10px 24px rgba(10,99,201,.32);transition:transform .3s var(--curve),opacity .2s!important}
+button:active{transform:scale(.97)!important;opacity:.9}
+button.g{background:var(--cell);color:var(--tx);box-shadow:var(--shadow)}
+button.r{background:var(--red);color:#fff;box-shadow:0 10px 24px rgba(229,57,45,.3)}
+.row button{background:var(--cell2);color:var(--tx);box-shadow:none;border-radius:16px}
+.row button.w{background:var(--grad);color:#fff;box-shadow:0 8px 18px rgba(10,99,201,.28)}
+.h .row button{height:44px;border-radius:14px;background:var(--cell2);color:var(--tx);box-shadow:none}
+.h .row button.w{background:var(--grad);color:#fff}.h .row button.d{color:var(--red)}
+
+/* ---- sheets + toast ---- */
+.ov{background:rgba(11,37,69,.5);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.sh{animation:sheet .55s var(--curve) backwards}
+.sh .box{background:var(--cell);border-radius:26px;padding:20px 18px;box-shadow:0 24px 70px rgba(0,0,0,.35)}
+.sh .box b{font-size:19px}
+.sh button{margin-bottom:8px}
 @keyframes sheet{from{transform:translateY(110%)}}
-.toast{background:rgba(58,58,60,.85);-webkit-backdrop-filter:saturate(180%) blur(24px);backdrop-filter:saturate(180%) blur(24px);animation:toast .45s var(--curve) both}
-@keyframes toast{from{opacity:0;transform:translateX(-50%) translateY(-14px)}}
+.toast{background:var(--cell);color:var(--tx);box-shadow:var(--shadow),0 12px 30px rgba(0,0,0,.2);animation:toast .5s var(--spring) backwards}
+@keyframes toast{from{opacity:0;transform:translateX(-50%) translateY(-16px) scale(.92)}}
+.empty{color:var(--dim)}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+
+/* Richmond Elevator — cinematic navy design */
+:root{color-scheme:dark;--bg:#03101d;--cell:#0c2137;--cell2:#16304a;--sep:rgba(99,173,238,.22);--tx:#f5f9ff;--dim:#b0c4dd;--amber:#00baff;--grad:linear-gradient(125deg,#006db7,#00b9ff);--barbg:rgba(3,16,29,.96);--shadow:0 12px 32px rgba(0,0,0,.32)}
+@media(prefers-color-scheme:dark){:root{--bg:#03101d;--cell:#0c2137;--cell2:#16304a;--tx:#f5f9ff;--dim:#b0c4dd;--amber:#00baff;--barbg:rgba(3,16,29,.96)}}
+html,body,#app{background:#03101d!important;color:#f5f9ff}body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display',sans-serif}
+.top{background:linear-gradient(125deg,#071d31,#0b3152)!important;border-radius:0 0 20px 20px;box-shadow:0 6px 32px #0007}
+.nav a{color:#8ddcff}.prog i{background:linear-gradient(90deg,#0088e8,#23ddff)}
+main{background:transparent}input,textarea,.n,.h{background:linear-gradient(145deg,#102a42,#091a2c)!important;border:1px solid #2c5477!important;color:#fff!important}input:focus,textarea:focus{border-color:#00baff!important}
+.bar{background:rgba(4,19,33,.94)!important;border-top:1px solid #285273}button{background:linear-gradient(120deg,#007acb,#0fcaff);color:#fff}button.g{background:#18334b;color:#fff}
+.hero{padding:calc(var(--top) + 20px) 16px 96px!important;border-radius:0!important;text-align:left!important;background:linear-gradient(90deg,rgba(2,14,27,.95) 0%,rgba(3,19,34,.73) 48%,rgba(3,16,29,.05) 100%),url('elevator-bg.jpg') right center/cover no-repeat!important;min-height:340px}
+.hero::after{display:none}.hero .lgb{height:52px!important;border-radius:12px!important;padding:7px 12px!important;box-shadow:0 6px 20px #0006}.hero small{margin-top:43px!important;color:#b9d1eb!important;letter-spacing:.24em!important;font-size:10px!important}.hero h2{font-size:clamp(38px,11vw,58px)!important;letter-spacing:-.045em!important;margin:10px 0!important}.hero .subtitle{font-size:15px;color:#b6c9e0;line-height:1.5;max-width:260px}.hero .accent-line{width:48px;height:3px;border-radius:5px;background:#00c9ff;box-shadow:0 0 13px #00baff;margin-top:18px}
+.stack{margin:-51px 15px 0!important;padding-bottom:60px!important}.stack .sec{display:none!important}.stack .grp{display:grid;gap:12px;margin:0 0 15px}.stack .grp.primary .li{min-height:108px}.stack .grp.secondary{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.stack .li{position:relative;isolation:isolate;overflow:hidden;margin:0!important;border:1px solid #3779a8!important;border-radius:20px!important;background:linear-gradient(100deg,#092c4c,#07182b)!important;box-shadow:inset 0 1px 0 #ffffff19,0 8px 24px #0009!important;display:flex;gap:13px;padding:18px 15px!important;transition:transform .28s cubic-bezier(.2,.8,.2,1),box-shadow .28s!important;animation:card-rise .6s cubic-bezier(.2,.8,.2,1) both}.stack .li:active{transform:scale(.965)!important;box-shadow:0 0 24px #00aaff44!important}.stack .li::before{content:'';position:absolute;inset:0;z-index:-1;opacity:.55;background:linear-gradient(90deg,#07233d 25%,transparent 90%),var(--photo) right center/auto 100% no-repeat}.stack .primary .li:nth-child(1){--photo:url('toolbox-bg.jpg');border-color:#00baff!important}.stack .primary .li:nth-child(2){--photo:url('hazard-bg.jpg');border-color:#db8a45!important}.stack .primary .li:nth-child(3){--photo:url('timesheet-bg.jpg');border-color:#2bbda5!important}.stack .li::after{color:#e1f6ff!important;font-size:27px!important}.stack .ic{width:56px;height:56px;border-radius:16px!important;background:linear-gradient(140deg,#005b96,#043252)!important;box-shadow:inset 0 0 14px #05caff55,0 0 18px #00aaff22;flex:none}.stack .primary .li:nth-child(2) .ic{background:linear-gradient(140deg,#8b420d,#3b2215)!important;box-shadow:inset 0 0 14px #ffb23666}.stack .primary .li:nth-child(3) .ic{background:linear-gradient(140deg,#007e70,#073c3b)!important;box-shadow:inset 0 0 14px #20f2c266}.stack .li b{font-size:clamp(17px,4.7vw,22px);font-weight:750;line-height:1.1;letter-spacing:-.03em}.stack .li small{display:block;font-size:12.5px;line-height:1.35;color:#b9cde4;margin-top:6px}.stack .secondary .li{min-height:132px;padding:15px 10px!important;gap:9px;flex-wrap:wrap;align-content:center}.stack .secondary .li .ic{width:42px;height:42px}.stack .secondary .li b{font-size:15px}.stack .secondary .li small{font-size:11px}.stack .secondary .li::after{font-size:19px}.stack .secondary .li span{min-width:75px}
+@keyframes card-rise{from{opacity:0;transform:translateY(25px) scale(.975)}to{opacity:1;transform:translateY(0) scale(1)}}.stack .primary .li:nth-child(2){animation-delay:.09s}.stack .primary .li:nth-child(3){animation-delay:.18s}.stack .secondary .li:nth-child(1){animation-delay:.27s}.stack .secondary .li:nth-child(2){animation-delay:.35s}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
 </style></head><body><div id="app"></div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="seed.js"></script>
@@ -161,22 +222,23 @@ async function save(){try{const{d,name}=await pdf();learn();saveName(S.type=='tb
 async function saveFile(n,b){try{const dl=window.claude&&await claude.use('downloads');if(dl){await dl.save({filename:n,data:b});return}}catch(e){if(e&&e.code=='declined')return}const u=URL.createObjectURL(b),a=document.createElement('a');a.href=u;a.download=n;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),4000)}
 async function hist(){let f=K('forms')||[];const r=await rq('forms?owner=eq.'+dev+'&select=id,data');if(r){r.forEach(x=>f.some(y=>y.id==x.id)||f.push(x.data));K('forms',f)}
 const lb=x=>x.type=='ts'?`🕒 <b>Timesheet</b><br><span class="m" style="margin:0">${esc(x.range)} · ${((+x.rt||0)+(+x.ot||0)).toFixed(1)} h</span>`:x.type=='tb'?`🧰 <b>${esc(x.job)}</b><br><span class="m" style="margin:0">ToolBox · ${x.date}</span>`:`⚠️ <b>${esc(x.days[0].job)}</b><br><span class="m" style="margin:0">Hazard assessment · ${x.days[0].date}${x.days[1]?' + Day 2':''}</span>`;
-$('#app').innerHTML=`<div class="nav"><a onclick="home()">‹ Home</a><b>History</b><a></a></div><main>${f.map(x=>`<div class="h">${lb(x)}<div class="row" style="margin-top:10px"><button onclick="op('${x.id}')">${x.type=='ts'?'Open':'Open / re-save'}</button>${x.type=='jha'&&!x.days[1]?`<button class="w" onclick="op('${x.id}',1)">Add Day 2</button>`:''}<button class="d" onclick="del('${x.id}')">Delete</button></div></div>`).join('')||'<div class="empty">Nothing saved yet.</div>'}</main>`}
+$('#app').innerHTML=`${hdr('<a onclick="home()">‹ Home</a>','History','<a></a>')}<main>${f.map(x=>`<div class="h">${lb(x)}<div class="row" style="margin-top:10px"><button onclick="op('${x.id}')">${x.type=='ts'?'Open':'Open / re-save'}</button>${x.type=='jha'&&!x.days[1]?`<button class="w" onclick="op('${x.id}',1)">Add Day 2</button>`:''}<button class="d" onclick="del('${x.id}')">Delete</button></div></div>`).join('')||'<div class="empty">Nothing saved yet.</div>'}</main>`}
 function op(id,two){const x=(K('forms')||[]).find(x=>x.id==id);if(!x)return;if(x.type=='ts')return ts(x);S=JSON.parse(JSON.stringify(x));S.done=false;at='done';if(two)d2();else draw()}
 function del(id){ask('Delete this form?','This can’t be undone.','Delete',()=>{K('forms',(K('forms')||[]).filter(x=>x.id!=id));rq('forms?id=eq.'+id,{method:'DELETE'});hist();toast('Deleted')})}
 // ===== wizard core =====
 const flow=()=>S.type=='tb'?tbF():jF();
+const hdr=(l,t,r,p)=>`<div class="top"><div class="nav">${l}<span class="lg"><img src="${LOGO}" alt="Richmond Elevator"></span>${r}</div><h1 class="pt">${t}</h1>${p==null?'':`<div class="prog"><i style="width:${p}%"></i></div>`}</div>`;
 function draw(){const f=flow();if(!f.some(x=>x.k==at))at=f[0].k;const i=f.findIndex(x=>x.k==at),o=f[i].r();if(!S.done)K('draft',{S,at});
-$('#app').innerHTML=`<div class="nav"><a id="bk">‹ ${i?'Back':'Home'}</a><b>${o.t}</b><a onclick="home()">${i?'Home':''}</a></div><div class="prog"><i style="width:${Math.round((i+1)/f.length*100)}%"></i></div><main>${o.b}</main><div class="bar">${o.x||''}${o.nx===null?'':'<button id="nx">Next</button>'}</div>`;
+$('#app').innerHTML=`${hdr(`<a id="bk">‹ ${i?'Back':'Home'}</a>`,o.t,`<a onclick="home()">${i?'Home':''}</a>`,Math.round((i+1)/f.length*100))}<main>${o.b}</main><div class="bar">${o.x||''}${o.nx===null?'':'<button id="nx">Next</button>'}</div>`;
 $('#bk').onclick=()=>{if(!i)return home();let j=i-1;while(j>0&&f[j].sk&&f[j].sk())j--;at=f[j].k;draw()};
 $('#nx')&&($('#nx').onclick=()=>{const s=f[i];if(s.ok&&!s.ok()){const e=$('main input');e.classList.add('bad');e.focus();return}at=s.skip&&s.skip()?s.to:f[i+1].k;draw()});
 document.querySelectorAll('[data-p]').forEach(e=>{const p=e.dataset.p,jb=/(^|\.)job$/.test(p);e.oninput=()=>{if(jb)e.value=e.value.toUpperCase();e.classList.remove('bad');sp(p,e.value)};e.onchange=()=>{hook(p)&&draw()}});o.bind&&o.bind()}
 function home(){if(S&&!S.done)toast('Draft saved. Resume anytime.');S=null;let p=K('profile')||{};if(!p.name){const x=(K('forms')||[]).find(x=>x.name||x.foreman||x.days?.[0]?.foreman),nm=x&&(x.name||x.foreman||x.days?.[0]?.foreman);if(nm){saveName(nm);p={name:nm.trim()}}}
 const li=(f,c,i,b,s)=>`<a class="li" onclick="${f}"><div class="ic" style="background:${c}">${i}</div><span><b>${b}</b><small>${s}</small></span></a>`,dr=K('draft');
-$('#app').innerHTML=`<main style="padding-top:calc(var(--top) + 14px)"><div class="brand"><img src="${LOGO}" alt="Richmond Elevator"><small>Richmond Elevator<br>Safety &amp; Timesheet</small></div><div class="lt">Welcome${p.name?',<br>'+esc(p.name):''}</div><div class="grp">${li("start('tb')",'#ff9f0a','🧰','ToolBox Meeting','Weekly safety talk report')}${li("start('jha')",'#ff453a','⚠️','Daily Hazard Assessment','Job hazard analysis, 2 days per page')}${li('ts()','#30a46c','🕒','Timesheet','Two-week pay period, PDF with receipts')}</div><div class="grp">${li('hist()','#0a84ff','📁','History','Everything you saved on this phone')}${dr?li('resume()','#8e8e93','▶️','Resume unfinished form','Pick up where you left off'):''}</div></main>`}
+$('#app').innerHTML=`<main style="padding:0"><div class="hero"><span class="lgb"><img src="${LOGO}" alt="Richmond Elevator"></span><small>FIELD OPERATIONS PORTAL</small><h2>Welcome${p.name?', '+esc(p.name):''}</h2><div class="subtitle">Your safety, reporting and time tracking in one place.</div><div class="accent-line"></div></div><div class="stack"><div class="sec">Forms</div><div class="grp primary">${li("start('tb')",'linear-gradient(135deg,#0d3b78,#2d8cff)','<svg viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="17" rx="3"/><path d="M9 4h6v3H9z"/><path d="M9 14l2 2 4-4"/></svg>','ToolBox Meeting','Weekly safety talk report')}${li("start('jha')",'linear-gradient(135deg,#e07a00,#ffb020)','<svg viewBox="0 0 24 24"><path d="M12 4l9 16H3z"/><path d="M12 10v4M12 17.2v.1"/></svg>','Daily Hazard Assessment','Job hazard analysis, 2 days per page')}${li('ts()','linear-gradient(135deg,#17884b,#34c77b)','<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>','Timesheet','Two-week pay period, PDF with receipts')}</div><div class="sec">Your files</div><div class="grp secondary">${li('hist()','linear-gradient(135deg,#4b5d7c,#7d8fac)','<svg viewBox="0 0 24 24"><path d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>','History','Everything you saved on this phone')}${dr?li('resume()','linear-gradient(135deg,#5b3fc4,#8f72f0)','<svg viewBox="0 0 24 24"><path d="M8 5l11 7-11 7z"/></svg>','Resume unfinished form','Pick up where you left off'):''}</div></div></main>`}
 // ===== timesheet (original app, embedded) =====
-function ts(rec){const p=K('profile')||{};$('#app').innerHTML='<div class="nav"><a onclick="home()">‹ Home</a><b>Timesheet</b><a></a></div><iframe id="tsf" style="flex:1;min-height:0;width:100%;border:0;background:#000"></iframe><div style="flex:none;height:var(--bot)"></div>';const f=$('#tsf');f.onload=()=>f.contentWindow.postMessage({rem:'init',name:p.name||'',load:rec||null,id:rec?rec.id:uid()},'*');tsSet(f)}
-function tsSet(f){f.src='timesheet.html'}
+function ts(rec){const p=K('profile')||{};$('#app').innerHTML=hdr('<a onclick="home()">‹ Home</a>','Timesheet','<a></a>')+'<iframe id="tsf" style="flex:1;min-height:0;width:100%;border:0;background:var(--bg)"></iframe><div style="flex:none;height:var(--bot);background:var(--bg)"></div>';const f=$('#tsf');f.onload=()=>f.contentWindow.postMessage({rem:'init',name:p.name||'',load:rec||null,id:rec?rec.id:uid()},'*');tsSet(f)}
+function tsSet(f){f.src='timesheet.html?v=5'}
 addEventListener('message',e=>{const m=e.data;if(!m||!m.rem||e.source!==$('#tsf')?.contentWindow)return;
 if(m.rem=='ts-file')saveFile(m.name,m.blob);
 if(m.rem=='ts-name'&&m.name)saveName(m.name);
