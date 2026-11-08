@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover"><meta name="theme-color" content="#0b2545"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="Safety"><meta name="format-detection" content="telephone=no"><link rel="manifest" href="manifest.json"><link rel="apple-touch-icon" href="icon.png"><title>Richmond Elevator Safety</title>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover"><meta name="theme-color" content="#050b18"><meta name="color-scheme" content="dark"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="Safety"><meta name="format-detection" content="telephone=no"><link rel="manifest" href="manifest.json"><link rel="apple-touch-icon" href="icon.png"><title>Richmond Elevator Safety</title>
 <style>
 :root{--bg:#15181c;--cell:#1d2126;--cell2:#262b33;--sep:#353c46;--tx:#eef0f2;--dim:#9aa3af;--amber:#f2a71b;--red:#ff5d4d;--top:env(safe-area-inset-top,0px);--bot:env(safe-area-inset-bottom,0px)}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -31,102 +31,134 @@ canvas{display:block;width:100%;background:#fff;border-radius:12px;touch-action:
 .sh{width:100%;max-width:520px;margin:auto;padding:12px 12px calc(var(--bot) + 12px)}.sh .box{background:var(--cell);border-radius:14px;padding:16px;text-align:center;margin-bottom:8px}.sh button{width:100%;margin-bottom:8px}
 .toast{position:fixed;top:calc(var(--top) + 58px);left:50%;transform:translateX(-50%);background:var(--cell2);padding:10px 18px;border-radius:22px;z-index:30;font-size:15px;box-shadow:0 6px 24px rgba(0,0,0,.4);animation:f .2s;white-space:nowrap}
 .bad{box-shadow:inset 0 0 0 1.5px var(--red)!important}
-/* ================= RICHMOND DESIGN SYSTEM v2 (shared across every screen) ================= */
-:root{--bg:#eef1f6;--cell:#fff;--cell2:#e7ebf2;--sep:rgba(14,26,43,.1);--tx:#0e1a2b;--dim:#66758a;--amber:#0a63c9;--red:#e5392d;
-  --grad:linear-gradient(135deg,#0d3b78,#0a63c9);--shadow:0 1px 2px rgba(11,37,69,.06),0 8px 24px rgba(11,37,69,.07);
-  --curve:cubic-bezier(.32,.72,0,1);--spring:cubic-bezier(.34,1.4,.5,1);--barbg:rgba(238,241,246,.86)}
-@media (prefers-color-scheme:dark){:root{--bg:#0a1220;--cell:#131d30;--cell2:#1d2a43;--sep:rgba(255,255,255,.1);--tx:#eef3fb;--dim:#8fa0b8;--amber:#4d9bff;--red:#ff6b5e;
-  --shadow:0 1px 0 rgba(255,255,255,.05) inset,0 8px 24px rgba(0,0,0,.4);--barbg:rgba(10,18,32,.86)}}
-html,body,#app{background:var(--bg)}
-body{letter-spacing:-.01em}
+/* ================= RICHMOND DESIGN SYSTEM v3 — Field Operations Portal ================= */
+:root{color-scheme:dark;--bg:#050b18;--cell:rgba(20,42,86,.45);--cell2:rgba(255,255,255,.08);--sep:rgba(130,180,255,.18);--tx:#f4f8ff;--dim:#9db3d4;
+  --amber:#38c6ff;--red:#ff6b5e;--cy:56,198,255;--grad:linear-gradient(135deg,#1658e8,#27b4ff);
+  --glass:linear-gradient(160deg,rgba(32,64,128,.42),rgba(9,22,52,.62));--glow:0 12px 34px rgba(0,0,0,.45);
+  --curve:cubic-bezier(.32,.72,0,1);--spring:cubic-bezier(.34,1.4,.5,1)}
+html,body{background:#050b18}
+body{background:radial-gradient(90% 38% at 85% 0%,rgba(30,100,220,.32),transparent 62%),radial-gradient(80% 40% at 0% 100%,rgba(20,80,180,.22),transparent 62%),#050b18;letter-spacing:-.005em}
+#app{background:transparent}
+main::-webkit-scrollbar{display:none}
 
-/* ---- shared brand header ---- */
-.top{flex:none;position:relative;z-index:6;padding-top:var(--top);border-radius:0 0 28px 28px;overflow:hidden;
-  background:radial-gradient(120% 90% at 85% -10%,rgba(80,150,255,.5),transparent 55%),linear-gradient(160deg,#0b2545,#0f4c97);box-shadow:0 10px 30px rgba(11,37,69,.22)}
-.nav{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:6px 10px 0;min-height:52px;background:none;border:0;-webkit-backdrop-filter:none;backdrop-filter:none}
-.nav a{color:#bcd6ff;padding:10px 8px;font-weight:500;transition:opacity .2s}.nav a:active{opacity:.45}.nav a:last-child{text-align:right}
-.lg{display:flex;height:38px;background:#eceded;border-radius:12px;padding:6px 14px;box-shadow:0 6px 18px rgba(0,0,0,.25);animation:logo-in .7s var(--spring) backwards}
-.lg img{height:100%;width:auto;display:block}
-@keyframes logo-in{from{opacity:0;transform:translateY(-10px) scale(.9)}}
-h1.pt{margin:8px 16px 0;padding-bottom:14px;text-align:center;color:#fff;font-size:22px;font-weight:700;letter-spacing:-.02em;line-height:1.15}
-.prog{height:4px;margin:0 22px 16px;border-radius:4px;background:rgba(255,255,255,.2);overflow:hidden}
-.prog i{background:linear-gradient(90deg,#7dbaff,#fff);border-radius:4px;transition:width .7s var(--curve)}
+/* ---------- shared header (all inner screens) ---------- */
+.top{flex:none;position:relative;z-index:6;padding-top:var(--top);overflow:hidden;background:linear-gradient(180deg,rgba(4,9,20,.96),rgba(7,17,40,.92));border-bottom:1px solid var(--sep)}
+.top::before{content:"";position:absolute;inset:0;background:url(img/hero.jpg) right top/auto 190% no-repeat;opacity:.32;-webkit-mask-image:linear-gradient(90deg,transparent 35%,#000);mask-image:linear-gradient(90deg,transparent 35%,#000)}
+.top::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:linear-gradient(90deg,transparent,rgba(var(--cy),.7),transparent)}
+.top>*{position:relative;z-index:1}
+.nav{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:8px 14px 0;min-height:56px;background:none;border:0;-webkit-backdrop-filter:none;backdrop-filter:none}
+.nav a{justify-self:start;padding:8px 15px;border-radius:20px;background:rgba(255,255,255,.07);border:1px solid rgba(160,200,255,.2);color:#dcebff;font-size:15px;font-weight:500;
+  -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);transition:transform .3s var(--curve),background .2s}
+.nav a:last-child{justify-self:end}.nav a:empty{visibility:hidden}.nav a:active{transform:scale(.94);background:rgba(255,255,255,.14)}
+.lg{display:flex;height:38px;padding:6px 14px;border-radius:12px;background:#eceded;box-shadow:0 6px 18px rgba(0,0,0,.45),0 0 0 1px rgba(255,255,255,.35) inset}
+.lg img{height:100%;width:auto;display:block;border-radius:3px}
+h1.pt{margin:10px 18px 0;padding-bottom:14px;text-align:center;font-size:23px;font-weight:700;letter-spacing:-.02em;line-height:1.15;color:#fff}
+.prog{height:4px;margin:0 22px 14px;border-radius:4px;background:rgba(255,255,255,.1);overflow:hidden}
+.prog i{position:relative;border-radius:4px;background:linear-gradient(90deg,#1658e8,#38c6ff);box-shadow:0 0 14px rgba(var(--cy),.9);transition:width .7s var(--curve);overflow:hidden}
+.prog i::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent 30%,rgba(255,255,255,.7) 50%,transparent 70%);transform:translateX(-100%);animation:sweep 2.6s ease-in-out infinite}
+@keyframes sweep{60%,100%{transform:translateX(100%)}}
 .top:not(:has(.prog)) h1.pt{padding-bottom:18px}
 
-main{padding:20px 16px 28px;animation:enter .5s var(--curve) backwards}
-@keyframes enter{from{opacity:0;transform:translateY(14px)}}
-.bar{background:var(--barbg);-webkit-backdrop-filter:saturate(180%) blur(22px);backdrop-filter:saturate(180%) blur(22px);border-top:.5px solid var(--sep);padding-top:12px}
+main{padding:22px 16px 30px;animation:enter .55s var(--curve) backwards}
+@keyframes enter{from{opacity:0;transform:translateY(16px);filter:blur(4px)}}
+.bar{background:linear-gradient(180deg,rgba(5,11,24,.55),rgba(5,11,24,.94));-webkit-backdrop-filter:blur(22px) saturate(1.5);backdrop-filter:blur(22px) saturate(1.5);border-top:1px solid var(--sep);padding-top:12px}
 
-/* ---- home ---- */
-.hero{position:relative;overflow:hidden;text-align:center;color:#fff;padding:calc(var(--top) + 26px) 22px 66px;border-radius:0 0 36px 36px;
-  background:radial-gradient(120% 90% at 85% -10%,rgba(80,150,255,.5),transparent 55%),linear-gradient(160deg,#0b2545,#0f4c97)}
-.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 35%,rgba(255,255,255,.1) 50%,transparent 65%);transform:translateX(-120%);animation:sheen 8s ease-in-out 1.2s infinite}
-@keyframes sheen{40%,100%{transform:translateX(120%)}}
-.hero .lgb{display:inline-flex;height:62px;background:#eceded;border-radius:18px;padding:10px 22px;box-shadow:0 12px 30px rgba(0,0,0,.3);animation:logo-in .8s var(--spring) backwards}
-.hero .lgb img{height:100%;width:auto}
-.hero small{display:block;margin:18px 0 6px;color:rgba(255,255,255,.7);font-size:11.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase}
-.hero h2{margin:0;font-size:30px;font-weight:800;letter-spacing:-.03em;line-height:1.1;animation:enter .7s var(--curve) .1s backwards}
-.stack{position:relative;z-index:2;margin:-38px 16px 0;padding-bottom:28px}
-.sec{margin:24px 6px 10px;color:var(--dim);font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase}.stack .sec:first-child{display:none}
-.grp{background:none;border-radius:0;overflow:visible;margin-bottom:0}
-.li{background:var(--cell);border-radius:20px;padding:14px 16px;margin-bottom:10px;gap:14px;box-shadow:var(--shadow);animation:enter .6s var(--curve) backwards;transition:transform .3s var(--curve)}
-.li+.li::before{display:none}.li:active{background:var(--cell);transform:scale(.98)}
-.grp:nth-of-type(1) .li:nth-child(2){animation-delay:.05s}.grp:nth-of-type(1) .li:nth-child(3){animation-delay:.1s}
-.grp:nth-of-type(2) .li{animation-delay:.18s}
-.li b{font-size:17px;font-weight:650}.li small{font-size:13.5px}
-.li::after{content:"›";color:var(--dim);font-size:26px;opacity:.7}
-.ic{width:48px;height:48px;border-radius:15px;box-shadow:0 6px 14px rgba(11,37,69,.2)}
-.ic svg{width:24px;height:24px;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+/* ---------- HOME ---------- */
+.hero{position:relative;isolation:isolate;overflow:hidden;padding:calc(var(--top) + 16px) 22px 30px;min-height:calc(var(--top) + 300px)}
+.hero-img{position:absolute;inset:0;z-index:-2;background:url(img/hero.jpg) right top/auto 100% no-repeat;transform-origin:85% 40%;animation:kb 28s ease-in-out infinite alternate;
+  -webkit-mask-image:linear-gradient(90deg,transparent 22%,#000 72%);mask-image:linear-gradient(90deg,transparent 22%,#000 72%)}
+@keyframes kb{to{transform:scale(1.1)}}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(5,11,24,.1) 40%,#050b18 100%),linear-gradient(90deg,rgba(5,11,24,.75),rgba(5,11,24,0) 65%)}
+.hero-top{display:flex;align-items:center;gap:14px;animation:enter .8s var(--curve) backwards}
+.lgb{display:inline-flex;height:46px;padding:7px 15px;border-radius:13px;background:#eceded;box-shadow:0 10px 28px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.4) inset,0 0 26px rgba(var(--cy),.25)}
+.lgb img{height:100%;width:auto;border-radius:3px}
+.vr{width:1px;height:36px;background:linear-gradient(transparent,rgba(255,255,255,.55),transparent)}
+.hb{font-size:11.5px;letter-spacing:.15em;text-transform:uppercase;line-height:1.6;color:#e6f0ff}
+.hero-txt{margin-top:48px}
+.hero-txt small{display:block;font-size:11px;letter-spacing:.38em;text-transform:uppercase;color:#b4c8e8;animation:enter .8s var(--curve) .12s backwards}
+.hero-txt h2{margin:10px 0 12px;font-size:56px;font-weight:800;letter-spacing:-.035em;line-height:1;
+  background:linear-gradient(100deg,#fff 0%,#fff 38%,#9fd8ff 50%,#fff 62%,#fff 100%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;
+  animation:enter .8s var(--curve) .2s backwards,shimmer 7s ease-in-out 1.6s infinite;filter:drop-shadow(0 4px 18px rgba(0,0,0,.5))}
+@keyframes shimmer{0%{background-position:120% 0}60%,100%{background-position:-60% 0}}
+.hero-txt p{margin:0;max-width:300px;font-size:17px;line-height:1.35;color:#d3e1f7;animation:enter .8s var(--curve) .3s backwards}
+.uline{display:block;width:56px;height:4px;margin-top:20px;border-radius:4px;background:linear-gradient(90deg,#27b4ff,#38e0ff);box-shadow:0 0 16px rgba(var(--cy),.9);animation:grow 1s var(--curve) .6s backwards}
+@keyframes grow{from{width:0;opacity:0}}
 
-/* ---- forms ---- */
-label{margin:22px 4px 8px;font-size:12px;font-weight:600;letter-spacing:.06em}
-input,textarea{border:1.5px solid transparent;border-radius:16px;padding:15px 16px;min-height:54px;background:var(--cell);box-shadow:var(--shadow);transition:border-color .25s,box-shadow .3s var(--curve)}
-input:focus,textarea:focus{border-color:var(--amber);box-shadow:0 0 0 4px rgba(10,99,201,.16),var(--shadow)}
-input::placeholder,textarea::placeholder{color:#9aa6b8}
-.bad{box-shadow:0 0 0 2px var(--red)!important;animation:shake .4s var(--curve)}
+.cards{display:grid;gap:14px;padding:6px 16px 0}
+.card{--i:0;position:relative;isolation:isolate;display:flex;align-items:center;min-height:98px;border-radius:24px;overflow:hidden;text-decoration:none;color:#fff;
+  background:linear-gradient(105deg,rgba(18,40,86,.92),rgba(7,18,42,.96));border:1px solid rgba(var(--rgb),.55);
+  box-shadow:0 14px 34px rgba(0,0,0,.5),0 0 28px rgba(var(--rgb),.2),inset 0 1px 0 rgba(255,255,255,.12);
+  animation:cardin .9s var(--curve) calc(.3s + var(--i)*.1s) backwards;transition:transform .35s var(--curve),box-shadow .35s}
+.card:active{transform:scale(.975);box-shadow:0 8px 20px rgba(0,0,0,.5),0 0 40px rgba(var(--rgb),.45)}
+@keyframes cardin{from{opacity:0;transform:translateY(34px) scale(.96);filter:blur(8px)}}
+.card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:31%;z-index:-1;background:linear-gradient(135deg,var(--c1),var(--c2));clip-path:polygon(0 0,100% 0,77% 100%,0 100%)}
+.card::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(105deg,transparent 42%,rgba(255,255,255,.14) 50%,transparent 58%);transform:translateX(-130%);animation:shine 8s ease-in-out calc(2s + var(--i)*1.6s) infinite}
+@keyframes shine{22%,100%{transform:translateX(130%)}}
+.cp{flex:none;width:25%;display:grid;place-items:center}
+.cp svg{width:40px;height:40px;fill:none;stroke:#fff;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 10px rgba(var(--rgb),.9))}
+.ct{flex:1;min-width:0;padding:16px 4px 16px 14px;position:relative;z-index:2}
+.ct b{display:block;font-size:20px;font-weight:700;letter-spacing:-.02em;line-height:1.12;text-shadow:0 2px 10px rgba(0,0,0,.6)}
+.ct small{display:block;margin-top:5px;font-size:14px;line-height:1.3;color:#cfe0ff;opacity:.88;text-shadow:0 2px 10px rgba(0,0,0,.6)}
+.cimg{position:absolute;right:0;top:0;bottom:0;width:48%;z-index:-1;background-size:cover;background-position:center;opacity:.95;-webkit-mask-image:linear-gradient(90deg,transparent,#000 55%);mask-image:linear-gradient(90deg,transparent,#000 55%)}
+.cc{flex:none;margin:0 16px 0 6px;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;border:1.5px solid rgba(255,255,255,.6);background:rgba(5,11,24,.4);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);position:relative;z-index:2;transition:transform .35s var(--curve)}
+.cc svg{width:18px;height:18px;fill:none;stroke:#fff;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.card:active .cc{transform:translateX(4px)}
+.mini{display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:14px 16px 0}.mini.one{grid-template-columns:1fr}
+.mc{--i:3;display:flex;align-items:center;gap:12px;min-height:96px;padding:14px;border-radius:22px;color:#fff;border:1px solid rgba(150,195,255,.24);background:var(--glass);
+  -webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);box-shadow:0 12px 30px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.1);
+  animation:cardin .9s var(--curve) calc(.3s + var(--i)*.1s) backwards;transition:transform .35s var(--curve)}
+.mc:active{transform:scale(.97)}
+.mc+.mc{--i:4}
+.mi{flex:none;width:46px;height:46px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(145deg,rgba(70,130,240,.55),rgba(20,52,130,.7));border:1px solid rgba(150,200,255,.35);box-shadow:0 0 18px rgba(var(--cy),.2)}
+.mi svg{width:23px;height:23px;fill:none;stroke:#fff;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.mt{flex:1;min-width:0}.mt b{display:block;font-size:17px;font-weight:700;line-height:1.15;letter-spacing:-.015em}.mt small{display:block;margin-top:3px;font-size:13px;color:#b7cbe9;line-height:1.3}
+.mch{flex:none;color:#9db3d4;font-size:24px;line-height:1}
+.foot{padding:26px 16px calc(var(--bot) + 20px);text-align:center;color:#6f87ad;font-size:11px;letter-spacing:.2em;text-transform:uppercase;animation:enter 1s var(--curve) 1s backwards}
+
+/* ---------- forms / review ---------- */
+label{margin:22px 4px 9px;font-size:12px;font-weight:600;letter-spacing:.09em;color:#86aee6}
+.m{color:var(--dim);font-size:13.5px;line-height:1.4}
+input,textarea{border:1px solid rgba(130,180,255,.22);border-radius:16px;padding:15px 16px;min-height:54px;background:rgba(255,255,255,.05);color:#fff;caret-color:#38c6ff;
+  -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);box-shadow:inset 0 1px 0 rgba(255,255,255,.06);transition:border-color .25s,box-shadow .35s var(--curve),background .25s}
+input:focus,textarea:focus{border-color:#38c6ff;background:rgba(56,198,255,.07);box-shadow:0 0 0 4px rgba(var(--cy),.14),0 0 28px rgba(var(--cy),.18)}
+input::placeholder,textarea::placeholder{color:#5f7799}
+.bad{border-color:var(--red)!important;box-shadow:0 0 0 4px rgba(255,107,94,.16)!important;animation:shake .4s var(--curve)}
 @keyframes shake{20%{transform:translateX(-7px)}40%{transform:translateX(6px)}60%{transform:translateX(-4px)}80%{transform:translateX(2px)}}
-canvas{border-radius:16px;box-shadow:var(--shadow)}
-.n,.h{background:var(--cell);border-radius:20px;box-shadow:var(--shadow);animation:enter .55s var(--curve) backwards}
-.n{padding:14px 16px}.h{padding:16px}
-.n:nth-child(2),.h:nth-child(2){animation-delay:.05s}.n:nth-child(3),.h:nth-child(3){animation-delay:.1s}.n:nth-child(n+4),.h:nth-child(n+4){animation-delay:.14s}
-
-/* ---- buttons ---- */
-button{height:54px;border-radius:18px;font-weight:700;background:var(--grad);color:#fff;box-shadow:0 10px 24px rgba(10,99,201,.32);transition:transform .3s var(--curve),opacity .2s!important}
-button:active{transform:scale(.97)!important;opacity:.9}
-button.g{background:var(--cell);color:var(--tx);box-shadow:var(--shadow)}
-button.r{background:var(--red);color:#fff;box-shadow:0 10px 24px rgba(229,57,45,.3)}
-.row button{background:var(--cell2);color:var(--tx);box-shadow:none;border-radius:16px}
-.row button.w{background:var(--grad);color:#fff;box-shadow:0 8px 18px rgba(10,99,201,.28)}
-.h .row button{height:44px;border-radius:14px;background:var(--cell2);color:var(--tx);box-shadow:none}
-.h .row button.w{background:var(--grad);color:#fff}.h .row button.d{color:var(--red)}
-
-/* ---- sheets + toast ---- */
-.ov{background:rgba(11,37,69,.5);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
-.sh{animation:sheet .55s var(--curve) backwards}
-.sh .box{background:var(--cell);border-radius:26px;padding:20px 18px;box-shadow:0 24px 70px rgba(0,0,0,.35)}
-.sh .box b{font-size:19px}
-.sh button{margin-bottom:8px}
-@keyframes sheet{from{transform:translateY(110%)}}
-.toast{background:var(--cell);color:var(--tx);box-shadow:var(--shadow),0 12px 30px rgba(0,0,0,.2);animation:toast .5s var(--spring) backwards}
-@keyframes toast{from{opacity:0;transform:translateX(-50%) translateY(-16px) scale(.92)}}
+canvas{border-radius:18px;border:1px solid rgba(150,195,255,.4);box-shadow:0 0 0 4px rgba(var(--cy),.08),0 12px 30px rgba(0,0,0,.45)}
+.grp,.n,.h{background:var(--glass);border:1px solid rgba(130,180,255,.2);border-radius:20px;box-shadow:var(--glow),inset 0 1px 0 rgba(255,255,255,.08);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);animation:enter .6s var(--curve) backwards}
+.grp{overflow:hidden;margin-bottom:18px}.n{padding:14px 16px}.h{padding:16px}
+.h:nth-child(2),.n:nth-child(2){animation-delay:.05s}.h:nth-child(3),.n:nth-child(3){animation-delay:.1s}.h:nth-child(n+4),.n:nth-child(n+4){animation-delay:.14s}
+.li{padding:16px;gap:14px}.li+.li::before{border-color:var(--sep)}.li::after{color:var(--dim)}.li:active{background:rgba(255,255,255,.06)}
+.li b{font-size:17px;font-weight:650}.li small{color:var(--dim);font-size:13.5px}
+.ic{width:46px;height:46px;border-radius:14px;box-shadow:0 0 20px rgba(var(--cy),.2),inset 0 1px 0 rgba(255,255,255,.3)}
+.ic svg,.sv{width:22px;height:22px;fill:none;stroke:#fff;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
 .empty{color:var(--dim)}
-@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
 
-/* V9: single component-based visual language, original app functionality retained */
-:root{--bg:#020e1d;--cell:#0d2237;--cell2:#122c45;--sep:#35546e;--tx:#f5f7fc;--dim:#b4c4d5;--amber:#eab974;--top:env(safe-area-inset-top,0px);--bot:env(safe-area-inset-bottom,0px)}
-html,body{width:100%;max-width:100%;overflow:hidden;background:#020e1d}#app{height:100%;height:100dvh;width:100%;max-width:520px;overflow:hidden;background:#020e1d}#app>*{min-width:0}main{min-width:0;overflow-x:hidden;overscroll-behavior:contain}
-.premium-home{flex:1;overflow-y:auto;padding:0 14px 32px!important;background:linear-gradient(#041222,#020b16);scrollbar-width:none}.premium-home::-webkit-scrollbar{display:none}
-.premium-hero{position:relative;isolation:isolate;min-height:270px;padding:22px 10px 30px;overflow:hidden}.premium-hero:before{content:'';position:absolute;inset:0 -14px;z-index:-1;background:linear-gradient(90deg,#031020ef 0%,#04152cbd 52%,#071a2c6b 100%),url('lux-elevator.jpg') 62% 38%/cover no-repeat}.premium-hero:after{content:'';position:absolute;inset:35% -14px 0;z-index:-1;background:linear-gradient(transparent,#020d1b)}
-.premium-logo{display:block;width:min(62%,220px);max-height:75px;object-fit:contain;object-position:left;margin-bottom:28px}.hero-kicker{font-size:10px;font-weight:650;letter-spacing:.24em;color:#e0e9f4}.hero-rule{width:38px;height:3px;border-radius:3px;background:#e9b66c;box-shadow:0 0 14px #f5a950b8;margin:13px 0 16px}.premium-hero h1{font-size:clamp(37px,10vw,51px);line-height:1.03;letter-spacing:-.055em;margin:0 0 13px;font-weight:760}.premium-hero p{font-size:15px;line-height:1.45;max-width:280px;color:#d2dce8;margin:0}.premium-hero p b{color:#e9b66c;font-weight:650}
-.premium-actions{display:grid;gap:12px;margin-top:-5px}.premium-tile{--accent:#2eb7ff;display:grid;grid-template-columns:52px minmax(0,1fr) 22px;align-items:center;gap:12px;position:relative;isolation:isolate;min-width:0;min-height:120px;padding:16px 13px;border-radius:22px;overflow:hidden;color:#fff;text-decoration:none;border:1px solid color-mix(in srgb,var(--accent) 80%,#fff 10%);background:#081b2e;box-shadow:inset 0 1px 0 #ffffff25,0 10px 26px #0006,0 0 16px color-mix(in srgb,var(--accent) 15%,transparent);transition:transform .26s cubic-bezier(.2,.8,.2,1),box-shadow .26s}.premium-tile:before{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,#061a2ffb 0%,#061a2fe8 44%,#061a2f99 73%,#061a2f55 100%),var(--tile-photo) 78% center/cover no-repeat}.premium-tile:after{content:'';position:absolute;inset:auto 12% 0 12%;height:1px;background:linear-gradient(90deg,transparent,var(--accent),transparent);box-shadow:0 0 12px var(--accent);opacity:.9}.premium-tile.hazard{--accent:#eeb365}.premium-tile.timesheet{--accent:#36baff}.premium-tile.files,.premium-tile.resume{--accent:#57b8f3}.tile-icon{display:grid;place-items:center;width:52px;height:52px;border:1px solid var(--accent);border-radius:15px;color:#f8fbff;background:linear-gradient(145deg,#13517cbb,#071b30);box-shadow:inset 0 1px 8px #ffffff25,0 0 15px color-mix(in srgb,var(--accent) 30%,transparent)}.hazard .tile-icon{color:#ffce7f;background:linear-gradient(145deg,#65421d,#0e1c2c)}.tile-icon svg{width:27px;height:27px}.tile-copy{display:flex;flex-direction:column;gap:4px;min-width:0}.tile-copy em{font-size:9px;font-weight:750;letter-spacing:.17em;color:#f1c486;font-style:normal}.tile-copy strong{font-size:clamp(16px,4.3vw,20px);line-height:1.13;letter-spacing:-.025em;overflow-wrap:break-word}.tile-copy small{font-size:11.5px;line-height:1.4;color:#c8d6e5}.tile-go{display:grid;place-items:center;width:22px;height:22px;border-radius:50%;font-size:27px;line-height:1;color:#efbf79}.premium-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.premium-pair .premium-tile{grid-template-columns:minmax(0,1fr);align-content:start;min-height:160px;gap:9px;padding:13px}.premium-pair .tile-icon{width:42px;height:42px}.premium-pair .tile-icon svg{width:24px;height:24px}.premium-pair .tile-go{display:none}.premium-pair .tile-copy strong{font-size:15px}.premium-pair .tile-copy small{font-size:11px}.premium-pair .premium-tile:before{background:linear-gradient(120deg,#061a2ff4,#071e33d9),var(--tile-photo) center/cover no-repeat}
-.premium-tile:active{transform:scale(.976)}
-/* Every safety screen shares a consistent, compact premium header and fields */
-.top{flex:none;background:linear-gradient(120deg,#06162a,#0e2e49);border-bottom:1px solid #335570}.nav{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;min-width:0;padding:calc(var(--top) + 10px) 14px 8px;gap:8px}.nav>a{font-size:13px;white-space:nowrap;color:#efbe7c}.nav>a:last-child{text-align:right}.nav .lg{width:142px;max-width:100%;min-width:0}.nav .lg img{display:block;width:100%;height:auto;max-height:51px;object-fit:contain}.pt{font-size:clamp(23px,6.5vw,31px);line-height:1.16;letter-spacing:-.035em;margin:0;padding:13px 19px 18px;overflow-wrap:break-word}.prog{height:3px;background:#173753}.prog i{background:linear-gradient(90deg,#1bb9f7,#e9b76c)}
-#app>main:not(.premium-home){flex:1;overflow-y:auto;min-height:0;padding:24px 18px 35px;background:radial-gradient(ellipse at 100% 0%,#113755,transparent 57%),#020e1d}#app>main:not(.premium-home) label{display:block;color:#e8bd7f;letter-spacing:.12em;font-size:11px;font-weight:750;margin:0 0 10px;text-transform:uppercase}#app>main:not(.premium-home) input,#app>main:not(.premium-home) select,#app>main:not(.premium-home) textarea{max-width:100%;min-width:0;width:100%;background:linear-gradient(140deg,#122f49,#091c30);border:1px solid #496b87;border-radius:15px;color:#fff;padding:15px;font-size:16px;min-height:56px;box-shadow:inset 0 1px #ffffff12}#app>main:not(.premium-home) input:focus,#app>main:not(.premium-home) textarea:focus{outline:1px solid #e6b977;border-color:#e6b977}#app>main:not(.premium-home) .grp,#app>main:not(.premium-home) .h{background:linear-gradient(140deg,#102b43,#071a2d);border:1px solid #375a75;border-radius:19px;overflow:hidden}.bar{flex:none;background:#061a2d;border-top:1px solid #35546e;padding:11px 15px calc(12px + var(--bot))}.bar button{min-height:52px;border-radius:15px;background:linear-gradient(105deg,#0877b4,#13a8d3 75%,#e6b76d);color:white;border:1px solid #6cc9ee;box-shadow:0 5px 18px #0078ae44}.bar button:active{transform:scale(.98)}.toast{top:auto!important;bottom:calc(95px + var(--bot))!important;max-width:calc(100vw - 36px)!important;z-index:50!important}
-#tsf{flex:1;min-height:0;width:100%;border:0;background:#020e1d}
-@media(max-width:360px){.premium-tile{grid-template-columns:44px minmax(0,1fr) 14px;gap:9px;padding:12px 10px}.tile-icon{width:44px;height:44px}.tile-copy strong{font-size:15px}.tile-copy small{font-size:10.5px}.premium-hero{min-height:260px}.premium-pair .premium-tile{padding:10px}}
-@media(prefers-reduced-motion:no-preference){.premium-tile{animation:premium-enter .5s cubic-bezier(.16,.85,.3,1) both}.premium-tile:nth-child(2){animation-delay:.07s}.premium-tile:nth-child(3){animation-delay:.14s}.premium-pair .premium-tile{animation-delay:.2s}@keyframes premium-enter{from{opacity:0;transform:translateY(16px);filter:blur(3px)}to{opacity:1;transform:translateY(0);filter:blur(0)}}#app>main:not(.premium-home){animation:inner-enter .28s ease both}@keyframes inner-enter{from{opacity:.25;transform:translateX(11px)}to{opacity:1;transform:translateX(0)}}}
-@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
+/* ---------- buttons ---------- */
+button{position:relative;overflow:hidden;height:54px;border-radius:18px;font-weight:700;letter-spacing:-.01em;color:#fff;background:var(--grad);
+  box-shadow:0 10px 28px rgba(39,140,255,.42),inset 0 1px 0 rgba(255,255,255,.35);transition:transform .3s var(--curve),opacity .2s,box-shadow .3s!important}
+button:active{transform:scale(.97)!important;opacity:.92;box-shadow:0 4px 14px rgba(39,140,255,.4),inset 0 1px 0 rgba(255,255,255,.3)}
+.bar button:not(.g):not(.r)::after,.sh button:not(.g):not(.r)::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.35) 50%,transparent 60%);transform:translateX(-130%);animation:shine 6s ease-in-out 1.5s infinite}
+button.g{background:rgba(255,255,255,.08);border:1px solid rgba(160,200,255,.24);box-shadow:inset 0 1px 0 rgba(255,255,255,.1);color:#eaf2ff}
+button.r{background:linear-gradient(135deg,#e0382b,#ff6b5e);box-shadow:0 10px 26px rgba(255,80,66,.35),inset 0 1px 0 rgba(255,255,255,.3)}
+.row button{background:rgba(255,255,255,.08);border:1px solid rgba(160,200,255,.24);color:#eaf2ff;box-shadow:none;border-radius:16px}
+.row button.w{background:var(--grad);border:0;box-shadow:0 8px 20px rgba(39,140,255,.35)}
+.h .row button{height:44px;border-radius:14px}.h .row button.d{color:#ff8a7e}.h .row button.w{background:var(--grad);border:0}
+
+/* ---------- sheets + toast ---------- */
+.ov{background:rgba(2,6,14,.62);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.sh{animation:sheet .6s var(--curve) backwards}
+.sh .box{background:linear-gradient(160deg,rgba(28,56,112,.95),rgba(8,20,46,.97));border:1px solid rgba(150,195,255,.28);border-radius:26px;padding:22px 18px;box-shadow:0 26px 70px rgba(0,0,0,.65),inset 0 1px 0 rgba(255,255,255,.12)}
+.sh .box b{font-size:19px}
+@keyframes sheet{from{transform:translateY(110%)}}
+.toast{background:linear-gradient(160deg,rgba(28,56,112,.95),rgba(8,20,46,.97));border:1px solid rgba(var(--cy),.45);color:#fff;box-shadow:0 12px 34px rgba(0,0,0,.55),0 0 24px rgba(var(--cy),.2);animation:toast .55s var(--spring) backwards}
+@keyframes toast{from{opacity:0;transform:translateX(-50%) translateY(-18px) scale(.92)}}
+.hi{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;margin-right:10px;border-radius:10px;vertical-align:middle;box-shadow:0 0 16px rgba(var(--cy),.2),inset 0 1px 0 rgba(255,255,255,.3)}
+.hi svg{width:18px;height:18px;fill:none;stroke:#fff;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.hi.b{background:linear-gradient(135deg,#1f7bff,#0a2f8c)}.hi.o{background:linear-gradient(135deg,#ff9a1f,#a14a00)}.hi.g{background:linear-gradient(135deg,#17c77f,#06603f)}
+.h b{font-size:17px;font-weight:650;vertical-align:middle}
+textarea{resize:none}.li[style*="pointer-events"]::after{display:none}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
 </style></head><body><div id="app"></div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="seed.js"></script>
@@ -178,7 +210,7 @@ function tbF(){while(S.att.length<7)S.att.push('');const dp=dept(S.job),sg=[{n:S
 {k:'job',ok:()=>jobOk(S.job),r:()=>({t:'Job #',b:fld('Job number','job')+`<p class="m">Example: H-1234A or T-1234A. Library: ${dp=='H'?'Hydro':'Traction'}. Change the letter to switch.</p>`})},
 {k:'loc',r:()=>({t:'Location',b:fld('Location (address)','loc')})},
 {k:'att',r:()=>({t:'Attendees',b:S.att.map((_,i)=>`<label>Attendee ${i+1}</label><input type="text" data-p="att.${i}" value="${esc(S.att[i])}" autocomplete="off" autocapitalize="words" placeholder="Name">`).join('')+'<p class="m">Leave any box empty and that line stays blank on the form.</p>'})},
-...[0,1,2,3,4].map(i=>({k:'i'+i,skip:()=>!S.items[i].t.trim(),to:'sugg',sk:i?()=>!S.items[i].t.trim():null,r:()=>{const it=S.items[i],o=tbA(dp,it.t);return{t:`Topic ${i+1} of 5`,b:`<label>Safety topic discussed</label><div class="row"><textarea rows="2" data-p="items.${i}.t">${esc(it.t)}</textarea><button onclick="rT(${i})">🎲</button></div><label>Corrective action</label><div class="row"><textarea rows="4" data-p="items.${i}.a">${esc(it.a)}</textarea>${o.length>1?`<button onclick="cA(${i})">↻</button>`:''}</div><p class="m">Leave the topic empty to skip ahead.</p>`}}})),
+...[0,1,2,3,4].map(i=>({k:'i'+i,skip:()=>!S.items[i].t.trim(),to:'sugg',sk:i?()=>!S.items[i].t.trim():null,r:()=>{const it=S.items[i],o=tbA(dp,it.t);return{t:`Topic ${i+1} of 5`,b:`<label>Safety topic discussed</label><div class="row"><textarea rows="2" data-p="items.${i}.t">${esc(it.t)}</textarea><button onclick="rT(${i})">${SHUF}</button></div><label>Corrective action</label><div class="row"><textarea rows="4" data-p="items.${i}.a">${esc(it.a)}</textarea>${o.length>1?`<button onclick="cA(${i})">↻</button>`:''}</div><p class="m">Leave the topic empty to skip ahead.</p>`}}})),
 {k:'sugg',r:()=>({t:'Suggestions',b:[0,1,2].map(i=>fld('Employee suggestion '+(i+1),'sugg.'+i)).join('')})},
 ...sg.map(x=>({k:'sg'+x.slot,r:()=>sigR(x)})),
 {k:'done',r:doneR}]}
@@ -191,7 +223,7 @@ function dayF(d){const D=()=>S.days[d],p=`days.${d}.`,n=`Day ${d+1}: `;return[
 {k:'dt'+d,r:()=>({t:n+'Date',b:fld('Date',p+'date','date')})},
 {k:'jb'+d,ok:()=>jobOk(D().job),r:()=>({t:n+'Job #',b:fld('Job # (T / H / MT / MH)',p+'job')+`<p class="m">Example: H-1234A. Library: ${dpd(d)=='H'?'Hydro (H, MH)':'Traction (T, MT)'}</p>`})},
 {k:'lc'+d,r:()=>({t:n+'Location',b:fld('Job location',p+'loc')})},
-{k:'sc'+d,r:()=>({t:n+'Scope of work',b:`<label>Scope of work</label><div class="row"><input data-p="${p}scope" list="sl" value="${esc(D().scope)}"><button onclick="rS(${d})">🎲</button></div><datalist id="sl">${jS(dpd(d)).map(s=>`<option value="${esc(s)}">`).join('')}</datalist>`})},
+{k:'sc'+d,r:()=>({t:n+'Scope of work',b:`<label>Scope of work</label><div class="row"><input data-p="${p}scope" list="sl" value="${esc(D().scope)}"><button onclick="rS(${d})">${SHUF}</button></div><datalist id="sl">${jS(dpd(d)).map(s=>`<option value="${esc(s)}">`).join('')}</datalist>`})},
 ...[0,1,2,3,4].map(i=>({k:`r${d}_${i}`,skip:()=>!D().rows[i].s.trim(),to:'nt'+d,sk:i?()=>!D().rows[i].s.trim():null,r:()=>rowR(d,i)})),
 {k:'nt'+d,r:()=>({t:n+'Notes',b:`<label>Notes</label><textarea rows="8" data-p="${p}notes">${esc(D().notes)}</textarea>`})},
 {k:'fm'+d,r:()=>({t:n+'Foreman',b:fld('Foreman',p+'foreman')})},
@@ -200,13 +232,13 @@ const jF=()=>[...dayF(0),...(S.days[1]?dayF(1):[{k:'more',r:()=>({t:'Add Day 2?'
 function d2(){const a=S.days[0],b=blankDay();Object.assign(b,{job:a.job,loc:a.loc,foreman:a.foreman||savedName()});S.days[1]=b;at='dt1';draw()}
 const rS=d=>{const all=jS(dpd(d)),cur=S.days[d].scope,c=all.filter(s=>!eq(s,cur)),pick=rnd(c.length?c:all);if(pick){S.days[d].scope=pick;draw()}};
 function opts(d,i){const D=S.days[d],R=D.rows[i],o=jR(dpd(d),D.scope,i),m=o.filter(x=>eq(x.st,R.s));return{o,hz:[...new Set(m.map(x=>x.h))],cs:[...new Set(m.filter(x=>!R.h||eq(x.h,R.h)).map(x=>x.c))]}}
-function rowR(d,i){const D=S.days[d],R=D.rows[i],p=`days.${d}.rows.${i}.`,{o,hz,cs}=opts(d,i),bt=(f,n)=>n>1?`<button onclick="${f}">🎲</button>`:'';
-return{t:`Day ${d+1}: Step ${i+1} of 5`,b:`<p class="m" style="margin-top:0">Scope: ${esc(D.scope)||'(none)'}</p><label>Step ${i+1}</label><div class="row"><textarea rows="2" data-p="${p}s">${esc(R.s)}</textarea>${o.length?`<button onclick="rSt(${d},${i})">🎲</button>`:''}</div><label>Hazards associated with step</label><div class="row"><textarea rows="2" data-p="${p}h">${esc(R.h)}</textarea>${bt(`rH(${d},${i})`,hz.length)}</div><label>Hazard control</label><div class="row"><textarea rows="2" data-p="${p}c">${esc(R.c)}</textarea>${bt(`rC(${d},${i})`,cs.length)}</div><p class="m">Leave the step empty to go to Notes.</p>`}}
+function rowR(d,i){const D=S.days[d],R=D.rows[i],p=`days.${d}.rows.${i}.`,{o,hz,cs}=opts(d,i),bt=(f,n)=>n>1?`<button onclick="${f}">${SHUF}</button>`:'';
+return{t:`Day ${d+1}: Step ${i+1} of 5`,b:`<p class="m" style="margin-top:0">Scope: ${esc(D.scope)||'(none)'}</p><label>Step ${i+1}</label><div class="row"><textarea rows="2" data-p="${p}s">${esc(R.s)}</textarea>${o.length?`<button onclick="rSt(${d},${i})">${SHUF}</button>`:''}</div><label>Hazards associated with step</label><div class="row"><textarea rows="2" data-p="${p}h">${esc(R.h)}</textarea>${bt(`rH(${d},${i})`,hz.length)}</div><label>Hazard control</label><div class="row"><textarea rows="2" data-p="${p}c">${esc(R.c)}</textarea>${bt(`rC(${d},${i})`,cs.length)}</div><p class="m">Leave the step empty to go to Notes.</p>`}}
 function rSt(d,i){const R=S.days[d].rows[i],{o}=opts(d,i);if(!o.length)return;const diffSt=o.filter(x=>!eq(x.st,R.s)),diffAll=o.filter(x=>!(eq(x.st,R.s)&&eq(x.h,R.h)&&eq(x.c,R.c))),x=rnd(diffSt.length?diffSt:diffAll.length?diffAll:o);Object.assign(R,{s:x.st,h:x.h,c:x.c});draw()}
 function rH(d,i){const R=S.days[d].rows[i],{hz}=opts(d,i),c=hz.filter(x=>!eq(x,R.h));if(!c.length)return;R.h=rnd(c);R.c=opts(d,i).cs[0]||R.c;draw()}
 function rC(d,i){const R=S.days[d].rows[i],{cs}=opts(d,i),c=cs.filter(x=>!eq(x,R.c));if(!c.length)return;R.c=rnd(c);draw()}
 // ===== review / save / history =====
-const doneR=()=>({t:'Review & Save',b:`<div class="grp"><div class="li" style="pointer-events:none"><div class="ic" style="background:${S.type=='tb'?'#ff9f0a':'#ff453a'}">${S.type=='tb'?'🧰':'⚠️'}</div><span><b>${esc(jobOf())||'No job #'}</b><small>${S.type=='tb'?'ToolBox Meeting':'Daily Hazard Assessment'}${S.type=='jha'?' · '+S.days.length+(S.days.length>1?' days':' day'):''}</small></span></div></div>${S.type=='jha'&&S.days.length<2?'<p class="m">Only Day 1 is filled. Save now and add Day 2 later from History; both days print on one page.</p>':''}<p class="m">Use the Back button at the top to fix anything.</p>`,nx:null,x:`<button class="g" onclick="home()">Home</button><button onclick="save()">Save PDF</button>`});
+const doneR=()=>({t:'Review & Save',b:`<div class="grp"><div class="li" style="pointer-events:none"><div class="ic" style="background:${S.type=='tb'?'linear-gradient(135deg,#1f7bff,#0a2f8c)':'linear-gradient(135deg,#ff9a1f,#a14a00)'}">${S.type=='tb'?ICO.tb:ICO.jha}</div><span><b>${esc(jobOf())||'No job #'}</b><small>${S.type=='tb'?'ToolBox Meeting':'Daily Hazard Assessment'}${S.type=='jha'?' · '+S.days.length+(S.days.length>1?' days':' day'):''}</small></span></div></div>${S.type=='jha'&&S.days.length<2?'<p class="m">Only Day 1 is filled. Save now and add Day 2 later from History; both days print on one page.</p>':''}<p class="m">Use the Back button at the top to fix anything.</p>`,nx:null,x:`<button class="g" onclick="home()">Home</button><button onclick="save()">Save PDF</button>`});
 async function img(u){const b=await(await fetch(u)).blob();return new Promise(r=>{const f=new FileReader;f.onload=()=>r(f.result);f.readAsDataURL(b)})}
 async function pdf(){const{jsPDF}=window.jspdf,d=new jsPDF({unit:'pt',format:'letter'}),kx=612/1086,ky=792/1448;
 const T=(t,x,y,w,z=10)=>{t=(t||'')+'';if(!t.trim())return;d.setFontSize(z);while(z>4.5&&d.getTextWidth(t)>w*kx)d.setFontSize(z-=.5);d.text(t,x*kx,(y-5)*ky)};
@@ -223,25 +255,26 @@ return{d,name:`${jobOf()}_${S.type=='tb'?'ToolBox_'+S.date:'JHA_'+S.days[0].date
 async function save(){try{const{d,name}=await pdf();learn();saveName(S.type=='tb'?S.foreman:S.days[0]?.foreman);const f=K('forms')||[],rec=JSON.parse(JSON.stringify(S)),k=f.findIndex(x=>x.id==S.id);rec.done=true;k<0?f.unshift(rec):f[k]=rec;K('forms',f);rq('forms',{method:'POST',headers:{Prefer:'resolution=merge-duplicates,return=minimal'},body:JSON.stringify({id:S.id,owner:dev,data:rec})});S.done=true;K('draft',null);await saveFile(name,d.output('blob'));toast('Saved ✓')}catch(e){toast('Could not save. Try again.')}}
 async function saveFile(n,b){try{const dl=window.claude&&await claude.use('downloads');if(dl){await dl.save({filename:n,data:b});return}}catch(e){if(e&&e.code=='declined')return}const u=URL.createObjectURL(b),a=document.createElement('a');a.href=u;a.download=n;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),4000)}
 async function hist(){let f=K('forms')||[];const r=await rq('forms?owner=eq.'+dev+'&select=id,data');if(r){r.forEach(x=>f.some(y=>y.id==x.id)||f.push(x.data));K('forms',f)}
-const lb=x=>x.type=='ts'?`🕒 <b>Timesheet</b><br><span class="m" style="margin:0">${esc(x.range)} · ${((+x.rt||0)+(+x.ot||0)).toFixed(1)} h</span>`:x.type=='tb'?`🧰 <b>${esc(x.job)}</b><br><span class="m" style="margin:0">ToolBox · ${x.date}</span>`:`⚠️ <b>${esc(x.days[0].job)}</b><br><span class="m" style="margin:0">Hazard assessment · ${x.days[0].date}${x.days[1]?' + Day 2':''}</span>`;
+const lb=x=>x.type=='ts'?`<span class="hi g">${ICO.ts}</span><b>Timesheet</b><br><span class="m" style="margin:0">${esc(x.range)} · ${((+x.rt||0)+(+x.ot||0)).toFixed(1)} h</span>`:x.type=='tb'?`<span class="hi b">${ICO.tb}</span><b>${esc(x.job)}</b><br><span class="m" style="margin:0">ToolBox · ${x.date}</span>`:`<span class="hi o">${ICO.jha}</span><b>${esc(x.days[0].job)}</b><br><span class="m" style="margin:0">Hazard assessment · ${x.days[0].date}${x.days[1]?' + Day 2':''}</span>`;
 $('#app').innerHTML=`${hdr('<a onclick="home()">‹ Home</a>','History','<a></a>')}<main>${f.map(x=>`<div class="h">${lb(x)}<div class="row" style="margin-top:10px"><button onclick="op('${x.id}')">${x.type=='ts'?'Open':'Open / re-save'}</button>${x.type=='jha'&&!x.days[1]?`<button class="w" onclick="op('${x.id}',1)">Add Day 2</button>`:''}<button class="d" onclick="del('${x.id}')">Delete</button></div></div>`).join('')||'<div class="empty">Nothing saved yet.</div>'}</main>`}
 function op(id,two){const x=(K('forms')||[]).find(x=>x.id==id);if(!x)return;if(x.type=='ts')return ts(x);S=JSON.parse(JSON.stringify(x));S.done=false;at='done';if(two)d2();else draw()}
 function del(id){ask('Delete this form?','This can’t be undone.','Delete',()=>{K('forms',(K('forms')||[]).filter(x=>x.id!=id));rq('forms?id=eq.'+id,{method:'DELETE'});hist();toast('Deleted')})}
 // ===== wizard core =====
 const flow=()=>S.type=='tb'?tbF():jF();
+const ICO={'tb': '<svg viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="12" rx="2.6"/><path d="M9 8V6.2A1.7 1.7 0 0110.7 4.5h2.6A1.7 1.7 0 0115 6.2V8M3 13.2h18M10.6 12.2v2.6h2.8v-2.6"/></svg>', 'jha': '<svg viewBox="0 0 24 24"><path d="M12 3.8l9.2 16H2.8z"/><path d="M12 9.8v4.6M12 17.4v.1"/></svg>', 'ts': '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.2 2"/></svg>', 'hist': '<svg viewBox="0 0 24 24"><path d="M3 7.5a2 2 0 012-2h4.2l2 2.2H19a2 2 0 012 2V17a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>', 'play': '<svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="4.5"/><path d="M10 8.6l5 3.4-5 3.4z"/></svg>'};
+const SHUF='<svg class="sv" viewBox="0 0 24 24"><path d="M16 3.5h4.5V8M3.5 20.5L20.5 3.5M20.5 16v4.5H16M14.5 14.5l6 6M3.5 3.5L9 9"/></svg>';
 const hdr=(l,t,r,p)=>`<div class="top"><div class="nav">${l}<span class="lg"><img src="${LOGO}" alt="Richmond Elevator"></span>${r}</div><h1 class="pt">${t}</h1>${p==null?'':`<div class="prog"><i style="width:${p}%"></i></div>`}</div>`;
 function draw(){const f=flow();if(!f.some(x=>x.k==at))at=f[0].k;const i=f.findIndex(x=>x.k==at),o=f[i].r();if(!S.done)K('draft',{S,at});
 $('#app').innerHTML=`${hdr(`<a id="bk">‹ ${i?'Back':'Home'}</a>`,o.t,`<a onclick="home()">${i?'Home':''}</a>`,Math.round((i+1)/f.length*100))}<main>${o.b}</main><div class="bar">${o.x||''}${o.nx===null?'':'<button id="nx">Next</button>'}</div>`;
 $('#bk').onclick=()=>{if(!i)return home();let j=i-1;while(j>0&&f[j].sk&&f[j].sk())j--;at=f[j].k;draw()};
 $('#nx')&&($('#nx').onclick=()=>{const s=f[i];if(s.ok&&!s.ok()){const e=$('main input');e.classList.add('bad');e.focus();return}at=s.skip&&s.skip()?s.to:f[i+1].k;draw()});
 document.querySelectorAll('[data-p]').forEach(e=>{const p=e.dataset.p,jb=/(^|\.)job$/.test(p);e.oninput=()=>{if(jb)e.value=e.value.toUpperCase();e.classList.remove('bad');sp(p,e.value)};e.onchange=()=>{hook(p)&&draw()}});o.bind&&o.bind()}
-function home(){S=null;let p=K('profile')||{},dr=K('draft');
-const svg={toolbox:'<rect x="4" y="7" width="16" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M4 12h16M11 12v2h2v-2"/>',hazard:'<path d="M12 3 22 20H2L12 3Z"/><path d="M12 9v5M12 17v.2"/>',timesheet:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l4 2"/>',files:'<path d="M3 7a2 2 0 0 1 2-2h5l2 2h7a2 2 0 0 1 2 2v10H3Z"/>',resume:'<rect x="4" y="3" width="16" height="18" rx="3"/><path d="m10 8 6 4-6 4Z"/>'};
-const tile=(action,type,kicker,title,sub,photo)=>`<a class="premium-tile ${type}" onclick="${action}" style="--tile-photo:url('photo-${photo}.jpg')"><span class="tile-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${svg[type]}</svg></span><span class="tile-copy"><em>${kicker}</em><strong>${title}</strong><small>${sub}</small></span><span class="tile-go" aria-hidden="true">›</span></a>`;
-$('#app').innerHTML=`<main class="premium-home"><section class="premium-hero"><img class="premium-logo" src="${LOGO}" alt="Richmond Elevator"><div class="hero-kicker">FIELD OPERATIONS PORTAL</div><div class="hero-rule"></div><h1>Welcome</h1><p>Your safety, reporting and time tracking <b>in one place.</b></p></section><section class="premium-actions">${tile("start('tb')",'toolbox','TOOLBOX MEETING','ToolBox Meeting','Weekly safety talk report','toolbox')}${tile("start('jha')",'hazard','SAFETY','Daily Hazard Assessment','Job hazard analysis, 2 days per page','hazard')}${tile('ts()','timesheet','TIME TRACKING','Timesheet','Two-week pay period, PDF with receipts','timesheet')}<div class="premium-pair">${tile('hist()','files','YOUR FILES','History','Everything saved on this phone','files')}${tile(dr?'resume()':'home()','resume','CONTINUE','Resume unfinished form',dr?'Pick up where you left off':'No unfinished form yet','files')}</div></section></main>`}
+function home(){if(S&&!S.done)toast('Draft saved. Resume anytime.');S=null;let p=K('profile')||{};if(!p.name){const x=(K('forms')||[]).find(x=>x.name||x.foreman||x.days?.[0]?.foreman),nm=x&&(x.name||x.foreman||x.days?.[0]?.foreman);if(nm){saveName(nm);p={name:nm.trim()}}}
+const li=(f,c,i,b,s)=>`<a class="li" onclick="${f}"><div class="ic" style="background:${c}">${i}</div><span><b>${b}</b><small>${s}</small></span></a>`,dr=K('draft'),fn=((p.name||'').trim().split(/\s+/)[0]||'');
+$('#app').innerHTML=`<main class="home" style="padding:0"><div class="hero"><div class="hero-img"></div><div class="hero-top"><span class="lgb"><img src="${LOGO}" alt="Richmond Elevator"></span><i class="vr"></i><span class="hb">Richmond Elevator<br>Safety &amp; Timesheet</span></div><div class="hero-txt"><small>Field Operations Portal</small><h2>Welcome</h2><p>${fn?esc(fn)+', your':'Your'} safety, reporting and time tracking in one place.</p><i class="uline"></i></div></div><div class="cards"><a class="card" style="--i:0;--rgb:47,140,255;--c1:#1f7bff;--c2:#0a2f8c" onclick="start('tb')"><span class="cp"><svg viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="12" rx="2.6"/><path d="M9 8V6.2A1.7 1.7 0 0110.7 4.5h2.6A1.7 1.7 0 0115 6.2V8M3 13.2h18M10.6 12.2v2.6h2.8v-2.6"/></svg></span><span class="ct"><b>ToolBox Meeting</b><small>Weekly safety talk report</small></span><span class="cimg" style="background-image:url(img/hardhat.jpg)"></span><span class="cc"><svg viewBox="0 0 24 24"><path d="M9.5 6l6 6-6 6"/></svg></span></a><a class="card" style="--i:1;--rgb:255,150,30;--c1:#ff9a1f;--c2:#a14a00" onclick="start('jha')"><span class="cp"><svg viewBox="0 0 24 24"><path d="M12 3.8l9.2 16H2.8z"/><path d="M12 9.8v4.6M12 17.4v.1"/></svg></span><span class="ct"><b>Daily Hazard Assessment</b><small>Job hazard analysis, 2 days per page</small></span><span class="cimg" style="background-image:url(img/clipboard.jpg)"></span><span class="cc"><svg viewBox="0 0 24 24"><path d="M9.5 6l6 6-6 6"/></svg></span></a><a class="card" style="--i:2;--rgb:30,217,140;--c1:#17c77f;--c2:#06603f" onclick="ts()"><span class="cp"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.2 2"/></svg></span><span class="ct"><b>Timesheet</b><small>Two-week pay period, PDF with receipts</small></span><span class="cimg" style="background-image:url(img/tablet.jpg)"></span><span class="cc"><svg viewBox="0 0 24 24"><path d="M9.5 6l6 6-6 6"/></svg></span></a></div><div class="mini${dr?'':' one'}"><a class="mc" onclick="hist()"><span class="mi"><svg viewBox="0 0 24 24"><path d="M3 7.5a2 2 0 012-2h4.2l2 2.2H19a2 2 0 012 2V17a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg></span><span class="mt"><b>History</b><small>Everything you saved on this phone</small></span><span class="mch">›</span></a>${dr?`<a class="mc" onclick="resume()"><span class="mi"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="4.5"/><path d="M10 8.6l5 3.4-5 3.4z"/></svg></span><span class="mt"><b>Resume Unfinished Form</b><small>Pick up where you left off</small></span><span class="mch">›</span></a>`:''}</div><div class="foot">Richmond Elevator Maintenance</div></main>`}
 // ===== timesheet (original app, embedded) =====
-function ts(rec){const p=K('profile')||{};$('#app').innerHTML='<iframe id="tsf" style="flex:1;min-height:0;width:100%;border:0;background:var(--bg)"></iframe><div style="flex:none;height:var(--bot);background:var(--bg)"></div>';const f=$('#tsf');f.onload=()=>f.contentWindow.postMessage({rem:'init',name:p.name||'',load:rec||null,id:rec?rec.id:uid()},'*');tsSet(f)}
-function tsSet(f){f.src='timesheet.html?v=9'}
+function ts(rec){const p=K('profile')||{};$('#app').innerHTML=hdr('<a onclick="home()">‹ Home</a>','Timesheet','<a></a>')+'<iframe id="tsf" style="flex:1;min-height:0;width:100%;border:0;background:var(--bg)"></iframe><div style="flex:none;height:var(--bot);background:var(--bg)"></div>';const f=$('#tsf');f.onload=()=>f.contentWindow.postMessage({rem:'init',name:p.name||'',load:rec||null,id:rec?rec.id:uid()},'*');tsSet(f)}
+function tsSet(f){f.src='timesheet.html?v=6'}
 addEventListener('message',e=>{const m=e.data;if(!m||!m.rem||e.source!==$('#tsf')?.contentWindow)return;
 if(m.rem=='ts-file')saveFile(m.name,m.blob);
 if(m.rem=='ts-name'&&m.name)saveName(m.name);
