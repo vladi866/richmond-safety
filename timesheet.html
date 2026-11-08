@@ -525,6 +525,17 @@ button,.gl-btn{border-radius:15px!important;transition:transform .2s ease,filter
 .gl-btn:not(.main){background:#173752!important;color:#e6f5ff!important}.gl-sheet{background:linear-gradient(145deg,#12334e,#071b2f)!important;border:1px solid #3a6687!important;color:#fff!important}.gl-chk{background:#102d47!important;border:1px solid #2e5474!important}.gl-grab{background:#4b7597!important}.gl-ov.show{background:#020a15ad!important;backdrop-filter:blur(8px)!important}.gl-sheet p{color:#b8cbe1!important}
 @keyframes richmond-page{from{opacity:.5;transform:translateY(10px)}to{opacity:1;transform:none}}@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
 
+
+/* Unified Richmond luxury styling */
+:root{--ink:#020b16;--panel:#0b2035;--panel2:#112c43;--line:#3a6486;--amber:#f4ba69;--amber-dim:#9c7340;--paper:#f3f7ff;--paper-dim:#b9c9dc;--good:#56c8bd;--danger:#ff7972}
+html,body{background:#020b16!important;color:#f3f7ff!important}body{background-image:radial-gradient(ellipse at top right,#153a56 0%,#041524 44%,#020b16 85%)!important}
+header,.header,.topbar,.toolbar{background:linear-gradient(115deg,#071b2e,#0c304d)!important;border-color:#4b7291!important}
+input,textarea,select{background:#0a243a!important;color:#f4f8ff!important;border:1px solid #446b89!important;border-radius:12px!important}input:focus,textarea:focus,select:focus{outline:2px solid #e5af69!important;outline-offset:1px}
+button{transition:transform .22s ease,filter .22s ease,box-shadow .22s ease!important}button:active{transform:scale(.975)!important}
+.card,.panel,.section,.sheet,.modal-content{border-color:#436b89!important;box-shadow:inset 0 1px 0 #ffffff1c,0 12px 28px #0005!important}
+@keyframes luxury-timesheet-in{from{opacity:0;transform:translateY(12px);filter:blur(4px)}to{opacity:1;transform:none;filter:none}}
+body{animation:luxury-timesheet-in .55s ease both}
+@media(prefers-reduced-motion:reduce){body{animation:none!important}button{transition:none!important}}
 </style>
 </head>
 <body>
