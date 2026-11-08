@@ -511,31 +511,17 @@ button.secondary:active{background:var(--panel);transform:scale(.97);}
 .gl-all{grid-column:1/-1;}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;}}
 
-:root{color-scheme:dark;--bg:#03101d;--cell:#0c2137;--cell2:#16304a;--tx:#f5f9ff;--dim:#b0c4dd;--amber:#00baff}
-html,body{background:#03101d!important;color:#f5f9ff!important}button{transition:transform .25s,filter .25s}button:active{transform:scale(.97);filter:brightness(1.15)}input:focus,textarea:focus{outline:2px solid #00baff;outline-offset:1px}
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
-
-/* Richmond Elevator unified premium timesheet */
-:root{color-scheme:dark!important;--ink:#020d19!important;--panel:#0c233a!important;--panel2:#153650!important;--line:#2d5575!important;--amber:#1bc7ff!important;--amber-dim:#0b6a95!important;--paper:#f5faff!important;--paper-dim:#b0c7df!important;--good:#31d2aa!important;--danger:#ff7777!important;--grad:linear-gradient(120deg,#0079c5,#0ac6f7)!important;--curve:cubic-bezier(.2,.8,.2,1)!important}
-html,body,#app{background:#020d19!important;color:#f5faff!important}body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI',sans-serif!important}#app{max-width:540px!important;background:radial-gradient(ellipse at top right,#0d304d 0%,#041526 45%,#020d19 100%)!important}
-header{background:linear-gradient(135deg,#092b47,#061b30)!important;border-bottom:1px solid #2d587a!important;box-shadow:0 8px 28px #0007!important;padding-top:calc(15px + env(safe-area-inset-top))!important}.logo{border:0!important;border-radius:12px!important;background:#f0f4fa!important;box-shadow:0 5px 18px #0007!important}.brand{color:#bfd2e9!important}.brand strong{color:#fff!important}
-main{animation:richmond-page .4s ease both!important}h1,h2,h3{letter-spacing:-.035em!important;color:#fff!important}
-input,textarea,select{background:linear-gradient(145deg,#102c46,#081b2e)!important;border:1px solid #355c7c!important;color:#fff!important;border-radius:14px!important;box-shadow:0 5px 16px #0003!important}input:focus,textarea:focus,select:focus{outline:none!important;border-color:#16c6ff!important;box-shadow:0 0 0 3px #00baff28!important}input::placeholder,textarea::placeholder{color:#829bb3!important}
-button,.gl-btn{border-radius:15px!important;transition:transform .2s ease,filter .2s ease!important}button:active,.gl-btn:active{transform:scale(.97)!important}button:not(.secondary):not(.ghost),.gl-btn.main{background:linear-gradient(125deg,#0079c5,#0ac6f7)!important;color:#fff!important;box-shadow:0 8px 20px #00a9ef38!important}
-.gl-btn:not(.main){background:#173752!important;color:#e6f5ff!important}.gl-sheet{background:linear-gradient(145deg,#12334e,#071b2f)!important;border:1px solid #3a6687!important;color:#fff!important}.gl-chk{background:#102d47!important;border:1px solid #2e5474!important}.gl-grab{background:#4b7597!important}.gl-ov.show{background:#020a15ad!important;backdrop-filter:blur(8px)!important}.gl-sheet p{color:#b8cbe1!important}
-@keyframes richmond-page{from{opacity:.5;transform:translateY(10px)}to{opacity:1;transform:none}}@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
-
-
-/* Unified Richmond luxury styling */
-:root{--ink:#020b16;--panel:#0b2035;--panel2:#112c43;--line:#3a6486;--amber:#f4ba69;--amber-dim:#9c7340;--paper:#f3f7ff;--paper-dim:#b9c9dc;--good:#56c8bd;--danger:#ff7972}
-html,body{background:#020b16!important;color:#f3f7ff!important}body{background-image:radial-gradient(ellipse at top right,#153a56 0%,#041524 44%,#020b16 85%)!important}
-header,.header,.topbar,.toolbar{background:linear-gradient(115deg,#071b2e,#0c304d)!important;border-color:#4b7291!important}
-input,textarea,select{background:#0a243a!important;color:#f4f8ff!important;border:1px solid #446b89!important;border-radius:12px!important}input:focus,textarea:focus,select:focus{outline:2px solid #e5af69!important;outline-offset:1px}
-button{transition:transform .22s ease,filter .22s ease,box-shadow .22s ease!important}button:active{transform:scale(.975)!important}
-.card,.panel,.section,.sheet,.modal-content{border-color:#436b89!important;box-shadow:inset 0 1px 0 #ffffff1c,0 12px 28px #0005!important}
-@keyframes luxury-timesheet-in{from{opacity:0;transform:translateY(12px);filter:blur(4px)}to{opacity:1;transform:none;filter:none}}
-body{animation:luxury-timesheet-in .55s ease both}
-@media(prefers-reduced-motion:reduce){body{animation:none!important}button{transition:none!important}}
+/* Luxury V4: matching timesheet design across all steps */
+:root{--ink:#030d19;--panel:#0b2037;--panel2:#122d49;--line:#35577a;--amber:#f5bc69;--amber-dim:#bb8b51;--paper:#f3f8ff;--paper-dim:#a9c0d8;--good:#54d5bb;--danger:#ff8878;--radius:17px}
+html,body,#app{background:#030d19!important;color:#f3f8ff;color-scheme:dark}
+#app{max-width:560px;background:radial-gradient(ellipse at 90% 0%,#123b60,transparent 46%),#030d19!important}
+header{background:linear-gradient(110deg,#06182c,#0b2c4d);border-bottom:1px solid #326a9d;box-shadow:0 12px 35px #0007;padding:17px 20px}.logo{background:#f3f5f9;border-radius:12px;border:1px solid #93b4d5;box-shadow:0 0 18px #008cff55}.brand{color:#aac9e5}.brand strong{color:#fff;font-size:17px}
+.shaft-wrap{background:#06182c;border-bottom:1px solid #25486b}.shaft{background:#102b46;border-radius:20px;overflow:hidden}.shaft-fill{background:linear-gradient(90deg,#007de9,#34c4ff,#ffd08a)!important;box-shadow:0 0 15px #00aaff}.floor-label{color:#b7d3ed}
+#main,main{animation:tsLuxIn .55s cubic-bezier(.16,1,.3,1) both;background:transparent;color:#f3f8ff}@keyframes tsLuxIn{from{opacity:0;transform:translateY(17px);filter:blur(4px)}to{opacity:1;transform:none;filter:none}}
+input,textarea,select{background:#0e263f!important;color:#f3f8ff!important;border:1px solid #3c648b!important;border-radius:13px!important;box-shadow:inset 0 1px #ffffff14,0 8px 20px #0005}input:focus,textarea:focus,select:focus{border-color:#3bb8ff!important;outline:2px solid #0077ff33!important}
+button,.btn,.primary{border-radius:14px!important;transition:transform .22s cubic-bezier(.2,1.4,.4,1),filter .2s,box-shadow .2s}button:active,.btn:active{transform:scale(.97);filter:brightness(1.2)}
+footer,#footer{background:rgba(3,13,25,.97);border-top:1px solid #325576;box-shadow:0 -12px 25px #0005}
+.step-eyebrow{color:#f5bc69!important;letter-spacing:.16em}.card,.panel,.day-card,.summary-card,.receipt-card{background:linear-gradient(135deg,#112c48,#081b2e)!important;border:1px solid #315779!important;border-radius:19px!important;box-shadow:inset 0 1px #ffffff14,0 14px 30px #0005!important}
 </style>
 </head>
 <body>
