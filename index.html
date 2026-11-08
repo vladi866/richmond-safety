@@ -31,6 +31,40 @@ canvas{display:block;width:100%;background:#fff;border-radius:12px;touch-action:
 .sh{width:100%;max-width:520px;margin:auto;padding:12px 12px calc(var(--bot) + 12px)}.sh .box{background:var(--cell);border-radius:14px;padding:16px;text-align:center;margin-bottom:8px}.sh button{width:100%;margin-bottom:8px}
 .toast{position:fixed;top:calc(var(--top) + 58px);left:50%;transform:translateX(-50%);background:var(--cell2);padding:10px 18px;border-radius:22px;z-index:30;font-size:15px;box-shadow:0 6px 24px rgba(0,0,0,.4);animation:f .2s;white-space:nowrap}
 .bad{box-shadow:inset 0 0 0 1.5px var(--red)!important}
+/* ================= iOS GLASS THEME (visual layer only) ================= */
+:root{--bg:#0b0d11;--cell:rgba(255,255,255,.07);--cell2:rgba(255,255,255,.12);--sep:rgba(255,255,255,.12);--dim:#a9b1bd;
+  --spring:cubic-bezier(.2,1.15,.35,1);--hi:rgba(255,255,255,.2)}
+html,body{background:#0b0d11}
+body::before,body::after{content:"";position:fixed;z-index:0;pointer-events:none;border-radius:50%;filter:blur(60px);will-change:transform}
+body::before{width:78vw;height:78vw;max-width:420px;max-height:420px;left:-18vw;top:-12vw;background:radial-gradient(circle,rgba(242,167,27,.4),rgba(242,167,27,0) 68%);animation:d1 19s ease-in-out infinite alternate}
+body::after{width:90vw;height:90vw;max-width:480px;max-height:480px;right:-30vw;bottom:-10vw;background:radial-gradient(circle,rgba(88,110,255,.34),rgba(150,70,220,.12) 55%,rgba(0,0,0,0) 72%);animation:d2 24s ease-in-out infinite alternate}
+@keyframes d1{to{transform:translate(18vw,22vw) scale(1.15)}}@keyframes d2{to{transform:translate(-20vw,-24vw) scale(1.1)}}
+#app{position:relative;z-index:1;background:transparent}
+.nav{background:rgba(255,255,255,.06)!important;-webkit-backdrop-filter:blur(26px) saturate(1.8)!important;backdrop-filter:blur(26px) saturate(1.8)!important;border-bottom:1px solid rgba(255,255,255,.12)!important;box-shadow:0 1px 0 rgba(255,255,255,.04)}
+.prog{background:rgba(255,255,255,.1)}.prog i{background:linear-gradient(90deg,#c98a12,#ffc247);box-shadow:0 0 12px rgba(242,167,27,.7);transition:width .6s var(--spring)}
+main{animation:slide .55s var(--spring) both!important}
+@keyframes slide{from{opacity:0;transform:translateX(26px) scale(.985);filter:blur(4px)}to{opacity:1;transform:none;filter:none}}
+.bar{background:rgba(32,36,44,.55)!important;-webkit-backdrop-filter:blur(28px) saturate(1.9)!important;backdrop-filter:blur(28px) saturate(1.9)!important;border-top:1px solid rgba(255,255,255,.14)!important}
+.grp,.n,.h,input,textarea{-webkit-backdrop-filter:blur(20px) saturate(1.6);backdrop-filter:blur(20px) saturate(1.6);border:1px solid rgba(255,255,255,.12);box-shadow:0 6px 22px rgba(0,0,0,.2),inset 0 1px 0 rgba(255,255,255,.12)}
+.grp{border-radius:20px}.n,.h,input,textarea{border-radius:16px}
+.grp,.n,.h{animation:rise .6s var(--spring) both}
+.grp:nth-of-type(2){animation-delay:.06s}.grp:nth-of-type(3){animation-delay:.12s}.n:nth-child(2){animation-delay:.04s}.n:nth-child(3){animation-delay:.08s}.n:nth-child(n+4){animation-delay:.12s}
+@keyframes rise{from{opacity:0;transform:translateY(20px) scale(.985)}}
+.li{transition:background .25s,transform .35s var(--spring)}.li:active{background:rgba(255,255,255,.1);transform:scale(.985)}
+.ic{border-radius:11px;box-shadow:0 3px 10px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,255,.25)}
+.lt{letter-spacing:-.03em}
+input:focus,textarea:focus{border-color:rgba(242,167,27,.85);box-shadow:0 0 0 4px rgba(242,167,27,.2),0 8px 24px rgba(0,0,0,.25);transition:box-shadow .3s,border-color .25s}
+button{border-radius:18px;transition:transform .35s var(--spring),filter .2s,opacity .2s!important}
+button:not(.g):not(.r){background:linear-gradient(180deg,#ffc247,#f0a11a);box-shadow:0 8px 22px rgba(242,167,27,.35),inset 0 1px 0 rgba(255,255,255,.55)}
+button.g,.row button,.h .row button{background:rgba(255,255,255,.11);border:1px solid rgba(255,255,255,.13);box-shadow:inset 0 1px 0 rgba(255,255,255,.12)}
+button.r{box-shadow:0 8px 22px rgba(255,93,77,.3),inset 0 1px 0 rgba(255,255,255,.35)}
+button:active{transform:scale(.95)!important;filter:brightness(.94)}
+.ov{background:rgba(0,0,0,.5)!important;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.sh{animation:sheet .6s var(--spring) both}.sh .box{background:rgba(40,44,54,.72)!important;-webkit-backdrop-filter:blur(34px) saturate(2);backdrop-filter:blur(34px) saturate(2);border:1px solid rgba(255,255,255,.16);border-radius:24px!important;box-shadow:0 24px 70px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.22)}
+@keyframes sheet{from{opacity:0;transform:translateY(110%) scale(.96)}}
+.toast{background:rgba(50,55,66,.7)!important;-webkit-backdrop-filter:blur(24px) saturate(1.8);backdrop-filter:blur(24px) saturate(1.8);border:1px solid rgba(255,255,255,.16);animation:toast .5s var(--spring) both}
+@keyframes toast{from{opacity:0;transform:translateX(-50%) translateY(-18px) scale(.9)}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
 </style></head><body><div id="app"></div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="seed.js"></script>
@@ -142,7 +176,7 @@ function home(){if(S&&!S.done)toast('Draft saved. Resume anytime.');S=null;let p
 const li=(f,c,i,b,s)=>`<a class="li" onclick="${f}"><div class="ic" style="background:${c}">${i}</div><span><b>${b}</b><small>${s}</small></span></a>`,dr=K('draft');
 $('#app').innerHTML=`<main style="padding-top:calc(var(--top) + 14px)"><div class="brand"><img src="${LOGO}" alt="Richmond Elevator"><small>Richmond Elevator<br>Safety &amp; Timesheet</small></div><div class="lt">Welcome${p.name?',<br>'+esc(p.name):''}</div><div class="grp">${li("start('tb')",'#ff9f0a','🧰','ToolBox Meeting','Weekly safety talk report')}${li("start('jha')",'#ff453a','⚠️','Daily Hazard Assessment','Job hazard analysis, 2 days per page')}${li('ts()','#30a46c','🕒','Timesheet','Two-week pay period, PDF with receipts')}</div><div class="grp">${li('hist()','#0a84ff','📁','History','Everything you saved on this phone')}${dr?li('resume()','#8e8e93','▶️','Resume unfinished form','Pick up where you left off'):''}</div></main>`}
 // ===== timesheet (original app, embedded) =====
-function ts(rec){const p=K('profile')||{};$('#app').innerHTML='<div class="nav"><a onclick="home()">‹ Home</a><b>Timesheet</b><a></a></div><iframe id="tsf" style="flex:1;min-height:0;width:100%;border:0;background:#15181c"></iframe><div style="flex:none;height:var(--bot);background:#15181c"></div>';const f=$('#tsf');f.onload=()=>f.contentWindow.postMessage({rem:'init',name:p.name||'',load:rec||null,id:rec?rec.id:uid()},'*');tsSet(f)}
+function ts(rec){const p=K('profile')||{};$('#app').innerHTML='<div class="nav"><a onclick="home()">‹ Home</a><b>Timesheet</b><a></a></div><iframe id="tsf" style="flex:1;min-height:0;width:100%;border:0;background:transparent"></iframe><div style="flex:none;height:var(--bot)"></div>';const f=$('#tsf');f.onload=()=>f.contentWindow.postMessage({rem:'init',name:p.name||'',load:rec||null,id:rec?rec.id:uid()},'*');tsSet(f)}
 function tsSet(f){f.src='timesheet.html'}
 addEventListener('message',e=>{const m=e.data;if(!m||!m.rem||e.source!==$('#tsf')?.contentWindow)return;
 if(m.rem=='ts-file')saveFile(m.name,m.blob);
