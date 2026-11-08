@@ -514,6 +514,17 @@ button.secondary:active{background:var(--panel);transform:scale(.97);}
 :root{color-scheme:dark;--bg:#03101d;--cell:#0c2137;--cell2:#16304a;--tx:#f5f9ff;--dim:#b0c4dd;--amber:#00baff}
 html,body{background:#03101d!important;color:#f5f9ff!important}button{transition:transform .25s,filter .25s}button:active{transform:scale(.97);filter:brightness(1.15)}input:focus,textarea:focus{outline:2px solid #00baff;outline-offset:1px}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+
+/* Richmond Elevator unified premium timesheet */
+:root{color-scheme:dark!important;--ink:#020d19!important;--panel:#0c233a!important;--panel2:#153650!important;--line:#2d5575!important;--amber:#1bc7ff!important;--amber-dim:#0b6a95!important;--paper:#f5faff!important;--paper-dim:#b0c7df!important;--good:#31d2aa!important;--danger:#ff7777!important;--grad:linear-gradient(120deg,#0079c5,#0ac6f7)!important;--curve:cubic-bezier(.2,.8,.2,1)!important}
+html,body,#app{background:#020d19!important;color:#f5faff!important}body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI',sans-serif!important}#app{max-width:540px!important;background:radial-gradient(ellipse at top right,#0d304d 0%,#041526 45%,#020d19 100%)!important}
+header{background:linear-gradient(135deg,#092b47,#061b30)!important;border-bottom:1px solid #2d587a!important;box-shadow:0 8px 28px #0007!important;padding-top:calc(15px + env(safe-area-inset-top))!important}.logo{border:0!important;border-radius:12px!important;background:#f0f4fa!important;box-shadow:0 5px 18px #0007!important}.brand{color:#bfd2e9!important}.brand strong{color:#fff!important}
+main{animation:richmond-page .4s ease both!important}h1,h2,h3{letter-spacing:-.035em!important;color:#fff!important}
+input,textarea,select{background:linear-gradient(145deg,#102c46,#081b2e)!important;border:1px solid #355c7c!important;color:#fff!important;border-radius:14px!important;box-shadow:0 5px 16px #0003!important}input:focus,textarea:focus,select:focus{outline:none!important;border-color:#16c6ff!important;box-shadow:0 0 0 3px #00baff28!important}input::placeholder,textarea::placeholder{color:#829bb3!important}
+button,.gl-btn{border-radius:15px!important;transition:transform .2s ease,filter .2s ease!important}button:active,.gl-btn:active{transform:scale(.97)!important}button:not(.secondary):not(.ghost),.gl-btn.main{background:linear-gradient(125deg,#0079c5,#0ac6f7)!important;color:#fff!important;box-shadow:0 8px 20px #00a9ef38!important}
+.gl-btn:not(.main){background:#173752!important;color:#e6f5ff!important}.gl-sheet{background:linear-gradient(145deg,#12334e,#071b2f)!important;border:1px solid #3a6687!important;color:#fff!important}.gl-chk{background:#102d47!important;border:1px solid #2e5474!important}.gl-grab{background:#4b7597!important}.gl-ov.show{background:#020a15ad!important;backdrop-filter:blur(8px)!important}.gl-sheet p{color:#b8cbe1!important}
+@keyframes richmond-page{from{opacity:.5;transform:translateY(10px)}to{opacity:1;transform:none}}@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+
 </style>
 </head>
 <body>
