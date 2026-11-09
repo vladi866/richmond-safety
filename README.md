@@ -1,17 +1,29 @@
 # Richmond Elevator — Safety & Timesheet App
 
-Mobile web app (PWA) combining:
-1. **ToolBox Meeting** (`tb.png` PDF output)
-2. **Daily Hazard Assessment / JHA** (`jha.png` PDF output, 1 or 2 days per sheet)
-3. **Construction / Modernization Timesheet** (`timesheet.html`, 2-week PDF + receipt photos)
+Mobile web app (PWA): ToolBox Meeting, Daily Hazard Assessment (JHA), and Timesheet.
 
-## How It Works
-- **Shared Safety Library (Supabase):** Connected to `https://fgfkqsbasgjpwpkqjoar.supabase.co`. Any new **ToolBox Topic + Corrective Action** or **JHA Scope + Step + Hazard + Control** entered from scratch is saved to the shared `lib` table when a PDF is saved and becomes available to all other mechanics via the `🎲` randomizer and auto-fill.
-- **Remembering Each Worker:** Each phone generates a persistent Device ID (`dev`) and stores the worker's name (`profile`) in both `localStorage` and a 10-year first-party cookie (`re_dev`, `re_profile`). Entering your name once on **Timesheet**, **ToolBox**, or **JHA** automatically remembers and pre-fills it across all 3 forms.
+## Run locally
+```bash
+cd richmond-safety-fixed
+python3 -m http.server 8080
+```
+Open http://localhost:8080 — do **not** open index.html as a file:// URL.
 
-## Deploying to GitHub Pages
-1. Create a new repository on GitHub (e.g., `richmond-safety`).
-2. Upload all files in this folder (`index.html`, `timesheet.html`, `seed.js`, `sw.js`, `manifest.json`, `icon.png`, `tb.png`, `jha.png`, `README.md`) to the root of the repository.
-3. In GitHub, open **Settings → Pages**.
-4. Under **Build and deployment**, set **Source** to **Deploy from a branch**, select **`main`** and **`/ (root)`**, and click **Save**.
-5. On iPhone: open your GitHub Pages URL in **Safari → Share → Add to Home Screen**.
+## Deploy (GitHub Pages)
+1. Create a repo, upload all files in this folder to the root.
+2. Settings → Pages → Deploy from branch `main` / root.
+3. On iPhone: Safari → Share → Add to Home Screen.
+
+## Supabase
+Uses project `https://fgfkqsbasgjpwpkqjoar.supabase.co` with the publishable key in `index.html`.
+
+**You must enable RLS.** See the walkthrough from your assistant for exact SQL policies on `forms` and `lib`.
+
+## Fixes in this build
+- Original had syntax errors (duplicate `saveDraft`, broken ternary, missing brace in `sigR`, corrupted timesheet block) that prevented the app from loading on modern browsers.
+- Timesheet restored from `timesheet_clean.js`.
+- Delete queries include `owner=eq.${dev}`.
+- Library inserts sanitized + length-limited.
+- Forms payload strips receipt dataUrls before cloud upload.
+- Service worker `safety-v9` with safer caching.
+- Dead files and Claude dev artifacts removed.

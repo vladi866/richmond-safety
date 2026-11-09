@@ -1,4 +1,29 @@
-const C='safety-v6';
-self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(k=>Promise.all(k.filter(x=>x!==C).map(x=>caches.delete(x)))).then(()=>self.clients.claim())));
-self.addEventListener('install',e=>{self.skipWaiting();e.waitUntil(caches.open(C).then(c=>c.addAll(['./','index.html','seed.js','timesheet.html','timesheet.html?v=6','tb.png','img/hero.jpg','img/hardhat.jpg','img/clipboard.jpg','img/tablet.jpg','jha.png','manifest.json','icon.png','https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js']))) });
-self.addEventListener('fetch',e=>{if(e.request.method!='GET'||e.request.url.includes('supabase'))return;e.respondWith(fetch(e.request).then(r=>{const k=r.clone();caches.open(C).then(c=>c.put(e.request,k));return r}).catch(()=>caches.match(e.request)))});
+const C = 'safety-v13';
+const PRECACHE = [
+  './','index.html','seed.js','tb.png','jha.png',
+  'img/hero.jpg','img/hardhat.jpg','img/clipboard.jpg','img/tablet.jpg',
+  'manifest.json','icon.png',
+  'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js',
+  'https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js'
+];
+self.addEventListener('install', e => {
+  self.skipWaiting();
+  e.waitUntil(caches.open(C).then(c => c.addAll(PRECACHE)).catch(err => console.warn('SW precache failed', err)));
+});
+self.addEventListener('activate', e => {
+  e.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(k => k !== C).map(k => caches.delete(k)))).then(() => self.clients.claim()));
+});
+self.addEventListener('fetch', e => {
+  const req = e.request;
+  if (req.method !== 'GET') return;
+  if (req.url.includes('supabase.co') || req.url.includes('/rest/v1/')) return;
+  e.respondWith(
+    fetch(req).then(res => {
+      if (res.ok && (req.url.startsWith(self.location.origin) || PRECACHE.some(u => req.url.includes(u.replace('./',''))))) {
+        const clone = res.clone();
+        caches.open(C).then(c => c.put(req, clone)).catch(() => {});
+      }
+      return res;
+    }).catch(() => caches.match(req).then(r => r || caches.match('./') || caches.match('index.html')))
+  );
+});

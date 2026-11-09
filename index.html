@@ -31,11 +31,70 @@ canvas{display:block;width:100%;background:#fff;border-radius:12px;touch-action:
 .sh{width:100%;max-width:520px;margin:auto;padding:12px 12px calc(var(--bot) + 12px)}.sh .box{background:var(--cell);border-radius:14px;padding:16px;text-align:center;margin-bottom:8px}.sh button{width:100%;margin-bottom:8px}
 .toast{position:fixed;top:calc(var(--top) + 58px);left:50%;transform:translateX(-50%);background:var(--cell2);padding:10px 18px;border-radius:22px;z-index:30;font-size:15px;box-shadow:0 6px 24px rgba(0,0,0,.4);animation:f .2s;white-space:nowrap}
 .bad{box-shadow:inset 0 0 0 1.5px var(--red)!important}
+/* ================= Timesheet Component Styles ================= */
+:root{--ts-paper:var(--tx);--ts-panel:var(--cell);--ts-ink:var(--bg);--ts-danger:var(--red)}
+.totals-card{background:var(--ts-panel);border:1px solid var(--sep);border-radius:var(--curve,12px);padding:16px;margin-bottom:20px}
+.totals-card .t-row{display:flex;justify-content:space-between;font-size:14px;padding:6px 0;border-bottom:1px dashed var(--sep)}
+.totals-card .t-row span:last-child{color:var(--ts-paper)}
+footer{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:520px;padding:12px calc(var(--top) + 8px) calc(var(--bot) + 10px);background:linear-gradient(to bottom,transparent 30%,var(--ts-ink) 30%);safe-area-inset-bottom}
+button.primary,button.secondary{flex:1;padding:15px;border-radius:var(--curve,12px);font-size:15.5px;font-weight:700;border:none;cursor:pointer}
+button.primary{background:var(--amber);color:#15181c}
+button.secondary{background:var(--cell2);color:var(--tx)}
+.add-receipts-btn{display:flex;align-items-center;justify-content:center;width:100%;padding:16px;background:var(--ts-panel);border:1.5px dashed var(--sep);border-radius:var(--curve,12px);color:var(--amber);font-size:15.5px;font-weight:700}
+.visually-hidden-input{position:absolute;width:1px;height:1px;margin:-1px;padding:0;border:0;opacity:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap}
+.receipts-card{background:var(--ts-panel);border:1px solid var(--sep);border-radius:var(--curve,12px);padding:16px;margin-bottom:20px}
+.receipts-card .r-title{font-size:15px;font-weight:700;margin-bottom:4px}
+.receipts-card .r-sub{font-size:12.5px;color:var(--dim);margin:0 0 14px}
+.receipt-thumbs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}
+.receipt-thumb{position:relative;border-radius:8px;overflow:hidden;border:1px solid var(--sep);background:#0c0e10}
+.receipt-thumb img{display:block;width:100%;height:88px;object-fit:cover}
+.receipt-thumb .rm{position:absolute;top:4px;right:4px;width:22px;height:22px;border-radius:50%;border:1px solid rgba(255,255,255,.35);background:rgba(0,0,0,.68);color:#fff;font-size:12px;font-weight:700;font-family:inherit;display:flex;align-items:center;justify-content:center;cursor;padding:0}
+.receipt-status{font-size:12px;color:var(--dim);margin-top:10px;min-height:15px;line-height:1.4}
+.receipt-status.err{color:var(--ts-danger)}
+.checkmark{width:64px;height:64px;border-radius:50%;background:rgba(92,184,122,.12);border:1.5px solid var(--amber);display:flex;align-items:center;justify-content-center;margin:0 auto 18px;font-size:28px;color:var(--amber)}
 /* ================= RICHMOND DESIGN SYSTEM v3 — Field Operations Portal ================= */
 :root{color-scheme:dark;--bg:#050b18;--cell:rgba(20,42,86,.45);--cell2:rgba(255,255,255,.08);--sep:rgba(130,180,255,.18);--tx:#f4f8ff;--dim:#9db3d4;
   --amber:#38c6ff;--red:#ff6b5e;--cy:56,198,255;--grad:linear-gradient(135deg,#1658e8,#27b4ff);
   --glass:linear-gradient(160deg,rgba(32,64,128,.42),rgba(9,22,52,.62));--glow:0 12px 34px rgba(0,0,0,.45);
   --curve:cubic-bezier(.32,.72,0,1);--spring:cubic-bezier(.34,1.4,.5,1)}
+/* ============== Timesheet Glass Sheet Styles ============== */
+.gl-ov{position:fixed;inset:0;background:rgba(0,0,0,.55);display:flex;align-items:flex-end;z-index:20;animation:f .2s}
+.gl-sheet{position:relative;background:linear-gradient(160deg,rgba(28,56,112,.95),rgba(8,20,46,.97));border-radius:20px 20px 0 0;margin:0;max-width:520px;box-shadow:0 26px 70px rgba(0,0,0,.65),inset 0 1px 0 rgba(255,255,255,.12);animation:sheet .35s ease-out backwards;padding:20px 18px 16px}
+.gl-sheet::-webkit-scrollbar{width:8px;height:8px}
+.gl-sheet::-webkit-scrollbar-track{background:rgba(255,255,255,.05);border-radius:4px}
+.gl-sheet::-webkit-scrollbar-thumb{background:var(--amber);border-radius:4px}
+.gl-grab{width:24px;height:24px;border-radius:50%;background:var(--glass);border:1px solid var(--sep);box-shadow:0 2px 8px rgba(0,0,0,.3);margin:0 auto 12px;display:grid;place-items:center;z-index:1}
+.gl-grab::before{content:'';width:12px;height:2px;background:var(--amber);box-shadow:0 0 0 2px var(--glass)}
+.gl-ic{display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:12px}
+.gl-ic.warn{color:var(--red)}
+.gl-ic::before{content:'';font-size:28px}
+.gl-btn{position:relative;overflow:hidden;border:none;border-radius:12px;font-weight:600;font-size:15pxpx;line-height:1.4;text-align:center;cursor:pointer;transition:transform .15s,var(--curve),opacity .2s}
+.gl-btn.main{background:var(--amber);color:#15181c;box-shadow:0 6px 24px rgba(0,0,0,.4)}
+.gl-btn.main:active{transform:scale(.97);opacity:.85}
+.gl-btn:not(.main){background:var(--cell2);color:var(--tx);box-shadow:0 4px 16px rgba(0,0,0,.3)}
+.gl-btn:not(.main):active{transform:scale(.97);opacity:.85}
+.gl-chk{display:flex;align-items:center;gap:10px;padding:10px 12px;margin:4px 0;border-radius:10px;background:var(--cell);cursor:pointer;transition:background .2s}
+.gl-chk:hover{background:var(--cell2)}
+.gl-chk input{width:18px;height:18px;border-radius:4px;border:1px solid var(--sep);accent-color:var(--amber)}
+.gl-days{display:flex;flex-direction:column;gap:4px;margin-top:8px}
+.gl-all{display:flex;align-items:center;gap:8px;padding:10px;background:var(--cell2);border-radius:10px;margin:4px 0;cursor:pointer;transition:background .2s}
+.gl-all:hover{background:var(--sep)}
+.gl-link{color:var(--amber);font-weight:600;text-decoration:none;font-size:14.5px}
+.gl-link:hover{text-decoration:underline}
+@keyframes sheet{from{transform:translateY(100%);opacity:0}to{transform:translateY(0);opacity:1}}
+.sheet{animation:sheet .35s ease-out forwards}
+.step-eyebrow{font-size:13px;color:var(--dim);text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px}
+.day-badge{display:flex;align-items:center;gap:8px;background:var(--cell);border-radius:12px;padding:8px 14px;margin-bottom:16px}
+.day-badge .dot{width:24px;height:24px;border-radius:50%;background:var(--amber);color:#15181c;font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+.summary-list{list-style:none;padding:0;margin:0;gap:12px;display:flex;flex-direction:column}
+.summary-list li{display:flex;justify-content:space-between;align-items:center;background:var(--cell);border-radius:12px;padding:14px}
+.summary-list .d-info{flex:1;min-width:0}
+.summary-list .d-date{font-size:13px;color:var(--dim);margin-bottom:4px}
+.summary-list .d-hours{font-size:14px;color:var(--tx)}
+.summary-list .edit-btn{background:var(--cell2);border:none;border-radius:8px;padding:8px 12px;color:var(--tx);cursor:pointer;font-size:14px}
+.summary-list .edit-btn:hover{background:var(--sep)}
+.final-actions{display:flex;gap:12px;margin-top:20px}
+.status-msg{position:fixed;left:0;right:0;bottom:12px;text-align:center;font-size:14px;color:var(--dim)}
 html,body{background:#050b18}
 body{background:radial-gradient(90% 38% at 85% 0%,rgba(30,100,220,.32),transparent 62%),radial-gradient(80% 40% at 0% 100%,rgba(20,80,180,.22),transparent 62%),#050b18;letter-spacing:-.005em}
 #app{background:transparent}
@@ -159,8 +218,1088 @@ button.r{background:linear-gradient(135deg,#e0382b,#ff6b5e);box-shadow:0 10px 26
 .h b{font-size:17px;font-weight:650;vertical-align:middle}
 textarea{resize:none}.li[style*="pointer-events"]::after{display:none}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
-</style></head><body><div id="app"></div>
+</style>
+<style id="ts-styles">
+/* ===== Timesheet mode styles ===== */
+
+  :root{
+    --ink:#15181c;
+    --panel:#1d2126;
+    --panel2:#242830;
+    --line:#333a44;
+    --amber:#f2a71b;
+    --amber-dim:#8a6417;
+    --paper:#eef0f2;
+    --paper-dim:#a8b0bb;
+    --good:#5cb87a;
+    --danger:#e0654f;
+    --radius:10px;
+  }
+  *{box-sizing:border-box;}
+  html,body{height:100%;}
+  body{
+    margin:0;
+    background:var(--ink);
+    color:var(--paper);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    display:flex;
+    justify-content:center;
+  }
+  #app{
+    width:100%;
+    max-width:480px;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    background:linear-gradient(180deg,#181b1f 0%,#15181c 140px);
+  }
+
+  /* ---- Header / elevator shaft progress ---- */
+  header{
+    padding:18px 20px 14px;
+    border-bottom:1px solid var(--line);
+    display:flex;
+    align-items:center;
+    gap:14px;
+  }
+  .logo{
+    height:38px;border-radius:8px;
+    background:#eceded;
+    border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;
+    padding:6px 9px;
+    flex-shrink:0;
+  }
+  .logo img{height:100%;width:auto;display:block;}
+  .brand{
+    font-size:12.5px;
+    letter-spacing:.06em;
+    color:var(--paper-dim);
+    text-transform:uppercase;
+  }
+  .brand strong{
+    display:block;
+    color:var(--paper);
+    font-size:15px;
+    letter-spacing:.01em;
+    text-transform:none;
+    font-weight:600;
+  }
+
+  .shaft-wrap{padding:10px 20px 0;}
+  .shaft{
+    position:relative;
+    height:6px;
+    background:var(--panel2);
+    border-radius:4px;
+    overflow:hidden;
+    border:1px solid var(--line);
+  }
+  .shaft-fill{
+    position:absolute;left:0;top:0;bottom:0;
+    background:linear-gradient(90deg,var(--amber-dim),var(--amber));
+    border-radius:4px;
+    transition:width .35s ease;
+  }
+  .floor-label{
+    display:flex;justify-content:space-between;
+    font-size:11px;color:var(--paper-dim);
+    margin-top:6px;
+    letter-spacing:.03em;
+  }
+  .floor-label b{color:var(--amber);font-weight:600;}
+
+  main{
+    flex:1;
+    padding:22px 20px 110px;
+    overflow-y:auto;
+  }
+  .step-eyebrow{
+    font-size:11px;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--amber);
+    font-weight:700;
+    margin-bottom:6px;
+  }
+  h1{
+    font-size:23px;
+    margin:0 0 4px;
+    font-weight:700;
+    letter-spacing:-.01em;
+  }
+  .sub{
+    color:var(--paper-dim);
+    font-size:14px;
+    margin:0 0 24px;
+    line-height:1.4;
+  }
+
+  .field{margin-bottom:18px;}
+  .field label{
+    display:block;
+    font-size:12.5px;
+    color:var(--paper-dim);
+    margin-bottom:7px;
+    font-weight:600;
+    letter-spacing:.01em;
+  }
+  input[type=text],input[type=number],input[type=date],select,textarea{
+    width:100%;
+    background:var(--panel);
+    border:1px solid var(--line);
+    color:var(--paper);
+    padding:13px 14px;
+    border-radius:var(--radius);
+    font-size:16px;
+    outline:none;
+    -webkit-appearance:none;
+    appearance:none;
+  }
+  textarea{resize:vertical;min-height:76px;font-family:inherit;line-height:1.45;}
+  input::placeholder,textarea::placeholder{color:#5a626d;}
+  input:focus,select:focus,textarea:focus{border-color:var(--amber);}
+  select{
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6'><path d='M0 0l5 6 5-6z' fill='%23a8b0bb'/></svg>");
+    background-repeat:no-repeat;
+    background-position:right 14px center;
+    padding-right:32px;
+  }
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  .hint{font-size:12px;color:#6b7482;margin-top:6px;}
+  .hint.err{color:var(--danger);}
+
+  /* ---- segmented choice (Full 2 weeks / Custom) ---- */
+  .seg{
+    display:grid;grid-template-columns:1fr 1fr;gap:6px;
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:5px;
+  }
+  .seg-btn{
+    background:none;
+    border:1px solid transparent;
+    color:var(--paper-dim);
+    padding:12px 8px;
+    border-radius:7px;
+    font-size:14.5px;
+    font-weight:700;
+    font-family:inherit;
+    cursor:pointer;
+    transition:background .15s,color .15s;
+  }
+  .seg-btn.active{background:var(--amber);color:#20180a;}
+  .seg-btn:active{background:var(--panel2);}
+  .seg-btn.active:active{background:#d99411;}
+
+  .toggle-row{
+    display:flex;align-items:center;justify-content:space-between;
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:14px 16px;
+  }
+  .toggle-row .t-label{font-size:14.5px;font-weight:600;}
+  .toggle-row .t-sub{font-size:12px;color:var(--paper-dim);margin-top:2px;}
+  .switch{
+    position:relative;width:48px;height:28px;flex-shrink:0;
+  }
+  .switch input{position:absolute;opacity:0;width:0;height:0;}
+  .switch .track{
+    position:absolute;inset:0;background:#3a414c;border-radius:20px;
+    transition:.2s;
+  }
+  .switch .knob{
+    position:absolute;top:3px;left:3px;width:22px;height:22px;
+    background:var(--paper);border-radius:50%;transition:.2s;
+  }
+  .switch input:checked + .track{background:var(--amber-dim);}
+  .switch input:checked + .track .knob{transform:translateX(20px);background:var(--amber);}
+
+  .day-badge{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--panel2);
+    border:1px solid var(--line);
+    padding:6px 12px 6px 6px;
+    border-radius:20px;
+    margin-bottom:20px;
+    font-size:13px;
+  }
+  .day-badge .dot{
+    width:26px;height:26px;border-radius:50%;
+    background:var(--amber);color:#1a1a1a;
+    display:flex;align-items:center;justify-content:center;
+    font-weight:700;font-size:12px;
+  }
+
+  .summary-list{list-style:none;margin:0 0 20px;padding:0;}
+  .summary-list li{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:12px 14px;
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    margin-bottom:8px;
+  }
+  .summary-list .d-info{font-size:13.5px;}
+  .summary-list .d-info .d-date{color:var(--paper-dim);font-size:11.5px;display:block;margin-bottom:2px;}
+  .summary-list .d-hours{font-size:12px;color:var(--amber);font-family:ui-monospace,Menlo,monospace;}
+  .edit-btn{
+    background:none;border:1px solid var(--line);color:var(--paper);
+    padding:7px 12px;border-radius:8px;font-size:12.5px;font-weight:600;
+    cursor:pointer;
+  }
+  .edit-btn:active{background:var(--panel2);}
+
+  .totals-card{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:16px;
+    margin-bottom:20px;
+  }
+  .totals-card .t-row{
+    display:flex;justify-content:space-between;
+    font-size:14px;padding:6px 0;
+    border-bottom:1px dashed var(--line);
+  }
+  .totals-card .t-row:last-child{border-bottom:none;padding-top:10px;font-weight:700;color:var(--amber);}
+
+  footer{
+    position:fixed;bottom:0;left:50%;transform:translateX(-50%);
+    width:100%;max-width:480px;
+    padding:14px 20px calc(16px + env(safe-area-inset-bottom));
+    background:linear-gradient(180deg,transparent,var(--ink) 30%);
+    display:flex;gap:10px;
+  }
+  button.primary,button.secondary{
+    flex:1;
+    padding:15px;
+    border-radius:var(--radius);
+    font-size:15.5px;
+    font-weight:700;
+    border:none;
+    cursor:pointer;
+  }
+  button.primary{
+    background:var(--amber);
+    color:#20180a;
+  }
+  button.primary:active{background:#d99411;}
+  button.secondary{
+    background:var(--panel2);
+    color:var(--paper);
+    border:1px solid var(--line);
+    flex:0 0 88px;
+  }
+  button.secondary:active{background:var(--panel);}
+  button:disabled{opacity:.4;}
+
+  .final-actions{display:flex;flex-direction:column;gap:10px;}
+  .final-actions button{width:100%;}
+  .status-msg{
+    text-align:center;font-size:12.5px;color:var(--paper-dim);margin-top:10px;
+  }
+
+  /* ---- Expense receipts card (summary screen) ---- */
+  .receipts-card{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:16px;
+    margin-bottom:20px;
+  }
+  .receipts-card .r-title{font-size:15px;font-weight:700;margin-bottom:4px;}
+  .receipts-card .r-sub{font-size:12.5px;color:var(--paper-dim);margin:0 0 14px;line-height:1.45;}
+  .add-receipts-btn{
+    display:flex;align-items:center;justify-content:center;gap:8px;
+    width:100%;padding:16px;
+    background:var(--panel2);
+    border:1.5px dashed var(--line);
+    border-radius:var(--radius);
+    color:var(--amber);
+    font-size:15.5px;font-weight:700;
+    cursor:pointer;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .add-receipts-btn:active{background:var(--panel);}
+  /* iOS-safe hidden file input: clipped + transparent, NOT display:none
+     (display:none makes Mobile Safari ignore label taps on the input). */
+  .visually-hidden-input{
+    position:absolute;
+    width:1px;height:1px;margin:-1px;padding:0;border:0;
+    opacity:0;
+    clip:rect(0 0 0 0);
+    clip-path:inset(50%);
+    overflow:hidden;
+    white-space:nowrap;
+  }
+  .receipt-thumbs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px;}
+  .receipt-thumbs:empty{margin-top:0;}
+  .receipt-thumb{
+    position:relative;border-radius:8px;overflow:hidden;
+    border:1px solid var(--line);background:#0c0e10;
+  }
+  .receipt-thumb img{display:block;width:100%;height:88px;object-fit:cover;}
+  .receipt-thumb .rm{
+    position:absolute;top:4px;right:4px;width:22px;height:22px;border-radius:50%;
+    border:1px solid rgba(255,255,255,.35);background:rgba(0,0,0,.68);
+    color:#fff;font-size:12px;font-weight:700;font-family:inherit;
+    display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;
+  }
+  .receipt-status{font-size:12px;color:var(--paper-dim);margin-top:10px;min-height:15px;line-height:1.4;}
+  .receipt-status.err{color:var(--danger);}
+  .checkmark{
+    width:64px;height:64px;border-radius:50%;
+    background:rgba(92,184,122,.12);
+    border:1.5px solid var(--good);
+    display:flex;align-items:center;justify-content:center;
+    margin:0 auto 18px;
+    font-size:28px;color:var(--good);
+  }
+
+/* back button in timesheet header */
+#tsBack{background:none;border:none;color:var(--amber,#f2a71b);font:inherit;font-weight:600;cursor:pointer;padding:8px 4px;margin-right:4px}
+#app.ts-mode{max-width:480px}
+#app.ts-mode header{padding:14px 16px}
+</style>
+
+<style id="lux-forms">
+#app.ts-mode input, #app.ts-mode textarea, #app.ts-mode select{
+  background: rgba(55,63,78,.95) !important;
+  border: 1px solid rgba(255,255,255,.12) !important;
+  min-height: 54px !important;
+}
+#app.ts-mode .field label{
+  margin-bottom: 10px !important;
+}
+
+/* ============================================================
+   Luxury form layer — matches home hero polish
+   ============================================================ */
+:root{
+  --lux-glow: rgba(242,167,27,.35);
+  --lux-glow-soft: rgba(242,167,27,.12);
+  --lux-blue: rgba(47,140,255,.25);
+  --lux-surface: rgba(29,33,38,.72);
+  --lux-surface-2: rgba(38,43,51,.85);
+  --lux-border: rgba(255,255,255,.06);
+  --lux-border-strong: rgba(255,255,255,.1);
+  --lux-radius: 16px;
+  --lux-radius-sm: 12px;
+  --lux-ease: cubic-bezier(.22,1,.36,1);
+}
+
+/* Ambient page depth on form screens */
+#app:not(:has(.home)){
+  background:
+    radial-gradient(120% 60% at 100% -10%, rgba(30,100,220,.18), transparent 55%),
+    radial-gradient(90% 50% at 0% 100%, rgba(242,167,27,.06), transparent 50%),
+    #0c0f14;
+}
+
+/* ---- Nav / header ---- */
+.nav{
+  background: rgba(12,15,20,.78) !important;
+  border-bottom: 1px solid var(--lux-border) !important;
+  backdrop-filter: blur(28px) saturate(1.4) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(1.4) !important;
+  padding-top: calc(var(--top) + 8px) !important;
+  min-height: calc(var(--top) + 56px) !important;
+}
+.nav b{
+  font-size: 15px;
+  letter-spacing: -.01em;
+  font-weight: 650;
+  background: linear-gradient(180deg,#fff 30%,#c8d0dc);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.nav a{
+  color: var(--amber) !important;
+  font-weight: 600;
+  font-size: 15px;
+  border-radius: 10px;
+  transition: background .2s var(--lux-ease), transform .15s ease;
+}
+.nav a:active{ transform: scale(.96); background: var(--lux-glow-soft); }
+
+.prog{
+  height: 2px !important;
+  background: rgba(255,255,255,.06) !important;
+  overflow: hidden;
+}
+.prog i{
+  background: linear-gradient(90deg, #c4820a, #f2a71b 40%, #ffd27a) !important;
+  box-shadow: 0 0 12px var(--lux-glow);
+  transition: width .45s var(--lux-ease) !important;
+}
+
+/* ---- Main content entrance ---- */
+main{
+  padding: 20px 18px 32px !important;
+  animation: luxIn .38s var(--lux-ease) both !important;
+}
+@keyframes luxIn{
+  from{ opacity: 0; transform: translateY(14px) scale(.985); filter: blur(4px); }
+  to{ opacity: 1; transform: none; filter: none; }
+}
+@keyframes luxInX{
+  from{ opacity: 0; transform: translateX(18px); }
+  to{ opacity: 1; transform: none; }
+}
+@keyframes luxPulse{
+  0%,100%{ box-shadow: 0 0 0 0 var(--lux-glow-soft); }
+  50%{ box-shadow: 0 0 0 6px transparent; }
+}
+@keyframes luxShimmer{
+  0%{ background-position: 120% 0; }
+  100%{ background-position: -120% 0; }
+}
+
+/* ---- Typography ---- */
+main > label:first-child,
+label{
+  display: block;
+  font-size: 12px !important;
+  font-weight: 650 !important;
+  letter-spacing: .08em !important;
+  text-transform: uppercase !important;
+  color: var(--dim) !important;
+  margin: 18px 0 8px !important;
+}
+label:first-child{ margin-top: 4px !important; }
+.step-eyebrow, .m{
+  font-size: 12px !important;
+  letter-spacing: .1em !important;
+  text-transform: uppercase !important;
+  color: var(--dim) !important;
+  font-weight: 600 !important;
+}
+h1{
+  font-size: 28px !important;
+  font-weight: 700 !important;
+  letter-spacing: -.03em !important;
+  line-height: 1.15 !important;
+  margin: 6px 0 10px !important;
+  background: linear-gradient(180deg, #fff 20%, #b8c2d0);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.sub, p.sub{
+  color: var(--dim) !important;
+  font-size: 15px !important;
+  line-height: 1.45 !important;
+  margin: 0 0 18px !important;
+  letter-spacing: -.01em;
+}
+
+/* ---- Fields ---- */
+input, textarea, select{
+  width: 100%;
+  font: inherit;
+  padding: 15px 16px !important;
+  border: 1px solid rgba(255,255,255,.1) !important;
+  border-radius: var(--lux-radius-sm) !important;
+  background: rgba(55,63,78,.95) !important;
+  color: var(--tx) !important;
+  outline: 0 !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  min-height: 52px !important;
+  transition: border-color .2s ease, box-shadow .25s var(--lux-ease), background .2s ease !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.03);
+}
+textarea{ min-height: 96px !important; resize: vertical; line-height: 1.4; }
+input:focus, textarea:focus, select:focus{
+  border-color: rgba(242,167,27,.55) !important;
+  background: rgba(52,60,74,.98) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.04),
+    0 0 0 3px var(--lux-glow-soft),
+    0 8px 28px rgba(0,0,0,.25) !important;
+}
+input::placeholder, textarea::placeholder{ color: #5a6470 !important; }
+.bad, input.bad, textarea.bad{
+  border-color: rgba(255,93,77,.6) !important;
+  box-shadow: 0 0 0 3px rgba(255,93,77,.15) !important;
+  animation: luxPulse .6s ease;
+}
+
+/* Field cards */
+.field{
+  margin-bottom: 16px;
+  animation: luxIn .4s var(--lux-ease) both;
+}
+.field:nth-child(2){ animation-delay: .04s; }
+.field:nth-child(3){ animation-delay: .08s; }
+.field:nth-child(4){ animation-delay: .12s; }
+.field:nth-child(5){ animation-delay: .16s; }
+
+/* ---- Groups / lists ---- */
+.grp, .h{
+  background: var(--lux-surface) !important;
+  border: 1px solid var(--lux-border) !important;
+  border-radius: var(--lux-radius) !important;
+  overflow: hidden;
+  margin-bottom: 16px !important;
+  box-shadow: 0 12px 40px rgba(0,0,0,.22);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  animation: luxIn .4s var(--lux-ease) both;
+}
+.li{
+  padding: 14px 16px !important;
+  transition: background .2s ease;
+}
+.li:active, .li:hover{ background: rgba(255,255,255,.03) !important; }
+.li+.li::before{ border-top-color: var(--lux-border) !important; left: 16px !important; }
+.li::after{ color: rgba(255,255,255,.25) !important; font-weight: 300; }
+.ic{
+  border-radius: 12px !important;
+  box-shadow: 0 6px 16px rgba(0,0,0,.3);
+}
+
+/* ---- Buttons ---- */
+.bar{
+  background: rgba(12,15,20,.88) !important;
+  border-top: 1px solid var(--lux-border) !important;
+  backdrop-filter: blur(28px) saturate(1.3) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(1.3) !important;
+  padding: 12px 16px calc(var(--bot) + 12px) !important;
+  gap: 10px !important;
+}
+button, .primary, button.primary{
+  font: inherit;
+  font-weight: 650 !important;
+  height: 52px !important;
+  padding: 0 20px !important;
+  border: 0 !important;
+  border-radius: 14px !important;
+  background: linear-gradient(180deg, #ffc14a 0%, #f2a71b 45%, #d4890f 100%) !important;
+  color: #1a1205 !important;
+  flex: 1;
+  letter-spacing: -.01em;
+  box-shadow:
+    0 1px 0 rgba(255,255,255,.25) inset,
+    0 8px 24px rgba(242,167,27,.28),
+    0 2px 6px rgba(0,0,0,.25) !important;
+  transition: transform .18s var(--lux-ease), box-shadow .2s ease, filter .2s ease !important;
+  position: relative;
+  overflow: hidden;
+}
+button::after, .primary::after{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,.22) 50%, transparent 60%);
+  background-size: 200% 100%;
+  opacity: 0;
+  transition: opacity .3s ease;
+  pointer-events: none;
+}
+button:hover::after, .primary:hover::after{ opacity: 1; animation: luxShimmer 1.2s ease; }
+button:active, .primary:active{
+  transform: scale(.975) !important;
+  filter: brightness(.95);
+  box-shadow:
+    0 1px 0 rgba(255,255,255,.15) inset,
+    0 4px 12px rgba(242,167,27,.2) !important;
+}
+button.g, button.secondary, .secondary{
+  background: var(--lux-surface-2) !important;
+  color: var(--tx) !important;
+  border: 1px solid var(--lux-border-strong) !important;
+  box-shadow: 0 4px 16px rgba(0,0,0,.2) !important;
+}
+button.g:active, .secondary:active{ filter: brightness(1.08); }
+button.r{
+  background: linear-gradient(180deg, #ff7a6a, #e04535) !important;
+  color: #fff !important;
+  box-shadow: 0 8px 22px rgba(224,69,53,.3) !important;
+}
+.row button{
+  background: var(--lux-surface-2) !important;
+  border: 1px solid var(--lux-border) !important;
+  box-shadow: none !important;
+  color: var(--amber) !important;
+}
+.row button.w{
+  background: linear-gradient(180deg, #ffc14a, #f2a71b) !important;
+  color: #1a1205 !important;
+  border: 0 !important;
+}
+
+/* ---- Overlay / sheets ---- */
+.ov{
+  background: rgba(0,0,0,.62) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  animation: luxFade .25s ease !important;
+}
+@keyframes luxFade{ from{ opacity: 0; } to{ opacity: 1; } }
+.sh .box{
+  background: linear-gradient(180deg, rgba(40,46,56,.98), rgba(28,32,40,.98)) !important;
+  border: 1px solid var(--lux-border-strong) !important;
+  border-radius: 20px !important;
+  padding: 22px 20px !important;
+  box-shadow: 0 24px 64px rgba(0,0,0,.5);
+  animation: luxIn .35s var(--lux-ease) both;
+}
+.sh .box b{ font-size: 18px; letter-spacing: -.02em; }
+.sh .box .m{ margin-top: 8px; text-transform: none !important; letter-spacing: 0 !important; font-size: 14px !important; line-height: 1.45; }
+.sh button{
+  border-radius: 14px !important;
+  margin-top: 6px;
+}
+
+/* ---- Toast ---- */
+.toast{
+  background: rgba(36,42,52,.94) !important;
+  border: 1px solid var(--lux-border-strong);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 12px 40px rgba(0,0,0,.4) !important;
+  border-radius: 24px !important;
+  animation: luxIn .3s var(--lux-ease) both !important;
+}
+
+/* ---- Signature canvas ---- */
+canvas#cv, canvas{
+  border-radius: var(--lux-radius-sm) !important;
+  border: 1px solid var(--lux-border) !important;
+  background: rgba(255,255,255,.03) !important;
+  box-shadow: inset 0 2px 8px rgba(0,0,0,.2);
+}
+
+/* ---- Timesheet mode ---- */
+#app.ts-mode{
+  background:
+    radial-gradient(100% 50% at 80% 0%, rgba(30,100,220,.2), transparent 55%),
+    radial-gradient(80% 40% at 10% 100%, rgba(242,167,27,.07), transparent 50%),
+    #0c0f14 !important;
+}
+#app.ts-mode header{
+  background: rgba(12,15,20,.8) !important;
+  border-bottom: 1px solid var(--lux-border) !important;
+  backdrop-filter: blur(28px) saturate(1.4) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(1.4) !important;
+  align-items: center;
+  gap: 10px;
+}
+#tsBack{
+  background: rgba(255,255,255,.06) !important;
+  border: 1px solid var(--lux-border-strong) !important;
+  border-radius: 20px !important;
+  padding: 8px 14px !important;
+  color: var(--amber) !important;
+  font-weight: 650 !important;
+  transition: background .2s ease, transform .15s ease !important;
+}
+#tsBack:active{ transform: scale(.96); background: var(--lux-glow-soft) !important; }
+#app.ts-mode .brand{
+  font-size: 11px;
+  letter-spacing: .04em;
+  color: var(--dim);
+  text-transform: uppercase;
+}
+#app.ts-mode .brand strong{
+  display: block;
+  font-size: 15px;
+  letter-spacing: -.01em;
+  text-transform: none;
+  color: #eef0f2;
+  margin-top: 2px;
+  background: linear-gradient(180deg,#fff,#c8d0dc);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.shaft-wrap{ padding: 10px 18px 6px !important; }
+.shaft{
+  height: 3px !important;
+  background: rgba(255,255,255,.06) !important;
+  border-radius: 99px !important;
+  overflow: hidden;
+}
+.shaft-fill, #shaftFill{
+  background: linear-gradient(90deg, #c4820a, #f2a71b 50%, #ffd27a) !important;
+  box-shadow: 0 0 12px var(--lux-glow);
+  border-radius: 99px;
+  transition: width .45s var(--lux-ease) !important;
+}
+.floor-label{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+  font-size: 11px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--dim);
+  font-weight: 600;
+}
+.floor-label b{ color: var(--amber); font-variant-numeric: tabular-nums; }
+
+#app.ts-mode main{
+  animation: luxIn .4s var(--lux-ease) both !important;
+}
+#app.ts-mode footer, #app.ts-mode #footer{
+  background: rgba(12,15,20,.88) !important;
+  border-top: 1px solid var(--lux-border) !important;
+  backdrop-filter: blur(28px) !important;
+  -webkit-backdrop-filter: blur(28px) !important;
+  padding: 12px 16px calc(var(--bot) + 12px) !important;
+  display: flex;
+  gap: 10px;
+}
+
+/* Segmented controls */
+.seg{
+  display: flex;
+  gap: 6px;
+  padding: 4px;
+  background: rgba(0,0,0,.25);
+  border-radius: 14px;
+  border: 1px solid var(--lux-border);
+}
+.seg-btn, .seg button{
+  flex: 1;
+  height: 42px !important;
+  border-radius: 10px !important;
+  background: transparent !important;
+  color: var(--dim) !important;
+  box-shadow: none !important;
+  border: 0 !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+}
+.seg-btn.active, .seg button.active, .seg-btn[aria-pressed="true"]{
+  background: linear-gradient(180deg, #ffc14a, #f2a71b) !important;
+  color: #1a1205 !important;
+  box-shadow: 0 4px 14px rgba(242,167,27,.3) !important;
+}
+
+/* Toggle / checkbox rows */
+.gl-chk, .gl-all, .toggle-row{
+  background: var(--lux-surface) !important;
+  border: 1px solid var(--lux-border) !important;
+  border-radius: var(--lux-radius-sm) !important;
+  transition: background .2s ease, border-color .2s ease;
+}
+.gl-chk:active, .gl-all:active{ background: var(--lux-surface-2) !important; }
+
+/* Receipt thumbs */
+.receipt-thumbs{ display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+.receipt-thumb{
+  width: 72px; height: 72px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--lux-border-strong);
+  position: relative;
+  box-shadow: 0 6px 16px rgba(0,0,0,.3);
+  animation: luxIn .35s var(--lux-ease) both;
+}
+.receipt-thumb img{ width: 100%; height: 100%; object-fit: cover; }
+.receipt-thumb .rm{
+  position: absolute; top: 4px; right: 4px;
+  width: 24px !important; height: 24px !important;
+  border-radius: 50% !important;
+  padding: 0 !important;
+  font-size: 14px !important;
+  background: rgba(0,0,0,.65) !important;
+  color: #fff !important;
+  box-shadow: none !important;
+}
+
+/* Day cards / summary */
+.summary-list li, .day-badge{
+  background: var(--lux-surface) !important;
+  border: 1px solid var(--lux-border) !important;
+  border-radius: var(--lux-radius) !important;
+  box-shadow: 0 8px 28px rgba(0,0,0,.2);
+  animation: luxIn .4s var(--lux-ease) both;
+}
+.checkmark{
+  width: 64px; height: 64px;
+  margin: 0 auto 16px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #ffc14a, #f2a71b);
+  color: #1a1205;
+  font-size: 32px;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 12px 36px rgba(242,167,27,.35);
+  animation: luxIn .5s var(--lux-ease) both;
+}
+
+/* Datalist / shuffle row polish */
+.row{ gap: 10px !important; }
+.row input, .row textarea{ flex: 1; }
+
+/* History cards */
+.h .row button{
+  height: 40px !important;
+  font-size: 14px !important;
+  border-radius: 10px !important;
+}
+
+/* Reduced motion */
+
+/* ---- Redesigned form chrome (fx-*) ---- */
+.fx-top{
+  flex:none;
+  background:rgba(12,15,20,.82);
+  border-bottom:1px solid rgba(255,255,255,.06);
+  backdrop-filter:blur(28px) saturate(1.4);
+  -webkit-backdrop-filter:blur(28px) saturate(1.4);
+  padding:calc(var(--top) + 10px) 16px 14px;
+  z-index:5;
+}
+.fx-nav{
+  display:grid;
+  grid-template-columns:1fr auto 1fr;
+  align-items:center;
+  gap:8px;
+  margin-bottom:14px;
+}
+.fx-nav .fx-back, .fx-nav .fx-home, .fx-back, .fx-home{
+  color:var(--amber)!important;
+  font-weight:650;
+  font-size:15px;
+  padding:8px 12px;
+  border-radius:20px;
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.08);
+  text-decoration:none;
+  width:fit-content;
+  transition:background .2s ease, transform .15s ease;
+}
+.fx-nav .fx-home, a.fx-home{ justify-self:end; }
+.fx-back:active, .fx-home:active{ transform:scale(.96); background:rgba(242,167,27,.12); }
+.fx-brand{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  justify-content:center;
+}
+.fx-brand img{
+  height:28px;
+  background:#eceded;
+  border-radius:7px;
+  padding:4px 7px;
+}
+.fx-brand span{
+  display:none;
+}
+.fx-progress{ margin-bottom:12px; }
+.fx-progress-track{
+  height:3px;
+  background:rgba(255,255,255,.06);
+  border-radius:99px;
+  overflow:hidden;
+}
+.fx-progress-track i{
+  display:block;
+  height:100%;
+  background:linear-gradient(90deg,#c4820a,#f2a71b 45%,#ffd27a);
+  box-shadow:0 0 12px rgba(242,167,27,.4);
+  border-radius:99px;
+  transition:width .45s cubic-bezier(.22,1,.36,1);
+}
+.fx-progress-meta{
+  display:flex;
+  justify-content:space-between;
+  margin-top:8px;
+  font-size:11px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--dim);
+  font-weight:650;
+}
+.fx-progress-meta b{ color:var(--amber); font-variant-numeric:tabular-nums; }
+.fx-title h1{
+  margin:0!important;
+  font-size:26px!important;
+  font-weight:700!important;
+  letter-spacing:-.03em!important;
+  background:linear-gradient(180deg,#fff 25%,#b8c2d0);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+.fx-kicker{
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--amber);
+  margin-bottom:6px;
+  opacity:.9;
+}
+.fx-main{
+  animation:luxIn .4s cubic-bezier(.22,1,.36,1) both!important;
+}
+.fx-stack{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+.fcard{
+  background:rgba(45,52,64,.55);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:14px;
+  padding:14px 14px 12px;
+  box-shadow:0 8px 28px rgba(0,0,0,.18);
+  transition:border-color .2s ease, box-shadow .25s ease;
+}
+.fcard:focus-within{
+  border-color:rgba(242,167,27,.4);
+  box-shadow:0 0 0 3px rgba(242,167,27,.1), 0 10px 32px rgba(0,0,0,.25);
+}
+.fcard label{
+  margin:0 0 8px!important;
+}
+.fcard input, .fcard textarea{
+  background:rgba(20,24,30,.55)!important;
+  border:1px solid rgba(255,255,255,.06)!important;
+}
+.hint{
+  font-size:13px!important;
+  color:var(--dim)!important;
+  line-height:1.45;
+  margin:0 0 4px;
+  letter-spacing:0!important;
+  text-transform:none!important;
+  font-weight:500!important;
+}
+.topic-card{
+  background:rgba(45,52,64,.55);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:16px;
+  padding:14px;
+  box-shadow:0 10px 32px rgba(0,0,0,.2);
+  animation:luxIn .4s cubic-bezier(.22,1,.36,1) both;
+}
+.topic-card:nth-child(2){ animation-delay:.03s; }
+.topic-card:nth-child(3){ animation-delay:.06s; }
+.topic-card:nth-child(4){ animation-delay:.09s; }
+.topic-card:nth-child(5){ animation-delay:.12s; }
+.topic-card:nth-child(6){ animation-delay:.15s; }
+.topic-head{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:10px;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--dim);
+}
+.topic-num{
+  width:28px;height:28px;
+  border-radius:9px;
+  display:grid;place-items:center;
+  background:linear-gradient(180deg,#ffc14a,#f2a71b);
+  color:#1a1205;
+  font-size:13px;
+  font-weight:800;
+  box-shadow:0 4px 12px rgba(242,167,27,.3);
+}
+.topic-head .icon-btn, .icon-btn{
+  margin-left:auto;
+  width:40px!important;
+  height:40px!important;
+  flex:none!important;
+  border-radius:12px!important;
+  background:rgba(255,255,255,.06)!important;
+  border:1px solid rgba(255,255,255,.1)!important;
+  color:var(--amber)!important;
+  box-shadow:none!important;
+  font-size:16px!important;
+  padding:0!important;
+}
+.topic-card label{ margin:12px 0 8px!important; }
+.topic-card textarea{
+  width:100%;
+  background:rgba(20,24,30,.55)!important;
+  border:1px solid rgba(255,255,255,.06)!important;
+}
+.sig-card{
+  background:rgba(45,52,64,.55);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:16px;
+  padding:16px;
+  box-shadow:0 12px 36px rgba(0,0,0,.22);
+}
+.sig-label{
+  font-size:13px;
+  font-weight:650;
+  margin-bottom:12px;
+  color:var(--tx);
+}
+.sig-card canvas{
+  width:100%!important;
+  height:170px;
+  border-radius:12px!important;
+  background:rgba(255,255,255,.04)!important;
+  border:1px dashed rgba(255,255,255,.12)!important;
+  touch-action:none;
+}
+.sig-clear{
+  margin-top:12px!important;
+  width:100%;
+}
+.review-hero{
+  display:flex;
+  align-items:center;
+  gap:16px;
+  padding:18px;
+  background:rgba(45,52,64,.55);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:18px;
+  box-shadow:0 12px 40px rgba(0,0,0,.25);
+}
+.review-icon{
+  width:52px;height:52px;
+  border-radius:14px;
+  display:grid;place-items:center;
+  flex-shrink:0;
+  box-shadow:0 8px 20px rgba(0,0,0,.3);
+}
+.review-icon svg{ width:26px; height:26px; fill:none; stroke:#fff; stroke-width:1.8; }
+.review-hero b{ display:block; font-size:18px; letter-spacing:-.02em; margin-bottom:4px; }
+.review-hero small{ color:var(--dim); font-size:13px; }
+.choice-card{
+  padding:20px 18px;
+  background:rgba(45,52,64,.55);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:16px;
+  line-height:1.5;
+  color:var(--dim);
+}
+.fx-bar{ gap:10px; }
+
+
+.draft-card .li span{display:flex;flex-direction:column;gap:3px;min-width:0}
+.draft-card .li b{font-size:16px;letter-spacing:-.01em}
+.draft-detail{color:var(--tx)!important;opacity:.88;font-size:13px!important;line-height:1.35;white-space:normal!important;display:block}
+.draft-when{color:var(--dim)!important;font-size:12px!important;margin-top:2px}
+
+@media (prefers-reduced-motion: reduce){
+  *, *::before, *::after{
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
+}
+</style>
+
+</head><body><div id="app"></div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
 <script src="seed.js"></script>
 <script>
 const LOGO='data:image/png;base64,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';
@@ -175,11 +1314,14 @@ const today=()=>new Date(Date.now()-new Date().getTimezoneOffset()*6e4).toISOStr
 const dept=j=>/^\s*(T|MT)-/i.test(j||'')?'T':'H'; // MT uses Traction library, MH uses Hydro
 const esc=s=>((s??'')+'').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');
 const eq=(a,b)=>(a||'').trim().toLowerCase()==(b||'').trim().toLowerCase();
+const sanitizeText=(s,max=400)=>{s=((s??'')+'').trim().replace(/[\u0000-\u001F\u007F]/g,'').slice(0,max);return s};
+const MAX_LIB_TOPIC=180,MAX_LIB_ACTION=280,MAX_LIB_SCOPE=180,MAX_LIB_STEP=220,MAX_LIB_HAZARD=220,MAX_LIB_CONTROL=280;
+
 const rnd=a=>a[Math.random()*a.length|0],jobOk=j=>/^\s*(H|T|MT|MH)-\S+/i.test(j||'');
 let S,at,L;
 function toast(m){const t=document.createElement('div');t.className='toast';t.textContent=m;document.body.appendChild(t);setTimeout(()=>t.remove(),2300)}
 function ask(t,m,y,cb){const o=document.createElement('div');o.className='ov';o.innerHTML=`<div class="sh"><div class="box"><b>${t}</b><div class="m">${m}</div></div><button class="r" id="y">${y}</button><button class="g" id="c">Cancel</button></div>`;document.body.appendChild(o);o.onclick=e=>e.target==o&&o.remove();$('#c').onclick=()=>o.remove();$('#y').onclick=()=>{o.remove();cb()}}
-async function rq(p,o={}){if(!SB.url)return null;try{const r=await fetch(SB.url+'/rest/v1/'+p,{...o,headers:{apikey:SB.key,Authorization:'Bearer '+SB.key,'Content-Type':'application/json',Prefer:'return=minimal',...o.headers}});return r.ok?(o.method&&o.method!='GET'?true:await r.json()):null}catch(e){return null}}
+async function rq(p,o={}){if(!SB.url)return null;try{const r=await fetch(SB.url+'/rest/v1/'+p,{...o,headers:{apikey:SB.key,Authorization:'Bearer '+SB.key,'Content-Type':'application/json',Prefer:'return=minimal',...o.headers}});if(!r.ok){console.warn('rq failed',p,r.status);return null}return(o.method&&o.method!='GET'?true:await r.json())}catch(e){console.warn('rq error',p,e);return null}}
 // ===== libraries =====
 const sameTB=(a,b)=>a.d==b.d&&eq(a.t,b.t)&&eq(a.a,b.a);
 const sameJ=(a,b)=>a.d==b.d&&eq(a.s,b.s)&&a.i==b.i&&eq(a.st,b.st)&&eq(a.h,b.h)&&eq(a.c,b.c);
@@ -189,47 +1331,112 @@ const tbT=d=>[...new Set(L.tb.filter(x=>x.d==d).map(x=>x.t))];
 const tbA=(d,t)=>[...new Set(L.tb.filter(x=>x.d==d&&eq(x.t,t)).sort((a,b)=>b.u-a.u).map(x=>x.a))];
 const jS=d=>[...new Set(L.jha.filter(x=>x.d==d).map(x=>x.s))];
 const jR=(d,s,i)=>L.jha.filter(x=>x.d==d&&eq(x.s,s)&&x.i==i);
-function addTB(d,t,a){let x=L.tb.find(x=>sameTB(x,{d,t,a}));if(x)x.u=Date.now();else{x={d,t,a,u:Date.now()};L.tb.push(x);rq('lib',{method:'POST',body:JSON.stringify({kind:'tb',data:x})})}K('lib',L)}
-function addJ(e){if(!L.jha.some(x=>sameJ(x,e))){L.jha.push(e);rq('lib',{method:'POST',body:JSON.stringify({kind:'jha',data:e})});K('lib',L)}}
+function addTB(d,t,a){t=sanitizeText(t,MAX_LIB_TOPIC);a=sanitizeText(a,MAX_LIB_ACTION);if(!t||!a)return;let x=L.tb.find(x=>sameTB(x,{d,t,a}));if(x)x.u=Date.now();else{x={d,t,a,u:Date.now()};L.tb.push(x);rq('lib',{method:'POST',body:JSON.stringify({kind:'tb',data:x})})}K('lib',L)}
+function addJ(e){e={...e,s:sanitizeText(e.s,MAX_LIB_SCOPE),st:sanitizeText(e.st,MAX_LIB_STEP),h:sanitizeText(e.h,MAX_LIB_HAZARD),c:sanitizeText(e.c,MAX_LIB_CONTROL)};if(!e.s||!e.st||!e.h||!e.c)return;if(!L.jha.some(x=>sameJ(x,e))){L.jha.push(e);rq('lib',{method:'POST',body:JSON.stringify({kind:'jha',data:e})});K('lib',L)}}
 function learn(){if(S.type=='tb'){const d=dept(S.job);S.items.forEach(x=>x.t.trim()&&x.a.trim()&&addTB(d,x.t.trim(),x.a.trim()))}else S.days.forEach(D=>{const d=dept(D.job);if(!D.scope.trim())return;for(let i=0;i<5;i++){const R=D.rows[i];if(R.s.trim()&&R.h.trim()&&R.c.trim())addJ({d,s:D.scope.trim(),i,st:R.s.trim(),h:R.h.trim(),c:R.c.trim()})}})}
 // ===== state helpers =====
 const gp=p=>p.split('.').reduce((o,k)=>o?.[k],S);
-const sp=(p,v)=>{const a=p.split('.'),l=a.pop();a.reduce((o,k)=>o[k],S)[l]=v;S.done=false;K('draft',{S,at})};
+const sp=(p,v)=>{const a=p.split('.'),l=a.pop();a.reduce((o,k)=>o[k],S)[l]=v;S.done=false};
+
+/* ---- drafts (explicit save only) ---- */
+const listDrafts=()=>K('drafts')||[];
+const putDraft=e=>{const d=listDrafts().filter(x=>x.id!==e.id);d.unshift(e);K('drafts',d)};
+const removeDraft=id=>K('drafts',listDrafts().filter(x=>x.id!==id));
+const draftTypeName=type=>type==='ts'?'Timesheet':type==='tb'?'ToolBox Meeting':'Hazard Assessment';
+const draftLabel=(type,data)=>{
+  if(type==='ts'){
+    const bits=[data.name||'Untitled'].filter(Boolean);
+    if(data.startDate)bits.push(data.startDate+(data.endDate?' → '+data.endDate:''));
+    if(data.wageLevel)bits.push('Wage '+data.wageLevel);
+    return bits.join(' · ');
+  }
+  if(type==='tb'){
+    const bits=[];
+    if(data.job&&data.job!=='H-'&&data.job!=='T-')bits.push(data.job);
+    if(data.foreman)bits.push(data.foreman);
+    if(data.loc)bits.push(data.loc);
+    if(data.date)bits.push(data.date);
+    return bits.length?bits.join(' · '):'In progress';
+  }
+  const j=data.days&&data.days[0]||{};
+  const bits=[];
+  if(j.job&&j.job!=='H-'&&j.job!=='T-')bits.push(j.job);
+  if(j.foreman||data.foreman)bits.push(j.foreman||data.foreman);
+  if(j.loc)bits.push(j.loc);
+  if(j.scope)bits.push(j.scope.length>40?j.scope.slice(0,40)+'…':j.scope);
+  if(j.date)bits.push(j.date);
+  if(data.days&&data.days.length>1)bits.push(data.days.length+' days');
+  return bits.length?bits.join(' · '):'In progress';
+};
+const draftPreview=(x)=>{
+  const data=x.data||{};
+  const type=x.type;
+  const title=draftTypeName(type);
+  const detail=x.label||draftLabel(type,data);
+  const when=x.savedAt?new Date(x.savedAt).toLocaleString():'';
+  return{title,detail,when};
+};
+function captureActiveForm(){
+  if(window.__tsActive&&typeof state==='object'){
+    return{id:window.__tsId||(window.__tsId=uid()),type:'ts',label:draftLabel('ts',state),savedAt:Date.now(),data:JSON.parse(JSON.stringify(state)),stepIndex:typeof stepIndex==='number'?stepIndex:0};
+  }
+  if(S&&!S.done){
+    return{id:S.id,type:S.type,label:draftLabel(S.type,S),savedAt:Date.now(),data:JSON.parse(JSON.stringify(S)),at:at};
+  }
+  return null;
+}
+function clearActiveForm(){
+  window.__tsActive=false;S=null;at=null;
+  try{document.getElementById('app')&&document.getElementById('app').classList.remove('ts-mode')}catch(e){}
+}
+/** 3-button leave dialog: Save draft / Discard / Stay */
+function askLeave(onLeft){
+  const cap=captureActiveForm();
+  if(!cap){clearActiveForm();onLeft&&onLeft();return}
+  const o=document.createElement('div');o.className='ov';
+  o.innerHTML=`<div class="sh"><div class="box"><b>Leave this form?</b><div class="m">Save a draft to resume later, or discard what you entered.</div></div><button class="r" id="yd">Save draft</button><button class="g" id="nd" style="margin-top:8px;background:var(--cell2);color:var(--tx)">Discard</button><button class="g" id="cd">Stay</button></div>`;
+  document.body.appendChild(o);
+  o.onclick=e=>{if(e.target===o)o.remove()};
+  $('#cd').onclick=()=>o.remove();
+  $('#nd').onclick=()=>{o.remove();removeDraft(cap.id);clearActiveForm();onLeft&&onLeft()};
+  $('#yd').onclick=()=>{o.remove();putDraft(cap);clearActiveForm();toast('Draft saved');onLeft&&onLeft()};
+}
+/** legacy name used by signature pad mid-form autosave — keep as no-op so peeks don't spam drafts */
+const saveDraft=()=>{};
+
 const fld=(l,p,t='text')=>`<label>${l}</label><input type="${t}" data-p="${p}" value="${esc(gp(p))}" ${t=='text'?'autocomplete="off" autocapitalize="sentences"':''}>`;
 const jobOf=()=>S.type=='tb'?S.job:S.days[0].job;
 const blankDay=()=>({date:today(),job:'H-',loc:'',scope:'',rows:[0,1,2,3,4].map(()=>({s:'',h:'',c:''})),notes:'',foreman:savedName(),mech:['','','','']});
-function start(t){loadLib();S=t=='tb'?{id:uid(),type:'tb',foreman:savedName(),date:today(),job:'H-',loc:'',att:['','','','','','',''],items:[0,1,2,3,4].map(()=>({t:'',a:''})),sugg:['','',''],sig:{}}:{id:uid(),type:'jha',days:[blankDay()]};at=t=='tb'?'foreman':'dt0';draw()}
+window.start=function start(t){window.__tsActive=false;if(t=="ts"){ts();return}loadLib();S=t=='tb'?{id:uid(),type:'tb',foreman:savedName(),date:today(),job:'H-',loc:'',att:['','','','','','',''],items:[0,1,2,3,4].map(()=>({t:'',a:''})),sugg:['','',''],sig:{}}:{id:uid(),type:'jha',days:[blankDay()]};at=t=='tb'?'job':'info0';draw()}
 const resume=()=>{const d=K('draft');S=d.S;at=d.at;draw()};
+
 function hook(p){if(p=='foreman'||/^days\.\d\.foreman$/.test(p)){saveName(gp(p));return}let m;if(m=p.match(/^items\.(\d)\.t$/)){const it=S.items[m[1]],o=tbA(dept(S.job),it.t);if(o.length&&!it.a.trim()){it.a=o[0];return 1}}
 if(m=p.match(/^days\.(\d)\.rows\.(\d)\.s$/)){const D=S.days[m[1]],R=D.rows[m[2]],x=jR(dept(D.job),D.scope,+m[2]).find(x=>eq(x.st,R.s));if(x&&(!R.h.trim()||!R.c.trim())){R.h=R.h.trim()?R.h:x.h;R.c=R.c.trim()?R.c:x.c;return 1}}
 if(m=p.match(/^days\.(\d)\.rows\.(\d)\.h$/)){const d=+m[1],i=+m[2],R=S.days[d].rows[i],{cs}=opts(d,i);if(cs.length&&!R.c.trim()){R.c=cs[0];return 1}}}
 // ===== ToolBox =====
-function tbF(){while(S.att.length<7)S.att.push('');const dp=dept(S.job),sg=[{n:S.foreman,slot:0},...S.att.map((n,i)=>({n,slot:i+1})).filter(x=>x.n.trim())];return[
-{k:'foreman',r:()=>({t:'Site Foreman',b:fld('Site Foreman / Lead Mechanic','foreman')})},
-{k:'date',r:()=>({t:'Date',b:fld('Date','date','date')})},
-{k:'job',ok:()=>jobOk(S.job),r:()=>({t:'Job #',b:fld('Job number','job')+`<p class="m">Example: H-1234A or T-1234A. Library: ${dp=='H'?'Hydro':'Traction'}. Change the letter to switch.</p>`})},
-{k:'loc',r:()=>({t:'Location',b:fld('Location (address)','loc')})},
-{k:'att',r:()=>({t:'Attendees',b:S.att.map((_,i)=>`<label>Attendee ${i+1}</label><input type="text" data-p="att.${i}" value="${esc(S.att[i])}" autocomplete="off" autocapitalize="words" placeholder="Name">`).join('')+'<p class="m">Leave any box empty and that line stays blank on the form.</p>'})},
-...[0,1,2,3,4].map(i=>({k:'i'+i,skip:()=>!S.items[i].t.trim(),to:'sugg',sk:i?()=>!S.items[i].t.trim():null,r:()=>{const it=S.items[i],o=tbA(dp,it.t);return{t:`Topic ${i+1} of 5`,b:`<label>Safety topic discussed</label><div class="row"><textarea rows="2" data-p="items.${i}.t">${esc(it.t)}</textarea><button onclick="rT(${i})">${SHUF}</button></div><label>Corrective action</label><div class="row"><textarea rows="4" data-p="items.${i}.a">${esc(it.a)}</textarea>${o.length>1?`<button onclick="cA(${i})">↻</button>`:''}</div><p class="m">Leave the topic empty to skip ahead.</p>`}}})),
-{k:'sugg',r:()=>({t:'Suggestions',b:[0,1,2].map(i=>fld('Employee suggestion '+(i+1),'sugg.'+i)).join('')})},
+function tbF(){while(S.att.length<7)S.att.push('');const dp=dept(S.job),sg=[{n:S.foreman,slot:0},...S.att.map((n,i)=>({n,slot:i+1})).filter(x=>x.n.trim())];
+const topicCard=i=>{const it=S.items[i],o=tbA(dp,it.t);return`<div class="topic-card"><div class="topic-head"><span class="topic-num">${i+1}</span><span>Safety topic</span><button type="button" class="icon-btn" onclick="rT(${i})" title="Suggest">${SHUF}</button></div><textarea rows="2" data-p="items.${i}.t" placeholder="Topic discussed">${esc(it.t)}</textarea><label>Corrective action</label><div class="row"><textarea rows="3" data-p="items.${i}.a" placeholder="Action taken / required">${esc(it.a)}</textarea>${o.length>1?`<button type="button" class="icon-btn" onclick="cA(${i})">↻</button>`:''}</div></div>`};
+return[
+{k:'job',ok:()=>jobOk(S.job),r:()=>({t:'Job details',b:`<div class="fx-stack">${fld('Site Foreman / Lead Mechanic','foreman')}${fld('Date','date','date')}${fld('Job number','job')}<p class="hint">Example: H-1234A or T-1234A · Library: ${dp=='H'?'Hydro':'Traction'}</p>${fld('Location (address)','loc')}</div>`})},
+{k:'att',r:()=>({t:'Who attended',b:`<div class="fx-stack"><p class="hint" style="margin-top:0">Empty lines stay blank on the PDF.</p>${S.att.map((_,i)=>`<div class="fcard"><label>Attendee ${i+1}</label><input type="text" data-p="att.${i}" value="${esc(S.att[i])}" autocomplete="off" autocapitalize="words" placeholder="Full name"></div>`).join('')}</div>`})},
+{k:'topics',r:()=>({t:'Safety topics',b:`<div class="fx-stack"><p class="hint" style="margin-top:0">Fill what you covered. Empty topics are skipped on the form.</p>${[0,1,2,3,4].map(topicCard).join('')}</div>`})},
+{k:'sugg',r:()=>({t:'Suggestions',b:`<div class="fx-stack"><p class="hint" style="margin-top:0">Optional employee suggestions.</p>${[0,1,2].map(i=>fld('Suggestion '+(i+1),'sugg.'+i)).join('')}</div>`})},
 ...sg.map(x=>({k:'sg'+x.slot,r:()=>sigR(x)})),
 {k:'done',r:doneR}]}
 function rT(i){const dp=dept(S.job),cur=S.items[i].t,u=S.items.map((x,k)=>k==i?'':x.t),all=tbT(dp),c=all.filter(t=>!eq(t,cur)&&!u.some(x=>eq(x,t))),pool=c.length?c:all.filter(t=>!eq(t,cur));if(!pool.length)return;const t=rnd(pool);S.items[i]={t,a:tbA(dp,t)[0]||''};draw()}
 function cA(i){const it=S.items[i],o=tbA(dept(S.job),it.t);it.a=o[(o.indexOf(it.a)+1)%o.length];draw()}
-function sigR(x){return{t:'Signature: '+(x.n||'Worker'),b:`<label>Sign with your finger</label><canvas id="cv" width="400" height="170"></canvas><div style="height:10px"></div><button class="g" style="width:100%" onclick="delete S.sig[${x.slot}];draw()">Clear</button>`,bind(){const c=$('#cv'),g=c.getContext('2d');g.lineWidth=3;g.lineCap='round';const u=S.sig[x.slot];if(u){const im=new Image;im.onload=()=>g.drawImage(im,0,0);im.src=u}let dn=0;const P=e=>{const r=c.getBoundingClientRect();return[(e.clientX-r.left)*c.width/r.width,(e.clientY-r.top)*c.height/r.height]};c.onpointerdown=e=>{dn=1;c.setPointerCapture(e.pointerId);g.beginPath();g.moveTo(...P(e))};c.onpointermove=e=>{if(dn){g.lineTo(...P(e));g.stroke()}};c.onpointerup=()=>{if(dn){dn=0;S.sig[x.slot]=c.toDataURL();S.done=false;K('draft',{S,at})}}}}}
+function sigR(x){return{t:'Signature',b:`<div class="fx-stack"><div class="sig-card"><div class="sig-label">${esc(x.n||'Worker')}</div><canvas id="cv" width="400" height="170"></canvas><button type="button" class="g sig-clear" onclick="delete S.sig[${x.slot}];draw()">Clear signature</button></div><p class="hint">Sign with your finger or stylus.</p></div>`,bind(){const c=$('#cv'),g=c.getContext('2d');g.lineWidth=3;g.lineCap='round';const u=S.sig[x.slot];if(u){const im=new Image;im.onload=()=>g.drawImage(im,0,0);im.src=u}let dn=0;const P=e=>{const r=c.getBoundingClientRect();return[(e.clientX-r.left)*c.width/r.width,(e.clientY-r.top)*c.height/r.height]};c.onpointerdown=e=>{dn=1;c.setPointerCapture(e.pointerId);g.beginPath();g.moveTo(...P(e))};c.onpointermove=e=>{if(dn){g.lineTo(...P(e));g.stroke()}};c.onpointerup=()=>{if(dn){dn=0;S.sig[x.slot]=c.toDataURL();S.done=false}}}}}
 // ===== Hazard assessment =====
 const dpd=d=>dept(S.days[d].job);
-function dayF(d){const D=()=>S.days[d],p=`days.${d}.`,n=`Day ${d+1}: `;return[
-{k:'dt'+d,r:()=>({t:n+'Date',b:fld('Date',p+'date','date')})},
-{k:'jb'+d,ok:()=>jobOk(D().job),r:()=>({t:n+'Job #',b:fld('Job # (T / H / MT / MH)',p+'job')+`<p class="m">Example: H-1234A. Library: ${dpd(d)=='H'?'Hydro (H, MH)':'Traction (T, MT)'}</p>`})},
-{k:'lc'+d,r:()=>({t:n+'Location',b:fld('Job location',p+'loc')})},
-{k:'sc'+d,r:()=>({t:n+'Scope of work',b:`<label>Scope of work</label><div class="row"><input data-p="${p}scope" list="sl" value="${esc(D().scope)}"><button onclick="rS(${d})">${SHUF}</button></div><datalist id="sl">${jS(dpd(d)).map(s=>`<option value="${esc(s)}">`).join('')}</datalist>`})},
-...[0,1,2,3,4].map(i=>({k:`r${d}_${i}`,skip:()=>!D().rows[i].s.trim(),to:'nt'+d,sk:i?()=>!D().rows[i].s.trim():null,r:()=>rowR(d,i)})),
-{k:'nt'+d,r:()=>({t:n+'Notes',b:`<label>Notes</label><textarea rows="8" data-p="${p}notes">${esc(D().notes)}</textarea>`})},
-{k:'fm'+d,r:()=>({t:n+'Foreman',b:fld('Foreman',p+'foreman')})},
-{k:'mc'+d,r:()=>({t:n+'Mechanics',b:[0,1,2,3].map(i=>fld('Mechanic '+(i+1),p+'mech.'+i)).join('')})}]}
-const jF=()=>[...dayF(0),...(S.days[1]?dayF(1):[{k:'more',r:()=>({t:'Add Day 2?',b:'<p>Day 1 is complete. Add Day 2 to the same page, or finish now and add it later from History.</p>',nx:null,x:`<button class="g" onclick="at='done';draw()">Finish</button><button onclick="d2()">Add Day 2</button>`})}]),{k:'done',r:doneR}];
-function d2(){const a=S.days[0],b=blankDay();Object.assign(b,{job:a.job,loc:a.loc,foreman:a.foreman||savedName()});S.days[1]=b;at='dt1';draw()}
+function dayF(d){const D=()=>S.days[d],p=`days.${d}.`,n=`Day ${d+1}`;
+const hazCard=i=>{const R=D().rows[i],rp=`days.${d}.rows.${i}.`,{o,hz,cs}=opts(d,i),bt=(f,n)=>n>1?`<button type="button" class="icon-btn" onclick="${f}">${SHUF}</button>`:'';
+return`<div class="topic-card"><div class="topic-head"><span class="topic-num">${i+1}</span><span>Work step</span>${o.length?`<button type="button" class="icon-btn" onclick="rSt(${d},${i})">${SHUF}</button>`:''}</div><textarea rows="2" data-p="${rp}s" placeholder="Describe the step">${esc(R.s)}</textarea><label>Hazards</label><div class="row"><textarea rows="2" data-p="${rp}h" placeholder="Associated hazards">${esc(R.h)}</textarea>${bt(`rH(${d},${i})`,hz.length)}</div><label>Controls</label><div class="row"><textarea rows="2" data-p="${rp}c" placeholder="Controls in place">${esc(R.c)}</textarea>${bt(`rC(${d},${i})`,cs.length)}</div></div>`};
+return[
+{k:'info'+d,ok:()=>jobOk(D().job),r:()=>({t:n+' · Job',b:`<div class="fx-stack">${fld('Date',p+'date','date')}${fld('Job # (T / H / MT / MH)',p+'job')}<p class="hint">Library: ${dpd(d)=='H'?'Hydro (H, MH)':'Traction (T, MT)'}</p>${fld('Job location',p+'loc')}<div class="fcard"><label>Scope of work</label><div class="row"><input data-p="${p}scope" list="sl${d}" value="${esc(D().scope)}" placeholder="Describe the scope"><button type="button" class="icon-btn" onclick="rS(${d})">${SHUF}</button></div><datalist id="sl${d}">${jS(dpd(d)).map(s=>`<option value="${esc(s)}">`).join('')}</datalist></div></div>`})},
+{k:'haz'+d,r:()=>({t:n+' · Hazards',b:`<div class="fx-stack"><p class="hint" style="margin-top:0">Scope: <b style="color:var(--tx);font-weight:600;text-transform:none;letter-spacing:0">${esc(D().scope)||'Not set'}</b></p>${[0,1,2,3,4].map(hazCard).join('')}</div>`})},
+{k:'crew'+d,r:()=>({t:n+' · Crew',b:`<div class="fx-stack"><div class="fcard"><label>Notes</label><textarea rows="5" data-p="${p}notes" placeholder="Additional notes">${esc(D().notes)}</textarea></div>${fld('Foreman',p+'foreman')}${[0,1,2,3].map(i=>fld('Mechanic '+(i+1),p+'mech.'+i)).join('')}</div>`})}]}
+const jF=()=>[...dayF(0),...(S.days[1]?dayF(1):[{k:'more',r:()=>({t:'Add Day 2?',b:`<div class="fx-stack"><div class="choice-card"><p>Day 1 is ready. Add Day 2 on the same sheet, or finish and add it later from History.</p></div></div>`,nx:null,x:`<button class="g" onclick="at='done';draw()">Finish Day 1</button><button onclick="d2()">Add Day 2</button>`})}]),{k:'done',r:doneR}];
+function d2(){const a=S.days[0],b=blankDay();Object.assign(b,{job:a.job,loc:a.loc,foreman:a.foreman||savedName()});S.days[1]=b;at='info1';draw()}
 const rS=d=>{const all=jS(dpd(d)),cur=S.days[d].scope,c=all.filter(s=>!eq(s,cur)),pick=rnd(c.length?c:all);if(pick){S.days[d].scope=pick;draw()}};
 function opts(d,i){const D=S.days[d],R=D.rows[i],o=jR(dpd(d),D.scope,i),m=o.filter(x=>eq(x.st,R.s));return{o,hz:[...new Set(m.map(x=>x.h))],cs:[...new Set(m.filter(x=>!R.h||eq(x.h,R.h)).map(x=>x.c))]}}
 function rowR(d,i){const D=S.days[d],R=D.rows[i],p=`days.${d}.rows.${i}.`,{o,hz,cs}=opts(d,i),bt=(f,n)=>n>1?`<button onclick="${f}">${SHUF}</button>`:'';
@@ -238,7 +1445,7 @@ function rSt(d,i){const R=S.days[d].rows[i],{o}=opts(d,i);if(!o.length)return;co
 function rH(d,i){const R=S.days[d].rows[i],{hz}=opts(d,i),c=hz.filter(x=>!eq(x,R.h));if(!c.length)return;R.h=rnd(c);R.c=opts(d,i).cs[0]||R.c;draw()}
 function rC(d,i){const R=S.days[d].rows[i],{cs}=opts(d,i),c=cs.filter(x=>!eq(x,R.c));if(!c.length)return;R.c=rnd(c);draw()}
 // ===== review / save / history =====
-const doneR=()=>({t:'Review & Save',b:`<div class="grp"><div class="li" style="pointer-events:none"><div class="ic" style="background:${S.type=='tb'?'linear-gradient(135deg,#1f7bff,#0a2f8c)':'linear-gradient(135deg,#ff9a1f,#a14a00)'}">${S.type=='tb'?ICO.tb:ICO.jha}</div><span><b>${esc(jobOf())||'No job #'}</b><small>${S.type=='tb'?'ToolBox Meeting':'Daily Hazard Assessment'}${S.type=='jha'?' · '+S.days.length+(S.days.length>1?' days':' day'):''}</small></span></div></div>${S.type=='jha'&&S.days.length<2?'<p class="m">Only Day 1 is filled. Save now and add Day 2 later from History; both days print on one page.</p>':''}<p class="m">Use the Back button at the top to fix anything.</p>`,nx:null,x:`<button class="g" onclick="home()">Home</button><button onclick="save()">Save PDF</button>`});
+const doneR=()=>({t:'Review & Save',b:`<div class="fx-stack"><div class="review-hero"><div class="review-icon" style="background:${S.type=='tb'?'linear-gradient(135deg,#1f7bff,#0a2f8c)':'linear-gradient(135deg,#ff9a1f,#a14a00)'}">${S.type=='tb'?ICO.tb:ICO.jha}</div><div><b>${esc(jobOf())||'No job #'}</b><small>${S.type=='tb'?'ToolBox Meeting':'Daily Hazard Assessment'}${S.type=='jha'?' · '+S.days.length+(S.days.length>1?' days':' day'):''}</small></div></div>${S.type=='jha'&&S.days.length<2?'<p class="hint">Only Day 1 is filled. You can add Day 2 later from History — both print on one page.</p>':''}<p class="hint">Use Back to edit anything. Save generates the PDF on this device.</p></div>`,nx:null,x:`<button class="g" onclick="home()">Home</button><button class="primary" onclick="save()">Save PDF</button>`});
 async function img(u){const b=await(await fetch(u)).blob();return new Promise(r=>{const f=new FileReader;f.onload=()=>r(f.result);f.readAsDataURL(b)})}
 async function pdf(){const{jsPDF}=window.jspdf,d=new jsPDF({unit:'pt',format:'letter'}),kx=612/1086,ky=792/1448;
 const T=(t,x,y,w,z=10)=>{t=(t||'')+'';if(!t.trim())return;d.setFontSize(z);while(z>4.5&&d.getTextWidth(t)>w*kx)d.setFontSize(z-=.5);d.text(t,x*kx,(y-5)*ky)};
@@ -252,34 +1459,1425 @@ D.rows.forEach((R,i)=>{T(R.s,80+o,[427,457,487,517,547][i],440,9);T(R.h,80+o,[61
 d.setFontSize(9);d.splitTextToSize(D.notes||'',445*kx).slice(0,5).forEach((l,i)=>d.text(l,(58+o)*kx,([978,1008,1038,1068,1098][i]-5)*ky));
 T(D.foreman,145+o,1172,370);D.mech.forEach((m,i)=>T(m,150+o,[1203,1233,1262,1293][i],365))});
 return{d,name:`${jobOf()}_${S.type=='tb'?'ToolBox_'+S.date:'JHA_'+S.days[0].date}.pdf`.replace(/[^\w.-]/g,'')}}
-async function save(){try{const{d,name}=await pdf();learn();saveName(S.type=='tb'?S.foreman:S.days[0]?.foreman);const f=K('forms')||[],rec=JSON.parse(JSON.stringify(S)),k=f.findIndex(x=>x.id==S.id);rec.done=true;k<0?f.unshift(rec):f[k]=rec;K('forms',f);rq('forms',{method:'POST',headers:{Prefer:'resolution=merge-duplicates,return=minimal'},body:JSON.stringify({id:S.id,owner:dev,data:rec})});S.done=true;K('draft',null);await saveFile(name,d.output('blob'));toast('Saved ✓')}catch(e){toast('Could not save. Try again.')}}
+async function save(){try{const{d,name}=await pdf();learn();saveName(S.type=='tb'?S.foreman:S.days[0]?.foreman);const f=K('forms')||[],rec=JSON.parse(JSON.stringify(S)),k=f.findIndex(x=>x.id==S.id);rec.done=true;k<0?f.unshift(rec):f[k]=rec;K('forms',f);(()=>{const slim=JSON.parse(JSON.stringify(rec));if(slim.receipts)slim.receipts=slim.receipts.map(r=>({name:r.name,w:r.w,h:r.h,bytes:r.bytes}));rq('forms',{method:'POST',headers:{Prefer:'resolution=merge-duplicates,return=minimal'},body:JSON.stringify({id:S.id,owner:dev,data:slim})})})();S.done=true;removeDraft(S.id);K('draft',null);await saveFile(name,d.output('blob'));toast('Saved ✓')}catch(e){toast('Could not save. Try again.')}}
 async function saveFile(n,b){try{const dl=window.claude&&await claude.use('downloads');if(dl){await dl.save({filename:n,data:b});return}}catch(e){if(e&&e.code=='declined')return}const u=URL.createObjectURL(b),a=document.createElement('a');a.href=u;a.download=n;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),4000)}
-async function hist(){let f=K('forms')||[];const r=await rq('forms?owner=eq.'+dev+'&select=id,data');if(r){r.forEach(x=>f.some(y=>y.id==x.id)||f.push(x.data));K('forms',f)}
+window.hist=async function hist(){let f=K('forms')||[];const r=await rq('forms?owner=eq.'+dev+'&select=id,data');if(r){r.forEach(x=>f.some(y=>y.id==x.id)||f.push(x.data));K('forms',f)}
 const lb=x=>x.type=='ts'?`<span class="hi g">${ICO.ts}</span><b>Timesheet</b><br><span class="m" style="margin:0">${esc(x.range)} · ${((+x.rt||0)+(+x.ot||0)).toFixed(1)} h</span>`:x.type=='tb'?`<span class="hi b">${ICO.tb}</span><b>${esc(x.job)}</b><br><span class="m" style="margin:0">ToolBox · ${x.date}</span>`:`<span class="hi o">${ICO.jha}</span><b>${esc(x.days[0].job)}</b><br><span class="m" style="margin:0">Hazard assessment · ${x.days[0].date}${x.days[1]?' + Day 2':''}</span>`;
 $('#app').innerHTML=`${hdr('<a onclick="home()">‹ Home</a>','History','<a></a>')}<main>${f.map(x=>`<div class="h">${lb(x)}<div class="row" style="margin-top:10px"><button onclick="op('${x.id}')">${x.type=='ts'?'Open':'Open / re-save'}</button>${x.type=='jha'&&!x.days[1]?`<button class="w" onclick="op('${x.id}',1)">Add Day 2</button>`:''}<button class="d" onclick="del('${x.id}')">Delete</button></div></div>`).join('')||'<div class="empty">Nothing saved yet.</div>'}</main>`}
-function op(id,two){const x=(K('forms')||[]).find(x=>x.id==id);if(!x)return;if(x.type=='ts')return ts(x);S=JSON.parse(JSON.stringify(x));S.done=false;at='done';if(two)d2();else draw()}
-function del(id){ask('Delete this form?','This can’t be undone.','Delete',()=>{K('forms',(K('forms')||[]).filter(x=>x.id!=id));rq('forms?id=eq.'+id,{method:'DELETE'});hist();toast('Deleted')})}
+window.op=function op(id,two){const x=(K('forms')||[]).find(x=>x.id==id);if(!x)return;if(x.type=='ts')return ts(x);S=JSON.parse(JSON.stringify(x));S.done=false;at='done';if(two)d2();else draw()}
+window.del=function del(id){ask('Delete this form?','This can’t be undone.','Delete',()=>{K('forms',(K('forms')||[]).filter(x=>x.id!=id));rq('forms?id=eq.'+id+'&owner=eq.'+dev,{method:'DELETE'});hist();toast('Deleted')})}
 // ===== wizard core =====
 const flow=()=>S.type=='tb'?tbF():jF();
 const ICO={'tb': '<svg viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="12" rx="2.6"/><path d="M9 8V6.2A1.7 1.7 0 0110.7 4.5h2.6A1.7 1.7 0 0115 6.2V8M3 13.2h18M10.6 12.2v2.6h2.8v-2.6"/></svg>', 'jha': '<svg viewBox="0 0 24 24"><path d="M12 3.8l9.2 16H2.8z"/><path d="M12 9.8v4.6M12 17.4v.1"/></svg>', 'ts': '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.2 2"/></svg>', 'hist': '<svg viewBox="0 0 24 24"><path d="M3 7.5a2 2 0 012-2h4.2l2 2.2H19a2 2 0 012 2V17a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>', 'play': '<svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="4.5"/><path d="M10 8.6l5 3.4-5 3.4z"/></svg>'};
 const SHUF='<svg class="sv" viewBox="0 0 24 24"><path d="M16 3.5h4.5V8M3.5 20.5L20.5 3.5M20.5 16v4.5H16M14.5 14.5l6 6M3.5 3.5L9 9"/></svg>';
 const hdr=(l,t,r,p)=>`<div class="top"><div class="nav">${l}<span class="lg"><img src="${LOGO}" alt="Richmond Elevator"></span>${r}</div><h1 class="pt">${t}</h1>${p==null?'':`<div class="prog"><i style="width:${p}%"></i></div>`}</div>`;
-function draw(){const f=flow();if(!f.some(x=>x.k==at))at=f[0].k;const i=f.findIndex(x=>x.k==at),o=f[i].r();if(!S.done)K('draft',{S,at});
-$('#app').innerHTML=`${hdr(`<a id="bk">‹ ${i?'Back':'Home'}</a>`,o.t,`<a onclick="home()">${i?'Home':''}</a>`,Math.round((i+1)/f.length*100))}<main>${o.b}</main><div class="bar">${o.x||''}${o.nx===null?'':'<button id="nx">Next</button>'}</div>`;
+window.draw=function draw(){const f=flow();if(!f.some(x=>x.k==at))at=f[0].k;const i=f.findIndex(x=>x.k==at),o=f[i].r();
+const pct=Math.round((i+1)/f.length*100);
+const meta=`Step ${i+1} of ${f.length}`;
+const kind=S.type==='tb'?'ToolBox Meeting':'Hazard Assessment';
+$('#app').innerHTML=`${hdr(`<a id="bk" class="fx-back">‹ ${i?'Back':'Home'}</a>`,o.t,i?`<a class="fx-home" onclick="home()">Home</a>`:'<span></span>',pct,meta)}<main class="fx-main"><div class="fx-kicker">${kind}</div>${o.b}</main><div class="bar fx-bar">${o.x||''}${o.nx===null?'':'<button id="nx" class="primary">Continue</button>'}</div>`;
 $('#bk').onclick=()=>{if(!i)return home();let j=i-1;while(j>0&&f[j].sk&&f[j].sk())j--;at=f[j].k;draw()};
-$('#nx')&&($('#nx').onclick=()=>{const s=f[i];if(s.ok&&!s.ok()){const e=$('main input');e.classList.add('bad');e.focus();return}at=s.skip&&s.skip()?s.to:f[i+1].k;draw()});
+$('#nx')&&($('#nx').onclick=()=>{const s=f[i];if(s.ok&&!s.ok()){const e=$('main input,main textarea');if(e){e.classList.add('bad');e.focus()}return}at=s.skip&&s.skip()?s.to:f[i+1].k;draw()});
 document.querySelectorAll('[data-p]').forEach(e=>{const p=e.dataset.p,jb=/(^|\.)job$/.test(p);e.oninput=()=>{if(jb)e.value=e.value.toUpperCase();e.classList.remove('bad');sp(p,e.value)};e.onchange=()=>{hook(p)&&draw()}});o.bind&&o.bind()}
-function home(){if(S&&!S.done)toast('Draft saved. Resume anytime.');S=null;let p=K('profile')||{};if(!p.name){const x=(K('forms')||[]).find(x=>x.name||x.foreman||x.days?.[0]?.foreman),nm=x&&(x.name||x.foreman||x.days?.[0]?.foreman);if(nm){saveName(nm);p={name:nm.trim()}}}
-const li=(f,c,i,b,s)=>`<a class="li" onclick="${f}"><div class="ic" style="background:${c}">${i}</div><span><b>${b}</b><small>${s}</small></span></a>`,dr=K('draft'),fn=((p.name||'').trim().split(/\s+/)[0]||'');
-$('#app').innerHTML=`<main class="home" style="padding:0"><div class="hero"><div class="hero-img"></div><div class="hero-top"><span class="lgb"><img src="${LOGO}" alt="Richmond Elevator"></span><i class="vr"></i><span class="hb">Richmond Elevator<br>Safety &amp; Timesheet</span></div><div class="hero-txt"><small>Field Operations Portal</small><h2>Welcome</h2><p>${fn?esc(fn)+', your':'Your'} safety, reporting and time tracking in one place.</p><i class="uline"></i></div></div><div class="cards"><a class="card" style="--i:0;--rgb:47,140,255;--c1:#1f7bff;--c2:#0a2f8c" onclick="start('tb')"><span class="cp"><svg viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="12" rx="2.6"/><path d="M9 8V6.2A1.7 1.7 0 0110.7 4.5h2.6A1.7 1.7 0 0115 6.2V8M3 13.2h18M10.6 12.2v2.6h2.8v-2.6"/></svg></span><span class="ct"><b>ToolBox Meeting</b><small>Weekly safety talk report</small></span><span class="cimg" style="background-image:url(img/hardhat.jpg)"></span><span class="cc"><svg viewBox="0 0 24 24"><path d="M9.5 6l6 6-6 6"/></svg></span></a><a class="card" style="--i:1;--rgb:255,150,30;--c1:#ff9a1f;--c2:#a14a00" onclick="start('jha')"><span class="cp"><svg viewBox="0 0 24 24"><path d="M12 3.8l9.2 16H2.8z"/><path d="M12 9.8v4.6M12 17.4v.1"/></svg></span><span class="ct"><b>Daily Hazard Assessment</b><small>Job hazard analysis, 2 days per page</small></span><span class="cimg" style="background-image:url(img/clipboard.jpg)"></span><span class="cc"><svg viewBox="0 0 24 24"><path d="M9.5 6l6 6-6 6"/></svg></span></a><a class="card" style="--i:2;--rgb:30,217,140;--c1:#17c77f;--c2:#06603f" onclick="ts()"><span class="cp"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.2 2"/></svg></span><span class="ct"><b>Timesheet</b><small>Two-week pay period, PDF with receipts</small></span><span class="cimg" style="background-image:url(img/tablet.jpg)"></span><span class="cc"><svg viewBox="0 0 24 24"><path d="M9.5 6l6 6-6 6"/></svg></span></a></div><div class="mini${dr?'':' one'}"><a class="mc" onclick="hist()"><span class="mi"><svg viewBox="0 0 24 24"><path d="M3 7.5a2 2 0 012-2h4.2l2 2.2H19a2 2 0 012 2V17a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg></span><span class="mt"><b>History</b><small>Everything you saved on this phone</small></span><span class="mch">›</span></a>${dr?`<a class="mc" onclick="resume()"><span class="mi"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="4.5"/><path d="M10 8.6l5 3.4-5 3.4z"/></svg></span><span class="mt"><b>Resume Unfinished Form</b><small>Pick up where you left off</small></span><span class="mch">›</span></a>`:''}</div><div class="foot">Richmond Elevator Maintenance</div></main>`}
-// ===== timesheet (original app, embedded) =====
-function ts(rec){const p=K('profile')||{};$('#app').innerHTML=hdr('<a onclick="home()">‹ Home</a>','Timesheet','<a></a>')+'<iframe id="tsf" style="flex:1;min-height:0;width:100%;border:0;background:var(--bg)"></iframe><div style="flex:none;height:var(--bot);background:var(--bg)"></div>';const f=$('#tsf');f.onload=()=>f.contentWindow.postMessage({rem:'init',name:p.name||'',load:rec||null,id:rec?rec.id:uid()},'*');tsSet(f)}
-function tsSet(f){f.src='timesheet.html?v=6'}
-addEventListener('message',e=>{const m=e.data;if(!m||!m.rem||e.source!==$('#tsf')?.contentWindow)return;
-if(m.rem=='ts-file')saveFile(m.name,m.blob);
-if(m.rem=='ts-name'&&m.name)saveName(m.name);
-if(m.rem=='ts-saved'){const f=K('forms')||[],k=f.findIndex(x=>x.id==m.rec.id);k<0?f.unshift(m.rec):f[k]=m.rec;K('forms',f);rq('forms',{method:'POST',headers:{Prefer:'resolution=merge-duplicates,return=minimal'},body:JSON.stringify({id:m.rec.id,owner:dev,data:m.rec})});if(m.rec.name)saveName(m.rec.name)}});
-// ===== boot =====
+const getOpenForms=()=>listDrafts();
+
+window.openFormsList=function openFormsList(){
+  const drafts=listDrafts();
+  const html=drafts.map(x=>{
+    const isTS=x.type==='ts',isTB=x.type==='tb';
+    const prev=draftPreview(x);
+    // Recompute detail from stored data so older drafts still get a rich preview
+    const detail=draftLabel(x.type,x.data||{})||prev.detail||'In progress';
+    const icon=isTS?ICO.ts:isTB?ICO.tb:ICO.jha;
+    const bg=isTS?'linear-gradient(135deg,#ff9a1f,#a14a00)':isTB?'linear-gradient(135deg,#1f7bff,#0a2f8c)':'linear-gradient(135deg,#17c77f,#06603f)';
+    const badge=isTS?'Timesheet':isTB?'ToolBox':'JHA';
+    return `<div class="h draft-card"><div class="li" onclick="resumeDraft('${x.id}')"><div class="ic" style="background:${bg}">${icon}</div><span><b>${esc(prev.title)}</b><small class="draft-detail">${esc(detail)}</small><small class="draft-when">${esc(prev.when)}</small></span></div><div class="row" style="margin-top:8px"><button type="button" onclick="resumeDraft('${x.id}')">Resume</button><button type="button" class="g" onclick="deleteDraft('${x.id}')">Delete</button></div></div>`;
+  }).join('')||'<div class="empty">No drafts saved.</div>';
+  const back=typeof hdr==='function'
+    ? hdr('<a class="fx-back" onclick="home(true)">‹ Home</a>','Drafts','<span></span>')
+    : `<div class="nav"><a onclick="home(true)">‹ Home</a><b>Drafts</b><span></span></div>`;
+  $('#app').innerHTML=`${back}<main class="fx-main">${html}</main>`;
+};
+window.resumeDraft=function resumeDraft(id){
+  const x=listDrafts().find(d=>d.id===id);
+  if(!x)return toast('Draft not found');
+  if(x.type==='ts'){
+    window.__tsId=x.id;
+    ts(Object.assign({},x.data,{_resumeStep:x.stepIndex}));
+    return;
+  }
+  // Map legacy step keys → redesigned flow
+  let step=x.at;
+  const legacy={
+    foreman:'job',date:'job',job:'job',loc:'job',att:'att',
+    i0:'topics',i1:'topics',i2:'topics',i3:'topics',i4:'topics',sugg:'sugg',
+    dt0:'info0',jb0:'info0',lc0:'info0',sc0:'info0',
+    r0_0:'haz0',r0_1:'haz0',r0_2:'haz0',r0_3:'haz0',r0_4:'haz0',
+    nt0:'crew0',fm0:'crew0',mc0:'crew0',
+    dt1:'info1',jb1:'info1',lc1:'info1',sc1:'info1',
+    r1_0:'haz1',r1_1:'haz1',r1_2:'haz1',r1_3:'haz1',r1_4:'haz1',
+    nt1:'crew1',fm1:'crew1',mc1:'crew1',more:'more'
+  };
+  if(step&&legacy[step])step=legacy[step];
+  if(!step)step=x.type==='tb'?'job':'info0';
+  S=JSON.parse(JSON.stringify(x.data));
+  S.done=false;
+  S.id=x.id;
+  if(!S.sig)S.sig={};
+  if(S.type==='jha'&&(!S.days||!S.days.length))S.days=[blankDay()];
+  at=step;
+  try{draw()}catch(e){console.error(e);at=S.type==='tb'?'job':'info0';draw()}
+};
+window.deleteDraft=function deleteDraft(id){
+  ask('Delete draft?','This cannot be undone.','Delete',()=>{removeDraft(id);openFormsList();toast('Draft deleted')});
+};
+window.openFormPrompt=function openFormPrompt(id){resumeDraft(id)};
+
+window.home=function home(force){if(!force&&(S&&!S.done||window.__tsActive)){askLeave(()=>home(true));return}clearActiveForm();let p=K('profile')||{};if(!p.name){const x=(K('forms')||[]).find(x=>x.name||x.foreman||x.days?.[0]?.foreman),nm=x&&(x.name||x.foreman||x.days?.[0]?.foreman);if(nm){saveName(nm);p={name:nm.trim()}}}
+const li=(f,c,i,b,s)=>`<a class="li" onclick="${f}"><div class="ic" style="background:${c}">${i}</div><span><b>${b}</b><small>${s}</small></span></a>`,dr=K('draft'),fn=((p.name||'').trim().split(/\s+/)[0]||''),openForms=getOpenForms();
+$('#app').innerHTML=`<main class="home" style="padding:0"><div class="hero"><div class="hero-img"></div><div class="hero-top"><span class="lgb"><img src="${LOGO}" alt="Richmond Elevator"></span><i class="vr"></i><span class="hb">Richmond Elevator<br>Safety &amp; Timesheet</span></div><div class="hero-txt"><small>Field Operations Portal</small><h2>Welcome</h2><p>${fn?esc(fn)+', your':'Your'} safety, reporting and time tracking in one place.</p><i class="uline"></i></div></div><div class="cards"><a class="card" style="--i:0;--rgb:47,140,255;--c1:#1f7bff;--c2:#0a2f8c" onclick="start('tb')"><span class="cp"><svg viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="12" rx="2.6"/><path d="M9 8V6.2A1.7 1.7 0 0110.7 4.5h2.6A1.7 1.7 0 0115 6.2V8M3 13.2h18M10.6 12.2v2.6h2.8v-2.6"/></svg></span><span class="ct"><b>ToolBox Meeting</b><small>Weekly safety talk report</small></span><span class="cimg" style="background-image:url(img/hardhat.jpg)"></span><span class="cc"><svg viewBox="0 0 24 24"><path d="M9.5 6l6 6-6 6"/></svg></span></a><a class="card" style="--i:1;--rgb:255,150,30;--c1:#ff9a1f;--c2:#a14a00" onclick="start('jha')"><span class="cp"><svg viewBox="0 0 24 24"><path d="M12 3.8l9.2 16H2.8z"/><path d="M12 9.8v4.6M12 17.4v.1"/></svg></span><span class="ct"><b>Daily Hazard Assessment</b><small>Job hazard analysis, 2 days per page</small></span><span class="cimg" style="background-image:url(img/clipboard.jpg)"></span><span class="cc"><svg viewBox="0 0 24 24"><path d="M9.5 6l6 6-6 6"/></svg></span></a><a class="card" style="--i:2;--rgb:30,217,140;--c1:#17c77f;--c2:#06603f" onclick="start('ts')"><span class="cp"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.2 2"/></svg></span><span class="ct"><b>Timesheet</b><small>Two-week pay period, PDF with receipts</small></span><span class="cimg" style="background-image:url(img/tablet.jpg)"></span><span class="cc"><svg viewBox="0 0 24 24"><path d="M9.5 6l6 6-6 6"/></svg></span></a></div><div class="mini${openForms.length?'':' one'}"><a class="mc" onclick="hist()"><span class="mi"><svg viewBox="0 0 24 24"><path d="M3 7.5a2 2 0 012-2h4.2l2 2.2H19a2 2 0 012 2V17a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg></span><span class="mt"><b>History</b><small>Everything you saved on this phone</small></span><span class="mch">›</span></a>${openForms.length?`<a class="mc" onclick="openFormsList()"><span class="mi"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="4.5"/><path d="M10 8.6l5 3.4-5 3.4z"/></svg></span><span class="mt"><b>Resume drafts</b><small>${openForms.length} draft${openForms.length>1?'s':''}</small></span><span class="mch">›</span></a>`:''}</div><div class="foot">Richmond Elevator Maintenance</div></main>`}
+// ===== timesheet (inline, no iframe) =====
+/* ts redefined below */window.__tsId=crypto.randomUUID();// Init directly — no cross-window postMessage needed (was previously via iframe message)// Inline mode: initialize state from localStorage profile cookie if available; rec may carry {name, startDate} if called programmaticallyif(m&&m.name&&!state.name){state.name=m.name;}if(state.startDate){buildDays();}render();}// No cross-window postMessage in inline mode — state is managed locally via K() / localStorage
+
+
+/* ---- timesheet (integrated from timesheetREM) ---- */
+/* ---------------- State ---------------- */
+const state = {
+  name:'',
+  startDate:'',
+  endDate:'',             // last day to log; only used when periodMode==='custom'
+  periodMode:'twoWeeks',  // 'twoWeeks' = start + 14 days, 'custom' = start..endDate
+  workedWeekends:false,
+  wageLevel:'M',
+  days:[],
+  receipts:[]   // {name, dataUrl, w, h, bytes} — photos of expense receipts
+};
+const WAGE_LEVELS = [
+  {v:'H',label:'H — Helper'},
+  {v:'M',label:'M — Mechanic'},
+  {v:'MIC',label:'MIC — Mechanic in Charge'},
+  {v:'ADJ',label:'ADJ — Adjuster'},
+  {v:'TM',label:'TM — Temporary Mechanic'},
+  {v:'TA',label:'TA — Temporary Adjuster'}
+];
+let steps = ['name','payperiod','wage'];
+let stepIndex = 0;
+let editReturn = false; // true when we jumped into a day from the summary
+
+const DOW_NAMES = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+
+function fmtDate(d){
+  return d.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'});
+}
+function fmtShort(d){
+  return d.toLocaleDateString('en-US',{month:'short',day:'numeric'});
+}
+
+function toISODate(d){
+  const m = String(d.getMonth()+1).padStart(2,'0');
+  const day = String(d.getDate()).padStart(2,'0');
+  return `${d.getFullYear()}-${m}-${day}`;
+}
+function periodStart(){
+  return state.startDate ? new Date(state.startDate+'T00:00:00') : null;
+}
+/* Last day of the pay period. The 2-week window always frames the timesheet;
+   in custom mode it stops at the chosen finish date and the rest stays blank. */
+function periodEnd(){
+  const start = periodStart();
+  if(!start) return null;
+  const full = new Date(start); full.setDate(start.getDate()+13);
+  if(state.periodMode==='custom' && state.endDate){
+    const e = new Date(state.endDate+'T00:00:00');
+    if(isNaN(e.getTime())) return full;
+    if(e.getTime() < start.getTime()) return start;
+    return e.getTime() > full.getTime() ? full : e;
+  }
+  return full;
+}
+function currentPeriodMode(){
+  const btns = document.querySelectorAll('#periodSeg .seg-btn');
+  for(let i=0;i<btns.length;i++){
+    if(btns[i].classList.contains('active')) return btns[i].getAttribute('data-mode');
+  }
+  return state.periodMode;
+}
+/* Pay-period dates as printed on the PDF and shown on the review screen */
+function periodRangeText(){
+  if(state.days.length){
+    return `${fmtShort(state.days[0].date)} - ${fmtShort(state.days[state.days.length-1].date)}`;
+  }
+  const s = periodStart(), e = periodEnd();
+  return (s && e) ? `${fmtShort(s)} - ${fmtShort(e)}` : '';
+}
+
+function buildDays(){
+  const start = periodStart();
+  const end = periodEnd();
+  if(!start || !end) { state.days = []; return; }
+  // keep anything already entered for matching dates (so going Back doesn't wipe data)
+  const prev = {};
+  (state.days||[]).forEach(d=>{ prev[d.date.toDateString()] = d; });
+  const days = [];
+  for(let i=0;i<14;i++){
+    const d = new Date(start);
+    d.setDate(start.getDate()+i);
+    // custom range: stop at the finish date — the remaining days of the
+    // two weeks are simply never offered, so they print blank
+    if(d.getTime() > end.getTime()) break;
+    const dow = d.getDay();
+    const isWeekend = dow===0||dow===6;
+    if(isWeekend && !state.workedWeekends) continue;
+    const old = prev[d.toDateString()] || {};
+    days.push({
+      date:d,
+      dayName:DOW_NAMES[dow],
+      week: i<7?1:2,
+      jobAddress:old.jobAddress||'', desc:old.desc||'', rt:old.rt||'', ot:old.ot||'',
+      travel:old.travel||'', mileage:old.mileage||'', expenses:old.expenses||'', notes:old.notes||''
+    });
+  }
+  state.days = days;
+}
+
+/* Dry run of buildDays() so we can warn about an empty range before moving on */
+function countLoggableDays(startDate, endDate, workedWeekends){
+  if(!startDate) return 0;
+  const start = new Date(startDate+'T00:00:00');
+  let end = new Date(start); end.setDate(start.getDate()+13);
+  if(endDate){
+    const e = new Date(endDate+'T00:00:00');
+    if(!isNaN(e.getTime())){
+      if(e.getTime() < start.getTime()) end = start;
+      else if(e.getTime() < end.getTime()) end = e;
+    }
+  }
+  let n = 0;
+  for(let i=0;i<14;i++){
+    const d = new Date(start);
+    d.setDate(start.getDate()+i);
+    if(d.getTime() > end.getTime()) break;
+    const dow = d.getDay();
+    if((dow===0||dow===6) && !workedWeekends) continue;
+    n++;
+  }
+  return n;
+}
+
+function rebuildSteps(){
+  steps = ['name','payperiod','wage'];
+  state.days.forEach((d,i)=>steps.push('day:'+i));
+  steps.push('summary');
+}
+
+/* ---------------- Nav ---------------- */
+function goNext(){
+  const cur = steps[stepIndex];
+  if(!validateStep(cur)) return;
+  saveStep(cur);
+
+  if(cur.startsWith('day:') && editReturn){
+    editReturn = false;
+    stepIndex = steps.indexOf('summary');
+    render();
+    return;
+  }
+  if(cur==='payperiod'){
+    buildDays();
+    rebuildSteps();
+    stepIndex = steps.indexOf('wage');
+    render();
+    return;
+  }
+  if(stepIndex < steps.length-1){
+    stepIndex++;
+    render();
+  }
+}
+function goBack(){
+  if(editReturn){
+    editReturn = false;
+    stepIndex = steps.indexOf('summary');
+    render();
+    return;
+  }
+  if(stepIndex>0){
+    stepIndex--;
+    render();
+  }
+}
+function editDay(i){
+  editReturn = true;
+  stepIndex = steps.indexOf('day:'+i);
+  render();
+}
+
+/* ---------------- Validation / Save ---------------- */
+function validateStep(step){
+  if(step==='name'){
+    const v = document.getElementById('inpName').value.trim();
+    if(!v){ flash('inpName'); return false; }
+  }
+  if(step==='payperiod'){
+    syncPayPeriodInputs();
+    setPayError('');
+    if(!state.startDate){
+      flash('inpStart');
+      setPayError('Pick the first day of your pay period.');
+      return false;
+    }
+    if(state.periodMode==='custom'){
+      if(!state.endDate){
+        flash('inpEnd');
+        setPayError('Pick the last day you worked.');
+        return false;
+      }
+      const s = periodStart();
+      const e = new Date(state.endDate+'T00:00:00');
+      const full = new Date(s); full.setDate(s.getDate()+13);
+      if(e.getTime() < s.getTime()){
+        flash('inpEnd');
+        setPayError('The finish date can\u2019t be before the start date.');
+        return false;
+      }
+      if(e.getTime() > full.getTime()){
+        flash('inpEnd');
+        setPayError('A pay period is two weeks \u2014 pick a finish date within 14 days of the start.');
+        return false;
+      }
+    }
+    if(countLoggableDays(state.startDate, state.periodMode==='custom'?state.endDate:'', state.workedWeekends) === 0){
+      setPayError('No days to log in that range. Turn on \u201cWorked the weekend?\u201d or pick a wider range.');
+      return false;
+    }
+  }
+  return true;
+}
+function setPayError(msg){
+  const el = document.getElementById('payError');
+  if(!el) return;
+  el.textContent = msg||'';
+  el.style.display = msg ? 'block' : 'none';
+}
+/* Pull the pay-period controls into state (called on every change + on Next) */
+function syncPayPeriodInputs(){
+  const s = document.getElementById('inpStart');
+  const e = document.getElementById('inpEnd');
+  const w = document.getElementById('inpWeekend');
+  if(s) state.startDate = s.value;
+  state.periodMode = currentPeriodMode();
+  if(e) state.endDate = e.value;
+  if(w) state.workedWeekends = w.checked;
+}
+function flash(id){
+  const el = document.getElementById(id);
+  el.style.borderColor = 'var(--danger)';
+  setTimeout(()=>el.style.borderColor='var(--line)',900);
+}
+function saveStep(step){
+  if(step==='name') state.name = document.getElementById('inpName').value.trim();
+  if(step==='payperiod'){
+    syncPayPeriodInputs();
+  }
+  if(step==='wage') state.wageLevel = document.getElementById('inpWage').value;
+  if(step.startsWith('day:')){
+    const i = parseInt(step.split(':')[1]);
+    const d = state.days[i];
+    d.jobAddress = cleanJob(document.getElementById('inpJob').value);
+    d.desc = document.getElementById('inpDesc').value.replace(/\s+$/,'');
+    d.rt = document.getElementById('inpRT').value.trim();
+    d.ot = document.getElementById('inpOT').value.trim();
+    d.travel = document.getElementById('inpTravel').value.trim();
+    d.mileage = document.getElementById('inpMileage').value.trim();
+    d.expenses = document.getElementById('inpExpenses').value.trim();
+    d.notes = document.getElementById('inpNotes').value.trim();
+  }
+}
+
+/* ---------------- Rendering ---------------- */
+function updateShaft(){
+  const pct = Math.round(((stepIndex+1)/steps.length)*100);
+  document.getElementById('shaftFill').style.width = pct+'%';
+  document.getElementById('floorPct').textContent = pct+'%';
+  const cur = steps[stepIndex];
+  let label = 'Setting up';
+  if(cur==='name') label='Floor 1 · Your name';
+  else if(cur==='payperiod') label='Floor 2 · Pay period';
+  else if(cur==='wage') label='Floor 3 · Wage level';
+  else if(cur.startsWith('day:')){
+    const i = parseInt(cur.split(':')[1]);
+    const d = state.days[i];
+    label = `Week ${d.week} · ${d.dayName} ${fmtShort(d.date)}`;
+  } else if(cur==='summary') label='Top floor · Review';
+  document.getElementById('floorText').textContent = label;
+}
+
+function render(){
+  updateShaft();
+  const step = steps[stepIndex];
+  const main = document.getElementById('main');
+  const footer = document.getElementById('footer');
+  main.innerHTML = '';
+  footer.innerHTML = '';
+
+  if(step==='name') return renderName(main,footer);
+  if(step==='payperiod') return renderPayPeriod(main,footer);
+  if(step==='wage') return renderWage(main,footer);
+  if(step.startsWith('day:')) return renderDay(main,footer,parseInt(step.split(':')[1]));
+  if(step==='summary') return renderSummary(main,footer);
+}
+
+function renderName(main,footer){
+  main.innerHTML = `
+    <div class="step-eyebrow">Step 1 of ${steps.length}</div>
+    <h1>What's your name?</h1>
+    <p class="sub">This goes at the top of every page of your timesheet.</p>
+    <div class="field">
+      <label for="inpName">First and last name</label>
+      <input type="text" id="inpName" placeholder="e.g. Alex Chen" value="${escAttr(state.name)}" autocomplete="name">
+    </div>
+  `;
+  footer.innerHTML = `<button class="primary" onclick="goNext()">Next</button>`;
+  document.getElementById('inpName').focus();
+}
+
+function renderPayPeriod(main,footer){
+  const mode = state.periodMode==='custom' ? 'custom' : 'twoWeeks';
+  main.innerHTML = `
+    <div class="step-eyebrow">Step 2 of ${steps.length}</div>
+    <h1>Pay period</h1>
+    <p class="sub">Pick the first day (Week 1, Monday) of your two-week pay period.</p>
+    <div class="field">
+      <label>Days to log</label>
+      <div class="seg" id="periodSeg" role="group" aria-label="Days to log">
+        <button type="button" class="seg-btn${mode==='twoWeeks'?' active':''}" data-mode="twoWeeks" aria-pressed="${mode==='twoWeeks'}" onclick="setPeriodMode('twoWeeks')">Full 2 weeks</button>
+        <button type="button" class="seg-btn${mode==='custom'?' active':''}" data-mode="custom" aria-pressed="${mode==='custom'}" onclick="setPeriodMode('custom')">Custom</button>
+      </div>
+      <div class="hint" id="modeHint"></div>
+    </div>
+    <div class="field">
+      <label for="inpStart">Pay period start date</label>
+      <input type="date" id="inpStart" value="${escAttr(state.startDate)}">
+      <div class="hint" id="rangeHint"></div>
+    </div>
+    <div class="field" id="customEnd" style="display:${mode==='custom'?'block':'none'}">
+      <label for="inpEnd">Finish date <span style="font-weight:400;color:#6b7482">(last day you worked)</span></label>
+      <input type="date" id="inpEnd" value="${escAttr(mode==='custom'?state.endDate:'')}">
+      <div class="hint">You\u2019ll only fill in the days up to this one \u2014 the rest of the two weeks prints blank.</div>
+    </div>
+    <div class="hint err" id="payError" style="display:none;margin:-8px 0 18px;"></div>
+    <div class="toggle-row">
+      <div>
+        <div class="t-label">Worked the weekend?</div>
+        <div class="t-sub">Toggle on to log Saturday &amp; Sunday too</div>
+      </div>
+      <label class="switch">
+        <input type="checkbox" id="inpWeekend" ${state.workedWeekends?'checked':''} onchange="payPeriodChanged()">
+        <div class="track"><div class="knob"></div></div>
+      </label>
+    </div>
+  `;
+  footer.innerHTML = `
+    <button class="secondary" onclick="goBack()">Back</button>
+    <button class="primary" onclick="goNext()">Next</button>
+  `;
+  document.getElementById('inpStart').addEventListener('change', ()=>{
+    state.startDate = document.getElementById('inpStart').value;
+    syncEndBounds();
+    // keep an already-chosen finish date inside the (new) two-week window
+    const endEl = document.getElementById('inpEnd');
+    if(endEl && endEl.value && state.startDate){
+      if(endEl.value < endEl.min) endEl.value = endEl.min;
+      else if(endEl.value > endEl.max) endEl.value = endEl.max;
+      state.endDate = endEl.value;
+    }
+    applyPeriodMode(currentPeriodMode());
+    updateRangeHint();
+  });
+  document.getElementById('inpEnd').addEventListener('change', ()=>{
+    state.endDate = document.getElementById('inpEnd').value;
+    updateRangeHint();
+  });
+  syncEndBounds();
+  applyPeriodMode(mode);
+  updateRangeHint();
+}
+/* Segmented control tap */
+function setPeriodMode(mode){
+  state.periodMode = mode;
+  setPayError('');
+  applyPeriodMode(mode);
+  updateRangeHint();
+}
+function applyPeriodMode(mode){
+  const btns = document.querySelectorAll('#periodSeg .seg-btn');
+  for(let i=0;i<btns.length;i++){
+    const on = btns[i].getAttribute('data-mode')===mode;
+    btns[i].classList.toggle('active', on);
+    btns[i].setAttribute('aria-pressed', on?'true':'false');
+  }
+  const wrap = document.getElementById('customEnd');
+  if(wrap) wrap.style.display = mode==='custom' ? 'block' : 'none';
+  const mh = document.getElementById('modeHint');
+  if(mh){
+    mh.textContent = mode==='custom'
+      ? 'Log just the days you worked \u2014 pick your first and last day.'
+      : 'Standard pay period: 14 days from your start date.';
+  }
+  if(mode==='custom'){
+    const endEl = document.getElementById('inpEnd');
+    // sensible default: the end of the two weeks, ready to be pulled back
+    if(endEl && !endEl.value && state.startDate){
+      const s = new Date(state.startDate+'T00:00:00');
+      const e = new Date(s); e.setDate(s.getDate()+13);
+      endEl.value = toISODate(e);
+      state.endDate = endEl.value;
+    }
+    syncEndBounds();
+  }
+}
+/* Keep the finish date picker inside the two-week pay period */
+function syncEndBounds(){
+  const endEl = document.getElementById('inpEnd');
+  if(!endEl) return;
+  if(state.startDate){
+    const s = new Date(state.startDate+'T00:00:00');
+    const e = new Date(s); e.setDate(s.getDate()+13);
+    endEl.min = toISODate(s);
+    endEl.max = toISODate(e);
+  }else{
+    endEl.removeAttribute('min');
+    endEl.removeAttribute('max');
+  }
+}
+function payPeriodChanged(){
+  syncPayPeriodInputs();
+  setPayError('');
+  updateRangeHint();
+}
+function updateRangeHint(){
+  const startEl = document.getElementById('inpStart');
+  const hint = document.getElementById('rangeHint');
+  if(!startEl || !hint) return;
+  const v = startEl.value;
+  if(!v){ hint.textContent=''; return; }
+  const start = new Date(v+'T00:00:00');
+  if(currentPeriodMode()==='custom'){
+    const endEl = document.getElementById('inpEnd');
+    const ev = endEl ? endEl.value : '';
+    if(!ev){ hint.textContent = 'Now pick the last day you worked.'; return; }
+    const end = new Date(ev+'T00:00:00');
+    const n = Math.round((end.getTime()-start.getTime())/86400000)+1;
+    if(n < 1){ hint.textContent = 'Finish date is before the start date.'; return; }
+    if(n > 14){ hint.textContent = 'That\u2019s more than two weeks \u2014 a pay period ends '+fmtShort(new Date(start.getFullYear(),start.getMonth(),start.getDate()+13))+'.'; return; }
+    const loggable = countLoggableDays(v, ev, state.workedWeekends);
+    hint.textContent = `Covers ${fmtShort(start)} \u2013 ${fmtShort(end)} \u00b7 ${loggable} day${loggable===1?'':'s'} to fill in`;
+  }else{
+    const end = new Date(start); end.setDate(start.getDate()+13);
+    hint.textContent = `Covers ${fmtShort(start)} \u2013 ${fmtShort(end)} (2 weeks)`;
+  }
+}
+
+function renderWage(main,footer){
+  main.innerHTML = `
+    <div class="step-eyebrow">Step 3 of ${steps.length}</div>
+    <h1>Wage level</h1>
+    <p class="sub">Applies to this whole pay period. You can still note changes per day later if needed.</p>
+    <div class="field">
+      <label for="inpWage">Wage level</label>
+      <select id="inpWage">
+        ${WAGE_LEVELS.map(w=>`<option value="${w.v}" ${w.v===state.wageLevel?'selected':''}>${w.label}</option>`).join('')}
+      </select>
+    </div>
+  `;
+  footer.innerHTML = `
+    <button class="secondary" onclick="goBack()">Back</button>
+    <button class="primary" onclick="goNext()">Next</button>
+  `;
+}
+
+function renderDay(main,footer,i){
+  const d = state.days[i];
+  const dayNumInWeek = state.days.filter((x,idx)=>idx<=i && x.week===d.week).length;
+  main.innerHTML = `
+    <div class="day-badge"><span class="dot">${dayNumInWeek}</span> Week ${d.week} — ${d.dayName}, ${fmtShort(d.date)}</div>
+    <h1>${d.dayName}</h1>
+    <p class="sub">Blank regular time = 8 hrs (enter 0 if you didn't work). Blank job # / address = same as the last day you filled in.</p>
+    <div class="field">
+      <label for="inpJob">Job #</label>
+      <input type="text" id="inpJob" placeholder="e.g. H-4521" value="${escAttr(d.jobAddress || 'H-')}">
+      <div class="hint">Just add the number after H- (or clear the box to repeat the previous day's job).</div>
+    </div>
+    <div class="field">
+      <label for="inpDesc">Address / description</label>
+      <textarea id="inpDesc" rows="3" placeholder="Where you were &amp; what you did — one line per entry, e.g.&#10;120 King St — replaced door rollers&#10;88 Main St — call-back, adjust leveling">${escHtml(d.desc)}</textarea>
+      <div class="hint">Fills the right-hand “Address / Description” column (up to 5 lines print). Leave blank to repeat the previous day's.</div>
+    </div>
+    <div class="row2">
+      <div class="field">
+        <label for="inpRT">Regular time (hrs)</label>
+        <input type="number" step="0.25" inputmode="decimal" id="inpRT" placeholder="8 (auto if blank)" value="${escAttr(d.rt)}">
+      </div>
+      <div class="field">
+        <label for="inpOT">Overtime 1.5 (hrs)</label>
+        <input type="number" step="0.25" inputmode="decimal" id="inpOT" placeholder="0.0" value="${escAttr(d.ot)}">
+      </div>
+    </div>
+    <div class="row2">
+      <div class="field">
+        <label for="inpTravel">Travel time (hrs)</label>
+        <input type="number" step="0.25" inputmode="decimal" id="inpTravel" placeholder="0.0" value="${escAttr(d.travel)}">
+      </div>
+      <div class="field">
+        <label for="inpMileage">Mileage</label>
+        <input type="number" step="1" inputmode="decimal" id="inpMileage" placeholder="0" value="${escAttr(d.mileage)}">
+      </div>
+    </div>
+    <div class="field">
+      <label for="inpExpenses">Expenses ($)</label>
+      <input type="number" step="0.01" inputmode="decimal" id="inpExpenses" placeholder="0.00" value="${escAttr(d.expenses)}">
+    </div>
+    <div class="field">
+      <label for="inpNotes">Notes for this day</label>
+      <input type="text" id="inpNotes" placeholder="e.g. waiting on parts, rain delay" value="${escAttr(d.notes)}">
+      <div class="hint">Prints in this day's NOTES row on the timesheet.</div>
+    </div>
+  `;
+  footer.innerHTML = `
+    <button class="secondary" onclick="goBack()">Back</button>
+    <button class="primary" onclick="goNext()">${editReturn ? 'Save' : 'Next'}</button>
+  `;
+  // Live auto-save: every keystroke goes straight into state, so nothing is
+  // lost even if a button tap misfires with the iOS keyboard open.
+  [['inpJob','jobAddress'],['inpDesc','desc'],['inpRT','rt'],['inpOT','ot'],
+   ['inpTravel','travel'],['inpMileage','mileage'],['inpExpenses','expenses'],['inpNotes','notes']].forEach(([id,key])=>{
+    const el = document.getElementById(id);
+    el.addEventListener('input', ()=>{ d[key] = el.value; });
+  });
+}
+
+function renderSummary(main,footer){
+  const totals = computeTotals();
+  const isCustom = state.periodMode==='custom';
+  main.innerHTML = `
+    <div class="step-eyebrow">Review</div>
+    <h1>${isCustom ? 'Your days, ready to go' : 'Two weeks, ready to go'}</h1>
+    <p class="sub">${escHtml(state.name)} · ${periodRangeText()} · Wage ${state.wageLevel}</p>
+    ${isCustom ? `<div class="day-badge" style="margin:-6px 0 20px;"><span class="dot">${state.days.length}</span> Custom range · the other days of the two weeks print blank</div>` : ''}
+
+    <div class="totals-card">
+      <div class="t-row"><span>Regular hours</span><span>${totals.rt.toFixed(2)}</span></div>
+      <div class="t-row"><span>Overtime hours</span><span>${totals.ot.toFixed(2)}</span></div>
+      <div class="t-row"><span>Travel time</span><span>${totals.travel.toFixed(2)}</span></div>
+      <div class="t-row"><span>Mileage</span><span>${totals.mileage}</span></div>
+      <div class="t-row"><span>Expenses</span><span>$${totals.expenses.toFixed(2)}</span></div>
+      <div class="t-row"><span>Total pay-period hours</span><span>${(totals.rt+totals.ot).toFixed(2)}</span></div>
+    </div>
+
+    ${totals.expenses > 0 ? receiptCardHtml() : ''}
+
+    <ul class="summary-list">
+      ${state.days.map((d,i)=>{
+        const ed = effectiveDays()[i];
+        const ownJob = cleanJob(d.jobAddress);
+        let jobHtml;
+        if(ownJob) jobHtml = escHtml(ownJob);
+        else if(ed.jobAddress) jobHtml = `<span style="color:var(--paper-dim)">${escHtml(ed.jobAddress)} <em>(same as previous)</em></span>`;
+        else jobHtml = '<em style="color:var(--paper-dim)">No job entered</em>';
+        return `
+        <li>
+          <div class="d-info">
+            <span class="d-date">Week ${d.week} · ${fmtDate(d.date)}</span>
+            ${jobHtml}
+            ${d.desc ? `<div style="font-size:11.5px;color:var(--paper-dim);margin-top:2px;">${escHtml(d.desc.split('\n')[0])}${d.desc.includes('\n')?' …':''}</div>` : ''}
+            <div class="d-hours">RT ${ed.rt||'0'}${String(d.rt||'').trim()===''&&ed.rt?' (auto)':''} · OT ${d.ot||'0'}</div>
+          </div>
+          <button class="edit-btn" onclick="editDay(${i})">Edit</button>
+        </li>
+      `;}).join('')}
+    </ul>
+    <div id="genStatus" class="status-msg"></div>
+  `;
+  footer.innerHTML = `
+    <div class="final-actions" style="width:100%">
+      <button class="primary" onclick="finalizeAndGenerate()">Continue → Generate PDF</button>
+    </div>
+  `;
+}
+
+function computeTotals(){
+  const t = {rt:0,ot:0,travel:0,mileage:0,expenses:0};
+  effectiveDays().forEach(d=>{
+    t.rt += parseFloat(d.rt)||0;
+    t.ot += parseFloat(d.ot)||0;
+    t.travel += parseFloat(d.travel)||0;
+    t.mileage += parseFloat(d.mileage)||0;
+    t.expenses += parseFloat(d.expenses)||0;
+  });
+  return t;
+}
+
+/* An untouched "H-" prefill counts as blank */
+function cleanJob(s){
+  s = String(s||'').trim();
+  return /^h-?$/i.test(s) ? '' : s;
+}
+/* Carry-forward: a blank job # or address/description repeats the last day
+   that had one, so entering it once on Monday covers the whole pay period. */
+function effectiveDays(){
+  let lastJob = '', lastDesc = '';
+  return state.days.map(d=>{
+    const job = cleanJob(d.jobAddress) || lastJob;
+    const desc = (d.desc||'').trim() ? d.desc : lastDesc;
+    if(cleanJob(d.jobAddress)) lastJob = cleanJob(d.jobAddress);
+    if((d.desc||'').trim()) lastDesc = d.desc;
+    // blank regular time on a weekday counts as a standard 8-hour day
+    const isWeekend = d.dayName==='Sat' || d.dayName==='Sun';
+    const rt = String(d.rt||'').trim()==='' ? (isWeekend ? '' : '8') : d.rt;
+    return Object.assign({}, d, {jobAddress: job, desc: desc, rt: rt});
+  });
+}
+
+function escHtml(s){
+  return (s||'').replace(/[&<>"]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+}
+function escAttr(s){ return escHtml(s); }
+
+/* ---------------- Expense receipts ---------------- */
+const MAX_RECEIPTS = 12;
+const MAX_RECEIPT_EDGE = 1400;    // px — long edge cap before JPEG re-encode
+const RECEIPT_JPEG_QUALITY = 0.82;
+
+function receiptCardHtml(){
+  return `
+    <div class="receipts-card" id="receiptsCard">
+      <div class="r-title">Expense receipts</div>
+      <p class="r-sub">Add up to ${MAX_RECEIPTS} receipt photos — up to six are neatly arranged on each PDF page.</p>
+      <label class="add-receipts-btn" for="receiptInput">+ Add receipt photos</label>
+      <input type="file" id="receiptInput" class="visually-hidden-input" accept="image/*" multiple onchange="handleReceiptFiles(this)">
+      <div class="receipt-thumbs" id="receiptThumbs">${receiptThumbsHtml()}</div>
+      <div class="receipt-status" id="receiptStatus">${escHtml(defaultReceiptStatus())}</div>
+    </div>
+  `;
+}
+function receiptThumbsHtml(){
+  return (state.receipts||[]).map((r,i)=>`
+    <div class="receipt-thumb">
+      <img src="${r.dataUrl}" alt="${escAttr(r.name || ('Receipt '+(i+1)))}">
+      <button type="button" class="rm" aria-label="Remove receipt ${i+1}" onclick="removeReceipt(${i})">&times;</button>
+    </div>`).join('');
+}
+function fmtBytes(n){
+  if(n >= 1024*1024) return (n/(1024*1024)).toFixed(1)+' MB';
+  return Math.max(1, Math.round(n/1024))+' KB';
+}
+function defaultReceiptStatus(){
+  const n = (state.receipts||[]).length;
+  if(!n) return 'No photos attached yet.';
+  const bytes = state.receipts.reduce((a,r)=>a+(r.bytes||0), 0);
+  return `${n} of ${MAX_RECEIPTS} photos attached (${fmtBytes(bytes)}).`;
+}
+function setReceiptStatus(msg, isErr){
+  const el = document.getElementById('receiptStatus');
+  if(!el) return;
+  el.textContent = msg;
+  el.classList.toggle('err', !!isErr);
+}
+/* Read one photo, shrink it on a canvas (max 1400px long edge) and re-encode
+   as JPEG q0.82 so multi-megapixel phone shots don't blow up the PDF. */
+function processReceiptFile(file){
+  return new Promise((resolve, reject)=>{
+    const reader = new FileReader();
+    reader.onload = ()=>{
+      const img = new Image();
+      img.onload = ()=>{
+        try{
+          const sw = img.naturalWidth || img.width;
+          const sh = img.naturalHeight || img.height;
+          if(!sw || !sh) throw new Error('empty image');
+          const scale = Math.min(1, MAX_RECEIPT_EDGE / Math.max(sw, sh));
+          const w = Math.max(1, Math.round(sw*scale));
+          const h = Math.max(1, Math.round(sh*scale));
+          const canvas = document.createElement('canvas');
+          canvas.width = w; canvas.height = h;
+          const cx = canvas.getContext('2d');
+          cx.fillStyle = '#ffffff';   // transparent pixels -> white, JPEG has no alpha
+          cx.fillRect(0, 0, w, h);
+          cx.drawImage(img, 0, 0, w, h);
+          const dataUrl = canvas.toDataURL('image/jpeg', RECEIPT_JPEG_QUALITY);
+          const b64 = dataUrl.slice(dataUrl.indexOf(',')+1);
+          const bytes = Math.floor(b64.length*3/4) - (b64.endsWith('==')?2 : b64.endsWith('=')?1 : 0);
+          resolve({name:file.name||'receipt', dataUrl:dataUrl, w:w, h:h, bytes:bytes});
+        }catch(err){ reject(err); }
+      };
+      img.onerror = ()=>reject(new Error('could not decode image'));
+      img.src = reader.result;
+    };
+    reader.onerror = ()=>reject(new Error('could not read file'));
+    reader.readAsDataURL(file);
+  });
+}
+async function handleReceiptFiles(input){
+  const files = Array.prototype.slice.call(input.files || []);
+  input.value = '';   // so picking the same photo again still fires change
+  if(!files.length) return;
+  // the card only exists on the summary screen; nothing to do otherwise
+  if(!document.getElementById('receiptThumbs')) return;
+
+  let skippedByCap = 0;
+  const failed = [];
+  const total = files.length;
+  for(let i=0;i<files.length;i++){
+    const f = files[i];
+    if((state.receipts||[]).length >= MAX_RECEIPTS){ skippedByCap += total - i; break; }
+    setReceiptStatus(`Adding photo ${i+1} of ${total}\u2026`, false);
+    try{
+      const r = await processReceiptFile(f);
+      state.receipts.push(r);
+    }catch(e){
+      failed.push(f && f.name ? f.name : 'a file');
+    }
+  }
+  const thumbs = document.getElementById('receiptThumbs');
+  if(thumbs) thumbs.innerHTML = receiptThumbsHtml();
+  let msg = defaultReceiptStatus();
+  if(skippedByCap) msg += ` Limit is ${MAX_RECEIPTS} \u2014 ${skippedByCap} skipped.`;
+  if(failed.length) msg += ` Couldn\u2019t read: ${failed.join(', ')}.`;
+  setReceiptStatus(msg, failed.length>0);
+}
+function removeReceipt(i){
+  (state.receipts||[]).splice(i,1);
+  const thumbs = document.getElementById('receiptThumbs');
+  if(thumbs) thumbs.innerHTML = receiptThumbsHtml();
+  setReceiptStatus(defaultReceiptStatus(), false);
+}
+
+/* ---------------- PDF generation ---------------- */
+async function finalizeAndGenerate(){
+  const status = document.getElementById('genStatus');
+  const main = document.getElementById('main');
+  const footer = document.getElementById('footer');
+
+  // Expenses on the sheet but no receipt photos attached: ask first.
+  // OK = go back to the receipts card (no PDF), Cancel = generate anyway.
+  const totals = computeTotals();
+  if(totals.expenses > 0 && (!state.receipts || state.receipts.length === 0)){
+    const addReceipts = window.confirm(
+      `You entered $${totals.expenses.toFixed(2)} in expenses, but no receipt photos are attached.\n\n` +
+      'Press OK to go back and add your receipts, or Cancel to generate the PDF without them.'
+    );
+    if(addReceipts){
+      const card = document.getElementById('receiptsCard');
+      if(card && card.scrollIntoView) card.scrollIntoView({behavior:'smooth', block:'center'});
+      return;
+    }
+  }
+
+  status.textContent = 'Building your PDF…';
+
+  try{
+    const bytes = await buildPdf();
+    const blob = new Blob([bytes], {type:'application/pdf'});
+    const filename = `Timesheet_${escFileSafe(state.name)}_${state.startDate}.pdf`;
+    window.__pdfBlob = blob;
+    window.__pdfName = filename;
+
+    main.innerHTML = `
+      <div style="padding-top:30px;text-align:center;">
+        <div class="checkmark">✓</div>
+        <h1 style="text-align:center;">Timesheet ready</h1>
+        <p class="sub" style="text-align:center;">${escHtml(state.name)} · ${periodRangeText()}</p>
+      </div>
+    `;
+    footer.innerHTML = `
+      <div class="final-actions" style="width:100%">
+        <button class="primary" onclick="sharePdf()">Save / Share PDF</button>
+        <button class="secondary" style="flex:1;" onclick="viewPdf()">View PDF</button>
+        <button class="secondary" style="flex:1;background:none;border:none;color:var(--paper-dim);" onclick="backToSummary()">← Back to review</button>
+      </div>
+      <div class="status-msg" style="position:absolute;left:0;right:0;bottom:calc(100% - 6px);">On iPhone: tap Save / Share, then “Save to Files” or attach to an email.</div>
+    `;
+  }catch(e){
+    console.error(e);
+    status.textContent = 'Something went wrong generating the PDF. Please try again.';
+  }
+}
+function backToSummary(){
+  stepIndex = steps.indexOf('summary');
+  render();
+}
+function escFileSafe(s){ return (s||'timesheet').replace(/[^a-z0-9]+/gi,'_'); }
+
+function downloadPdf(){
+  const url = URL.createObjectURL(window.__pdfBlob);
+  const a = document.createElement('a');
+  a.href = url; a.download = window.__pdfName;
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  setTimeout(()=>URL.revokeObjectURL(url), 4000);
+}
+function viewPdf(){
+  // Open the generated PDF itself in a new tab so the preview shows all pages.
+  const url = URL.createObjectURL(window.__pdfBlob);
+  const w = window.open(url, '_blank');
+  if(!w) location.href = url; // popup blocked (common in in-app browsers)
+}
+async function sharePdf(){
+  const file = new File([window.__pdfBlob], window.__pdfName, {type:'application/pdf'});
+  // On iPhone the share sheet is the only reliable way to save the real PDF
+  // ("Save to Files", AirDrop, Mail…). <a download> in in-app browsers saves
+  // the HTML page instead of the PDF.
+  if(navigator.canShare && navigator.canShare({files:[file]})){
+    try{
+      await navigator.share({files:[file], title:'Timesheet', text:`Timesheet for ${state.name}`});
+      return;
+    }catch(e){
+      if(e && e.name==='AbortError') return; // user closed the share sheet
+      /* fall through to download */
+    }
+  }
+  downloadPdf();
+  alert('Sharing isn\'t supported in this browser — the PDF was downloaded instead. Attach it from your Downloads/Files app to an email.');
+}
+
+async function buildPdf(){
+  const { PDFDocument, StandardFonts, rgb } = PDFLib;
+  const doc = await PDFDocument.create();
+  const font = await doc.embedFont(StandardFonts.Helvetica);
+  const bold = await doc.embedFont(StandardFonts.HelveticaBold);
+
+  const eff = effectiveDays();
+  const week1 = eff.filter(d=>d.week===1);
+  const week2 = eff.filter(d=>d.week===2);
+
+  const receipts = state.receipts || [];
+  const receiptsPerPage = 6;
+  const receiptPages = Math.ceil(receipts.length / receiptsPerPage);
+  const totalPages = 3 + receiptPages;
+
+  drawWeekPage(doc, font, bold, 1, week1, `Page 1 of ${totalPages}`);
+  drawWeekPage(doc, font, bold, 2, week2, `Page 2 of ${totalPages}`);
+  drawSummaryPage(doc, font, bold, `Page 3 of ${totalPages}`);
+
+  // Collate up to six photos on each receipt sheet (two columns by three rows).
+  for(let p=0; p<receiptPages; p++){
+    const batch = receipts.slice(p*receiptsPerPage, (p+1)*receiptsPerPage);
+    const imgs = [];
+    for(const receipt of batch) imgs.push(await doc.embedJpg(receipt.dataUrl));
+    drawReceiptPage(doc, font, bold, imgs, p+1, receiptPages, p*receiptsPerPage, receipts.length, totalPages);
+  }
+  return await doc.save();
+}
+
+/* ============ RECEIPT SHEET (up to six photos per portrait page) ============ */
+function drawReceiptPage(doc, font, bold, imgs, sheetNum, sheetCount, firstReceipt, receiptCount, totalPages){
+  const {rgb} = PDFLib;
+  const page = doc.addPage([612, 792]);
+  page.drawRectangle({x:0, y:0, width:612, height:792, color:rgb(1,1,1)});
+  const M = 34, ink = rgb(0.05,0.05,0.05), dim = rgb(0.3,0.3,0.3);
+  let y = 742;
+  page.drawText('EXPENSE RECEIPTS', {x:M, y, size:14, font:bold, color:ink});
+  const label = `Page ${3+sheetNum} of ${totalPages}`;
+  page.drawText(label, {x:612-M-bold.widthOfTextAtSize(label,9), y:y+3, size:9, font:bold, color:ink});
+  y -= 16;
+  page.drawText(`${state.name} \u00b7 ${periodRangeText()} \u00b7 Photos ${firstReceipt+1}-${firstReceipt+imgs.length} of ${receiptCount}`,
+    {x:M, y, size:9, font, color:dim});
+
+  const cols=2, rows=3, gap=10, top=708, bottom=sheetNum===sheetCount ? 62 : 30;
+  const cellW=(612-2*M-gap)/cols, cellH=(top-bottom-(rows-1)*gap)/rows;
+  imgs.forEach((img,i)=>{
+    const col=i%cols, row=Math.floor(i/cols);
+    const x=M+col*(cellW+gap), cellTop=top-row*(cellH+gap);
+    const scale=Math.min((cellW-12)/img.width,(cellH-12)/img.height);
+    const w=img.width*scale,h=img.height*scale;
+    const ix=x+(cellW-w)/2, iy=cellTop-cellH+(cellH-h)/2;
+    page.drawImage(img,{x:ix,y:iy,width:w,height:h});
+    page.drawRectangle({x:ix,y:iy,width:w,height:h,borderColor:rgb(0.4,0.4,0.4),borderWidth:0.75});
+    page.drawText(`Receipt ${firstReceipt+i+1}`,{x,y:cellTop-cellH+3,size:8,font,color:dim});
+  });
+  if(sheetNum===sheetCount){
+    const text=`TOTAL EXPENSES FOR THIS PAY PERIOD: $${computeTotals().expenses.toFixed(2)}`;
+    page.drawText(text,{x:M,y:32,size:11,font:bold,color:ink});
+  }
+}
+
+function truncate(s, colWidth){
+  const maxChars = Math.max(4, Math.floor(colWidth/4.6));
+  s = String(s||'');
+  if(s.length<=maxChars) return s;
+  return s.slice(0,maxChars-1)+'…';
+}
+
+/* ============ WEEK PAGE (replica of the scanned daily-log template) ============ */
+function drawWeekPage(doc, font, bold, weekNum, days, pageLabel){
+  const {rgb} = PDFLib;
+  const page = doc.addPage([612, 792]);
+  page.drawRectangle({x:0, y:0, width:612, height:792, color:rgb(1,1,1)});
+  const M = 40;
+  const W = 532;
+  const ink = rgb(0.05,0.05,0.05);
+  const border = rgb(0.15,0.15,0.15);
+  const faint = rgb(0.72,0.72,0.72);
+  let y = 792 - 46;
+
+  // column x-offsets
+  const c0 = M;           // day label
+  const c1 = M+50;        // job/address
+  const c2 = M+50+150;    // time (left block)
+  const cDivider = c2+50; // thick divider
+  const c3 = cDivider+3;  // address/description
+  const c4 = c3+147;      // time (right block)
+  const c5 = c4+50;       // label col (Reg Hrs / OT Hrs / TOTAL)
+  const c6 = c5+46;       // value col
+  const end = M+W;
+
+  const rowH = 14, notesH = 15, totalH = 14;
+
+  // ---- identity row: white cells with black borders, bold labels (like the paper) ----
+  const idH = 18;
+  page.drawRectangle({x:M, y:y-idH, width:W, height:idH, borderColor:border, borderWidth:1});
+  page.drawText('NAME:', {x:c0+3, y:y-idH+5.5, size:9, font:bold, color:ink});
+  page.drawText(state.name||'', {x:c0+42, y:y-idH+5.5, size:9, font, color:ink});
+  page.drawLine({start:{x:cDivider-25,y:y}, end:{x:cDivider-25,y:y-idH}, thickness:0.8, color:border});
+  page.drawText('DATE:', {x:cDivider-20, y:y-idH+5.5, size:9, font:bold, color:ink});
+  page.drawText(periodRangeText(), {x:cDivider+16, y:y-idH+5.5, size:9, font, color:ink});
+  page.drawLine({start:{x:c5-10,y:y}, end:{x:c5-10,y:y-idH}, thickness:0.8, color:border});
+  page.drawText(pageLabel, {x:c5-6, y:y-idH+5.5, size:8.5, font:bold, color:ink});
+  y -= idH;
+
+  // ---- grey column header row, centered small labels ----
+  const hdrH = 12;
+  page.drawRectangle({x:M, y:y-hdrH, width:W, height:hdrH, color:rgb(0.84,0.84,0.84), borderColor:border, borderWidth:0.8});
+  const hdrY = y-hdrH+3.5;
+  function centerHdr(txt, x1, x2){
+    const w = font.widthOfTextAtSize(txt, 6);
+    page.drawText(txt, {x:(x1+x2-w)/2, y:hdrY, size:6, font, color:ink});
+  }
+  centerHdr('Job # or Address', c1, c2);
+  centerHdr('Time', c2, cDivider);
+  centerHdr('Address/ Description', c3, c4);
+  centerHdr('Time', c4, c5);
+  y -= hdrH;
+
+  function vLines(top, bottom){
+    [c1,c2,c3,c4,c5,c6].forEach(x=>{
+      page.drawLine({start:{x, y:top}, end:{x, y:bottom}, thickness:0.4, color:faint});
+    });
+    page.drawLine({start:{x:cDivider, y:top}, end:{x:cDivider, y:bottom}, thickness:2.2, color:rgb(0.05,0.05,0.05)});
+    page.drawRectangle({x:M, y:bottom, width:W, height: top-bottom, borderColor:border, borderWidth:0.8});
+  }
+
+  // black bar with white TOTAL cell at the right, like the paper
+  function totalBar(topY, val){
+    const b = topY - totalH;
+    page.drawRectangle({x:M, y:b, width:c5-M, height:totalH, color:rgb(0.05,0.05,0.05)});
+    page.drawRectangle({x:c5, y:b, width:end-c5, height:totalH, borderColor:border, borderWidth:0.8});
+    page.drawLine({start:{x:c6,y:topY-0}, end:{x:c6,y:b}, thickness:0.4, color:faint});
+    page.drawText('TOTAL', {x:c5+3, y:b+4, size:7, font:bold, color:ink});
+    if(val) page.drawText(val, {x:c6+4, y:b+4, size:7.5, font:bold, color:ink});
+    return b;
+  }
+
+  function descLinesOf(s){ return String(s||'').split('\n').map(x=>x.trim()).filter(Boolean); }
+
+  const byDow = {};
+  days.forEach(dd=>byDow[dd.dayName]=dd);
+
+  const DAY_LABEL = {Mon:'Mon', Tue:'Tues', Wed:'Weds', Thu:'Thurs', Fri:'Fri'};
+
+  ['Mon','Tue','Wed','Thu','Fri'].forEach(dow=>{
+    const dd = byDow[dow] || {jobAddress:'',desc:'',rt:'',ot:'',travel:'',mileage:'',expenses:''};
+    const blockTop = y;
+    for(let r=0;r<5;r++){
+      const rowY = blockTop - (r+1)*rowH;
+      page.drawLine({start:{x:M,y:rowY}, end:{x:M+W,y:rowY}, thickness:0.4, color:faint});
+    }
+    page.drawText(DAY_LABEL[dow], {x:c0+3, y:blockTop-10, size:7.5, font, color:ink});
+    page.drawText(truncate(dd.jobAddress, 150), {x:c1+4, y:blockTop-10, size:8, font, color:ink});
+    descLinesOf(dd.desc).slice(0,5).forEach((ln,r)=>{
+      page.drawText(truncate(ln, 170), {x:c3+4, y:blockTop - r*rowH - 10, size:7.5, font, color:ink});
+    });
+    const regRowY = blockTop - 3*rowH;
+    page.drawText('Reg Hrs', {x:c5+3, y:regRowY+4, size:7, font, color:rgb(0.25,0.25,0.25)});
+    if(dd.rt) page.drawText(String(dd.rt), {x:c6+4, y:regRowY+4, size:7.5, font, color:ink});
+    const otRowY = blockTop - 5*rowH;
+    page.drawText('OT Hrs', {x:c5+3, y:otRowY+4, size:7, font, color:rgb(0.25,0.25,0.25)});
+    if(dd.ot) page.drawText(String(dd.ot), {x:c6+4, y:otRowY+4, size:7.5, font, color:ink});
+
+    let bottom = blockTop - 5*rowH;
+    const notesY = bottom - notesH;
+    page.drawLine({start:{x:M,y:notesY}, end:{x:M+W,y:notesY}, thickness:0.4, color:faint});
+    page.drawText('NOTES', {x:c0+14, y:bottom-notesH+4.5, size:6.5, font, color:ink});
+    const notesExtra = notesExtraFor(dd);
+    if(notesExtra) page.drawText(truncate(notesExtra, 190), {x:c1+4, y:bottom-notesH+4.5, size:7, font, color:rgb(0.25,0.25,0.25)});
+    page.drawText('OT Approval by:', {x:c3+4, y:bottom-notesH+4.5, size:7, font, color:ink});
+    bottom = notesY;
+    vLines(blockTop, bottom);
+    const tot = (parseFloat(dd.rt)||0)+(parseFloat(dd.ot)||0);
+    y = totalBar(bottom, tot? tot.toFixed(2) : '');
+  });
+
+  // ---- Sat/Sun block: 6 rows, SAT/SUN/OT Hrs on rows 1/3/5 (like the paper) ----
+  {
+    const sat = byDow['Sat'] || {jobAddress:'',desc:'',rt:'',ot:'',travel:'',mileage:'',expenses:''};
+    const sun = byDow['Sun'] || {jobAddress:'',desc:'',rt:'',ot:'',travel:'',mileage:'',expenses:''};
+    const blockTop = y;
+    for(let r=0;r<6;r++){
+      const rowY = blockTop - (r+1)*rowH;
+      page.drawLine({start:{x:M,y:rowY}, end:{x:M+W,y:rowY}, thickness:0.4, color:faint});
+    }
+    page.drawText('Sat/Sun', {x:c0+3, y:blockTop-10, size:7.5, font, color:ink});
+    page.drawText(truncate(sat.jobAddress||sun.jobAddress||'', 150), {x:c1+4, y:blockTop-10, size:8, font, color:ink});
+
+    const wkndLines = []
+      .concat(descLinesOf(sat.desc).map(s=>'Sat: '+s))
+      .concat(descLinesOf(sun.desc).map(s=>'Sun: '+s))
+      .slice(0,6);
+    wkndLines.forEach((ln,r)=>{
+      page.drawText(truncate(ln, 170), {x:c3+4, y:blockTop - r*rowH - 10, size:7.5, font, color:ink});
+    });
+
+    const satRowY = blockTop - 1*rowH;
+    page.drawText('SAT', {x:c5+3, y:satRowY+4, size:7, font, color:rgb(0.25,0.25,0.25)});
+    if(sat.rt) page.drawText(String(sat.rt), {x:c6+4, y:satRowY+4, size:7.5, font, color:ink});
+    const sunRowY = blockTop - 3*rowH;
+    page.drawText('SUN', {x:c5+3, y:sunRowY+4, size:7, font, color:rgb(0.25,0.25,0.25)});
+    if(sun.rt) page.drawText(String(sun.rt), {x:c6+4, y:sunRowY+4, size:7.5, font, color:ink});
+    const otRowY = blockTop - 5*rowH;
+    page.drawText('OT Hrs', {x:c5+3, y:otRowY+4, size:7, font, color:rgb(0.25,0.25,0.25)});
+    const weekendOT = (parseFloat(sat.ot)||0)+(parseFloat(sun.ot)||0);
+    if(weekendOT) page.drawText(weekendOT.toFixed(2), {x:c6+4, y:otRowY+4, size:7.5, font, color:ink});
+
+    let bottom = blockTop - 6*rowH;
+    const notesY = bottom - notesH;
+    page.drawLine({start:{x:M,y:notesY}, end:{x:M+W,y:notesY}, thickness:0.4, color:faint});
+    page.drawText('NOTES', {x:c0+14, y:bottom-notesH+4.5, size:6.5, font, color:ink});
+    const wkNotes = [sat.notes?('Sat: '+sat.notes):'', sun.notes?('Sun: '+sun.notes):''].filter(Boolean).join('   ');
+    if(wkNotes) page.drawText(truncate(wkNotes, 190), {x:c1+4, y:bottom-notesH+4.5, size:7, font, color:rgb(0.25,0.25,0.25)});
+    bottom = notesY;
+    vLines(blockTop, bottom);
+
+    const weekendTot = (parseFloat(sat.rt)||0)+(parseFloat(sun.rt)||0)+weekendOT;
+    y = totalBar(bottom, weekendTot? weekendTot.toFixed(2) : '');
+  }
+
+  // ---- bottom rows + week summary lines + thick black strip (like the paper) ----
+  const w1 = weekTotals(1), w2 = weekTotals(2);
+  const nBottomRows = 4;
+  const botTop = y;
+  for(let r=0;r<nBottomRows;r++){
+    const rowY = botTop - (r+1)*rowH;
+    page.drawLine({start:{x:M,y:rowY}, end:{x:M+W,y:rowY}, thickness:0.4, color:faint});
+  }
+  function weekLine(rowIdx, label, t){
+    const baseY = botTop - (rowIdx+1)*rowH + 4;
+    page.drawText(label, {x:c3+4, y:baseY, size:8, font:bold, color:ink});
+    page.drawText('Reg Hrs:', {x:c3+82, y:baseY, size:8, font:bold, color:ink});
+    page.drawText(t.rt.toFixed(2), {x:c3+122, y:baseY, size:8, font, color:ink});
+    page.drawText('OT:', {x:c5+3, y:baseY, size:8, font:bold, color:ink});
+    page.drawText(t.ot.toFixed(2), {x:c6+4, y:baseY, size:8, font, color:ink});
+  }
+  if(weekNum===1){
+    weekLine(2, 'WEEK ONE:', w1);
+  } else {
+    weekLine(0, 'WEEK ONE:', w1);
+    weekLine(1, 'WEEK TWO:', w2);
+    weekLine(3, 'TOTAL', {rt:w1.rt+w2.rt, ot:w1.ot+w2.ot});
+  }
+  const botBottom = botTop - nBottomRows*rowH;
+  vLines(botTop, botBottom);
+  y = botBottom;
+
+  // final thick black strip across the bottom of the table
+  page.drawRectangle({x:M, y:y-7, width:W, height:7, color:rgb(0.05,0.05,0.05)});
+}
+function weekTotals(week){
+  const t = {rt:0, ot:0};
+  effectiveDays().forEach(d=>{
+    if(d.week===week){
+      t.rt += parseFloat(d.rt)||0;
+      t.ot += parseFloat(d.ot)||0;
+    }
+  });
+  return t;
+}
+function notesExtraFor(dd){
+  const parts = [];
+  if(dd.notes) parts.push(dd.notes);
+  if(dd.travel) parts.push(`Travel ${dd.travel}h`);
+  if(dd.mileage) parts.push(`${dd.mileage} mi`);
+  if(dd.expenses) parts.push(`$${dd.expenses} exp`);
+  return parts.join('  ·  ');
+}
+
+/* ============ SUMMARY PAGE (replica of the Richmond Elevator landscape sheet) ============ */
+function drawSummaryPage(doc, font, bold, pageLabel){
+  const {rgb} = PDFLib;
+  const page = doc.addPage([792, 612]);
+  page.drawRectangle({x:0, y:0, width:792, height:612, color:rgb(1,1,1)});
+  const M = 30;
+  const ink = rgb(0.08,0.08,0.08);
+  const grey = rgb(0.85,0.85,0.85);
+  const lineC = rgb(0.35,0.35,0.35);
+
+  // ---- titles ----
+  let y = 612 - 36;
+  page.drawText('RICHMOND ELEVATOR MAINTENANCE LTD.', {x:M, y, size:12.5, font:bold, color:ink});
+  page.drawText('CONSTRUCTION / MODERNIZATION TIMESHEET', {x:430, y, size:11.5, font:bold, color:ink});
+  y -= 15;
+  const subT = 'All time must be recorded on this timesheet, no other timesheet will be accepted';
+  const subW = bold.widthOfTextAtSize(subT, 8);
+  page.drawText(subT, {x:(792-subW)/2 - 60, y, size:8, font:bold, color:ink});
+  y -= 18;
+
+  // ---- employee / pay period boxes ----
+  const boxH = 20;
+  page.drawRectangle({x:M, y:y-boxH, width:330, height:boxH, borderColor:lineC, borderWidth:0.9});
+  page.drawText('Employee (1st and last name)', {x:M+4, y:y-boxH+6, size:7.5, font, color:ink});
+  page.drawText(state.name||'', {x:M+140, y:y-boxH+6, size:9, font:bold, color:ink});
+  page.drawRectangle({x:M+330, y:y-boxH, width:310, height:boxH, borderColor:lineC, borderWidth:0.9});
+  page.drawText('Pay Period dates', {x:M+334, y:y-boxH+6, size:7.5, font, color:ink});
+  page.drawText(periodRangeText(), {x:M+430, y:y-boxH+6, size:9, font:bold, color:ink});
+  y -= boxH + 8;
+
+  // ---- main table ----
+  const cols = [
+    {key:'day',  lines:['Week 1'],           w:66},
+    {key:'job',  lines:['JOB #'],            w:52},
+    {key:'wage', lines:['WAGE','LEVEL'],     w:46},
+    {key:'rt',   lines:['REGULAR','TIME'],   w:54},
+    {key:'ot',   lines:['OVERTIME','1.5'],   w:54},
+    {key:'dt',   lines:['DOUBLE','TIME'],    w:50},
+    {key:'travel',lines:['TRAVEL','TIME'],   w:50},
+    {key:'mile', lines:['MILEAGE'],          w:50},
+    {key:'loa',  lines:['LOA/','Per diem'],  w:52},
+    {key:'exp',  lines:['EXPENSES'],         w:54},
+  ];
+  const tableX = M;
+  const tableW = cols.reduce((a,c)=>a+c.w,0);
+  const hdrH = 24, rowH = 25.5;
+  const tableTop = y;
+
+  function cellCenter(colIdx){
+    let x = tableX; for(let i=0;i<colIdx;i++) x += cols[i].w;
+    return {x, w: cols[colIdx].w};
+  }
+  function centerText(txt, colIdx, rowY, useFont, size){
+    const {x,w} = cellCenter(colIdx);
+    const tw = useFont.widthOfTextAtSize(txt, size);
+    page.drawText(txt, {x: x + (w-tw)/2, y: rowY, size, font:useFont, color:ink});
+  }
+
+  // header row (white, bordered, bold centered — like the paper)
+  let cx = tableX;
+  cols.forEach((c,ci)=>{
+    if(c.lines.length===2){
+      centerText(c.lines[0], ci, tableTop-hdrH+13, bold, 7);
+      centerText(c.lines[1], ci, tableTop-hdrH+4.5, bold, 7);
+    } else {
+      centerText(c.lines[0], ci, tableTop-hdrH+9, bold, 7.5);
+    }
+    cx += c.w;
+  });
+
+  // rows: Mon..Sun, "Week 2" divider, Mon..Sun, totals
+  const DOWFULL = {Mon:'Monday',Tue:'Tuesday',Wed:'Wednesday',Thu:'Thursday',Fri:'Friday',Sat:'Saturday',Sun:'Sunday'};
+  const DOWS = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+  const byWeekDow = {};
+  effectiveDays().forEach(dd=>{ byWeekDow[`${dd.week}-${dd.dayName}`] = dd; });
+  const hasData = dd => dd && [dd.rt,dd.ot,dd.travel,dd.mileage,dd.expenses].some(v=>String(v||'').trim()!=='');
+
+  let ry = tableTop - hdrH;   // top of first data row
+  const rowsMeta = [];        // remember row boundaries for grid
+
+  function dayRow(week, dow){
+    const rowBottom = ry - rowH;
+    const dd = byWeekDow[`${week}-${dow}`];
+    page.drawText(DOWFULL[dow], {x:tableX+4, y:rowBottom+9, size:8, font, color:ink});
+    if(hasData(dd)){
+      centerText(truncate(dd.jobAddress, 50), 1, rowBottom+9, font, 7.5);
+      centerText(state.wageLevel, 2, rowBottom+9, font, 7.5);
+      if(dd.rt) centerText(String(dd.rt), 3, rowBottom+9, font, 7.5);
+      if(dd.ot) centerText(String(dd.ot), 4, rowBottom+9, font, 7.5);
+      if(dd.travel) centerText(String(dd.travel), 6, rowBottom+9, font, 7.5);
+      if(dd.mileage) centerText(String(dd.mileage), 7, rowBottom+9, font, 7.5);
+      if(dd.expenses) centerText('$'+dd.expenses, 9, rowBottom+9, font, 7.5);
+    }
+    rowsMeta.push(rowBottom);
+    ry = rowBottom;
+  }
+
+  DOWS.forEach(dow=>dayRow(1,dow));
+
+  // shaded "Week 2" divider row
+  {
+    const rowBottom = ry - rowH;
+    page.drawRectangle({x:tableX, y:rowBottom, width:tableW, height:rowH, color:grey});
+    page.drawText('Week 2', {x:tableX+4, y:rowBottom+9, size:8, font:bold, color:ink});
+    rowsMeta.push(rowBottom);
+    ry = rowBottom;
+  }
+  DOWS.forEach(dow=>dayRow(2,dow));
+
+  // totals row
+  const t = computeTotals();
+  {
+    const rowBottom = ry - rowH;
+    // grey patch under JOB# + WAGE LEVEL cells, like the paper
+    page.drawRectangle({x:tableX+cols[0].w, y:rowBottom, width:cols[1].w+cols[2].w, height:rowH, color:grey});
+    page.drawText('Totals for Pay Period', {x:tableX+3, y:rowBottom+9, size:6.8, font:bold, color:ink});
+    centerText(t.rt?t.rt.toFixed(2):'', 3, rowBottom+9, bold, 7.5);
+    centerText(t.ot?t.ot.toFixed(2):'', 4, rowBottom+9, bold, 7.5);
+    centerText(t.travel?t.travel.toFixed(2):'', 6, rowBottom+9, bold, 7.5);
+    centerText(t.mileage?String(t.mileage):'', 7, rowBottom+9, bold, 7.5);
+    centerText(t.expenses?('$'+t.expenses.toFixed(2)):'', 9, rowBottom+9, bold, 7.5);
+    rowsMeta.push(rowBottom);
+    ry = rowBottom;
+  }
+
+  // grid lines
+  const tableBottom = ry;
+  let vx = tableX;
+  cols.forEach(c=>{ page.drawLine({start:{x:vx,y:tableTop},end:{x:vx,y:tableBottom}, thickness:0.5, color:lineC}); vx += c.w; });
+  page.drawLine({start:{x:vx,y:tableTop},end:{x:vx,y:tableBottom}, thickness:0.5, color:lineC});
+  page.drawLine({start:{x:tableX,y:tableTop},end:{x:tableX+tableW,y:tableTop}, thickness:0.9, color:lineC});
+  page.drawLine({start:{x:tableX,y:tableTop-hdrH},end:{x:tableX+tableW,y:tableTop-hdrH}, thickness:0.7, color:lineC});
+  rowsMeta.forEach(b=>page.drawLine({start:{x:tableX,y:b},end:{x:tableX+tableW,y:b}, thickness:0.4, color:lineC}));
+  page.drawRectangle({x:tableX, y:tableBottom, width:tableW, height:tableTop-tableBottom, borderColor:ink, borderWidth:1});
+
+  // ---- NOTES instruction panel (static text, exactly like the blank sheet) ----
+  const nX = tableX + tableW + 14;
+  const nW = 792 - M - nX;
+  page.drawRectangle({x:nX, y:tableTop-hdrH, width:nW, height:hdrH, color:grey, borderColor:lineC, borderWidth:0.8});
+  const ntw = bold.widthOfTextAtSize('NOTES', 8.5);
+  page.drawText('NOTES', {x:nX+(nW-ntw)/2, y:tableTop-hdrH+8, size:8.5, font:bold, color:ink});
+
+  const noteLines = [
+    {b:'Job #:', r:' must be entered', u:true},
+    null,
+    {b:'Wage Level:', r:'', u:true},
+    {b:'', r:'H- Helper'},
+    {b:'', r:'M- Mechanic'},
+    {b:'', r:'MIC- Mechanic in Charge'},
+    {b:'', r:'ADJ- Adjuster'},
+    {b:'', r:'TM- Temporary Mechanic'},
+    {b:'', r:'TA- Temporary Adjuster'},
+    null,
+    {b:'Mileage:', r:'', u:true},
+    {b:'', r:'to claim mileage a copy of'},
+    {b:'', r:'your log sheet must be'},
+    {b:'', r:'attached to your timesheet'},
+    null,
+    {b:'Travel Time:', r:' matches to Job #', u:true},
+    null,
+    {b:'Expenses:', r:'', u:true},
+    {b:'', r:'All expenses must be'},
+    {b:'', r:'approved by your supervisor'},
+    {b:'', r:'prior to purchasing supplies'},
+    null,
+    {b:'Absentee:', r:'', u:true},
+    {b:'', r:'Enter a "0" in regular time'},
+    {b:'', r:'hours if you did not work on'},
+    {b:'', r:'the day or Sick Pay if you'},
+    {b:'', r:'want to use a sick day'},
+    {b:'Sick Pay:', r:' 5 days per annum', u:true},
+  ];
+  let ny = tableTop - hdrH - 16;
+  const nSize = 7.2, nLead = 10.6;
+  noteLines.forEach(ln=>{
+    if(ln){
+      let tx = nX + 2;
+      if(ln.b){
+        page.drawText(ln.b, {x:tx, y:ny, size:nSize, font:bold, color:ink});
+        const bw = bold.widthOfTextAtSize(ln.b, nSize);
+        if(ln.u) page.drawLine({start:{x:tx,y:ny-1.5}, end:{x:tx+bw,y:ny-1.5}, thickness:0.5, color:ink});
+        tx += bw;
+      }
+      if(ln.r) page.drawText(ln.r, {x:tx, y:ny, size:nSize, font, color:ink});
+      ny -= nLead;
+    } else {
+      ny -= nLead*0.6;
+    }
+  });
+
+  // ---- signature boxes ----
+  const sigY = tableBottom - 30;
+  page.drawRectangle({x:M, y:sigY-boxH, width:330, height:boxH, borderColor:lineC, borderWidth:0.9});
+  page.drawText('Employee Signature', {x:M+4, y:sigY-boxH+6, size:8, font:bold, color:ink});
+  page.drawRectangle({x:432, y:sigY-boxH, width:330, height:boxH, borderColor:lineC, borderWidth:0.9});
+  page.drawText('Supervisor Signature', {x:436, y:sigY-boxH+6, size:8, font:bold, color:ink});
+}
+
+/** Launch timesheet mode inside #app */
+window.ts = function ts(rec){
+  try{
+    // Mount timesheet chrome
+    document.getElementById('app').classList.add('ts-mode');
+    document.getElementById('app').innerHTML = `
+      <header>
+        <button type="button" id="tsBack" aria-label="Back to home">‹ Home</button>
+        <div class="brand" style="flex:1">Richmond Elevator Maintenance
+          <strong id="brandTitle">Timesheet</strong>
+        </div>
+      </header>
+      <div class="shaft-wrap">
+        <div class="shaft"><div class="shaft-fill" id="shaftFill" style="width:4%"></div></div>
+        <div class="floor-label"><span id="floorText">Starting up…</span><b id="floorPct">1%</b></div>
+      </div>
+      <main id="main"></main>
+      <footer id="footer"></footer>
+    `;
+    document.getElementById('tsBack').onclick = function(){
+      askLeave(()=>home(true));
+    };
+    window.__tsActive = true;
+
+    // Reset / hydrate state
+    state.name = '';
+    state.startDate = '';
+    state.endDate = '';
+    state.periodMode = 'twoWeeks';
+    state.workedWeekends = false;
+    state.wageLevel = 'M';
+    state.weekAsked = {};
+    state.days = [];
+    state.receipts = [];
+    stepIndex = 0;
+    steps = ['name','payperiod','wage'];
+    editReturn = false;
+    window.__editName = false;
+    window.__dir = 1;
+
+    // Pre-fill from safety profile / history record
+    const m = rec || {};
+    const profile = (typeof K === 'function' ? (K('profile')||{}) : {});
+    if(m.name) state.name = m.name;
+    else if(profile.name) state.name = profile.name;
+    else if(typeof savedName === 'function' && savedName()) state.name = savedName();
+    if(m.startDate) state.startDate = m.startDate;
+    if(m.days && m.days.length){
+      const resumeStep = m._resumeStep;
+      delete m._resumeStep;
+      Object.assign(state, m, {
+        days: (m.days||[]).map(d => Object.assign({}, d)),
+        receipts: m.receipts || []
+      });
+      if(typeof rebuildSteps === 'function') rebuildSteps();
+      else if(typeof buildDays === 'function') buildDays();
+      if(typeof resumeStep === 'number' && resumeStep >= 0 && resumeStep < steps.length) stepIndex = resumeStep;
+      else { stepIndex = steps.indexOf('summary'); if(stepIndex < 0) stepIndex = 0; }
+    }
+
+    render();
+  }catch(e){
+    console.error('Timesheet launch failed', e);
+    alert('Could not open timesheet: ' + (e && e.message ? e.message : e));
+  }
+};
+
+/* ---- boot (top-level) ---- */
 L=K('lib')||expand();if(K('libv')!=SEED.v){const e=expand(),n=[];e.tb.forEach(x=>L.tb.some(y=>y.d==x.d&&eq(y.t,x.t)&&eq(y.a,x.a))||(L.tb.push(x),n.push({kind:'tb',data:x})));e.jha.forEach(x=>L.jha.some(y=>y.d==x.d&&eq(y.s,x.s)&&y.i==x.i&&eq(y.st,x.st)&&eq(y.h,x.h)&&eq(y.c,x.c))||(L.jha.push(x),n.push({kind:'jha',data:x})));n.length&&rq('lib',{method:'POST',body:JSON.stringify(n)});K('libv',SEED.v)}
-K('lib',L);if(K('draft')?.S?.done)K('draft',null);home();loadLib();navigator.storage?.persist?.();navigator.serviceWorker?.register('sw.js');
-</script></body></html>
+K('lib',L);if(K('draft')?.S?.done)K('draft',null);
+try{window.home()}catch(e){console.error('home failed',e)}
+loadLib();navigator.storage?.persist?.();navigator.serviceWorker?.register('sw.js');
+window.addEventListener('beforeunload',e=>{if((S&&!S.done)||window.__tsActive){e.preventDefault();e.returnValue=''}});
+</script></body></html
