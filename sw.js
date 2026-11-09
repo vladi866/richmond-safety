@@ -1,4 +1,4 @@
-const C = 'safety-v13';
+const C = 'safety-v15';
 const PRECACHE = [
   './','index.html','seed.js','tb.png','jha.png',
   'img/hero.jpg','img/hardhat.jpg','img/clipboard.jpg','img/tablet.jpg',
