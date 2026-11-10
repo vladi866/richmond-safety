@@ -1,6 +1,6 @@
-const C = 'safety-v15';
+const C = 'safety-v16';
 const PRECACHE = [
-  './','index.html','seed.js','tb.png','jha.png',
+  './','index.html','seed.js','lux.css','lux.js','tb.png','jha.png',
   'img/hero.jpg','img/hardhat.jpg','img/clipboard.jpg','img/tablet.jpg',
   'manifest.json','icon.png',
   'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js',

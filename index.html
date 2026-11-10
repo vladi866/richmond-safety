@@ -565,753 +565,12 @@ textarea{resize:none}.li[style*="pointer-events"]::after{display:none}
 #app.ts-mode header{padding:14px 16px}
 </style>
 
-<style id="lux-forms">
-#app.ts-mode input, #app.ts-mode textarea, #app.ts-mode select{
-  background: rgba(55,63,78,.95) !important;
-  border: 1px solid rgba(255,255,255,.12) !important;
-  min-height: 54px !important;
-}
-#app.ts-mode .field label{
-  margin-bottom: 10px !important;
-}
-
-/* ============================================================
-   Luxury form layer — matches home hero polish
-   ============================================================ */
-:root{
-  --lux-glow: rgba(242,167,27,.35);
-  --lux-glow-soft: rgba(242,167,27,.12);
-  --lux-blue: rgba(47,140,255,.25);
-  --lux-surface: rgba(29,33,38,.72);
-  --lux-surface-2: rgba(38,43,51,.85);
-  --lux-border: rgba(255,255,255,.06);
-  --lux-border-strong: rgba(255,255,255,.1);
-  --lux-radius: 16px;
-  --lux-radius-sm: 12px;
-  --lux-ease: cubic-bezier(.22,1,.36,1);
-}
-
-/* Ambient page depth on form screens */
-#app:not(:has(.home)){
-  background:
-    radial-gradient(120% 60% at 100% -10%, rgba(30,100,220,.18), transparent 55%),
-    radial-gradient(90% 50% at 0% 100%, rgba(242,167,27,.06), transparent 50%),
-    #0c0f14;
-}
-
-/* ---- Nav / header ---- */
-.nav{
-  background: rgba(12,15,20,.78) !important;
-  border-bottom: 1px solid var(--lux-border) !important;
-  backdrop-filter: blur(28px) saturate(1.4) !important;
-  -webkit-backdrop-filter: blur(28px) saturate(1.4) !important;
-  padding-top: calc(var(--top) + 8px) !important;
-  min-height: calc(var(--top) + 56px) !important;
-}
-.nav b{
-  font-size: 15px;
-  letter-spacing: -.01em;
-  font-weight: 650;
-  background: linear-gradient(180deg,#fff 30%,#c8d0dc);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-.nav a{
-  color: var(--amber) !important;
-  font-weight: 600;
-  font-size: 15px;
-  border-radius: 10px;
-  transition: background .2s var(--lux-ease), transform .15s ease;
-}
-.nav a:active{ transform: scale(.96); background: var(--lux-glow-soft); }
-
-.prog{
-  height: 2px !important;
-  background: rgba(255,255,255,.06) !important;
-  overflow: hidden;
-}
-.prog i{
-  background: linear-gradient(90deg, #c4820a, #f2a71b 40%, #ffd27a) !important;
-  box-shadow: 0 0 12px var(--lux-glow);
-  transition: width .45s var(--lux-ease) !important;
-}
-
-/* ---- Main content entrance ---- */
-main{
-  padding: 20px 18px 32px !important;
-  animation: luxIn .38s var(--lux-ease) both !important;
-}
-@keyframes luxIn{
-  from{ opacity: 0; transform: translateY(14px) scale(.985); filter: blur(4px); }
-  to{ opacity: 1; transform: none; filter: none; }
-}
-@keyframes luxInX{
-  from{ opacity: 0; transform: translateX(18px); }
-  to{ opacity: 1; transform: none; }
-}
-@keyframes luxPulse{
-  0%,100%{ box-shadow: 0 0 0 0 var(--lux-glow-soft); }
-  50%{ box-shadow: 0 0 0 6px transparent; }
-}
-@keyframes luxShimmer{
-  0%{ background-position: 120% 0; }
-  100%{ background-position: -120% 0; }
-}
-
-/* ---- Typography ---- */
-main > label:first-child,
-label{
-  display: block;
-  font-size: 12px !important;
-  font-weight: 650 !important;
-  letter-spacing: .08em !important;
-  text-transform: uppercase !important;
-  color: var(--dim) !important;
-  margin: 18px 0 8px !important;
-}
-label:first-child{ margin-top: 4px !important; }
-.step-eyebrow, .m{
-  font-size: 12px !important;
-  letter-spacing: .1em !important;
-  text-transform: uppercase !important;
-  color: var(--dim) !important;
-  font-weight: 600 !important;
-}
-h1{
-  font-size: 28px !important;
-  font-weight: 700 !important;
-  letter-spacing: -.03em !important;
-  line-height: 1.15 !important;
-  margin: 6px 0 10px !important;
-  background: linear-gradient(180deg, #fff 20%, #b8c2d0);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-.sub, p.sub{
-  color: var(--dim) !important;
-  font-size: 15px !important;
-  line-height: 1.45 !important;
-  margin: 0 0 18px !important;
-  letter-spacing: -.01em;
-}
-
-/* ---- Fields ---- */
-input, textarea, select{
-  width: 100%;
-  font: inherit;
-  padding: 15px 16px !important;
-  border: 1px solid rgba(255,255,255,.1) !important;
-  border-radius: var(--lux-radius-sm) !important;
-  background: rgba(55,63,78,.95) !important;
-  color: var(--tx) !important;
-  outline: 0 !important;
-  -webkit-appearance: none !important;
-  appearance: none !important;
-  min-height: 52px !important;
-  transition: border-color .2s ease, box-shadow .25s var(--lux-ease), background .2s ease !important;
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.03);
-}
-textarea{ min-height: 96px !important; resize: vertical; line-height: 1.4; }
-input:focus, textarea:focus, select:focus{
-  border-color: rgba(242,167,27,.55) !important;
-  background: rgba(52,60,74,.98) !important;
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.04),
-    0 0 0 3px var(--lux-glow-soft),
-    0 8px 28px rgba(0,0,0,.25) !important;
-}
-input::placeholder, textarea::placeholder{ color: #5a6470 !important; }
-.bad, input.bad, textarea.bad{
-  border-color: rgba(255,93,77,.6) !important;
-  box-shadow: 0 0 0 3px rgba(255,93,77,.15) !important;
-  animation: luxPulse .6s ease;
-}
-
-/* Field cards */
-.field{
-  margin-bottom: 16px;
-  animation: luxIn .4s var(--lux-ease) both;
-}
-.field:nth-child(2){ animation-delay: .04s; }
-.field:nth-child(3){ animation-delay: .08s; }
-.field:nth-child(4){ animation-delay: .12s; }
-.field:nth-child(5){ animation-delay: .16s; }
-
-/* ---- Groups / lists ---- */
-.grp, .h{
-  background: var(--lux-surface) !important;
-  border: 1px solid var(--lux-border) !important;
-  border-radius: var(--lux-radius) !important;
-  overflow: hidden;
-  margin-bottom: 16px !important;
-  box-shadow: 0 12px 40px rgba(0,0,0,.22);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  animation: luxIn .4s var(--lux-ease) both;
-}
-.li{
-  padding: 14px 16px !important;
-  transition: background .2s ease;
-}
-.li:active, .li:hover{ background: rgba(255,255,255,.03) !important; }
-.li+.li::before{ border-top-color: var(--lux-border) !important; left: 16px !important; }
-.li::after{ color: rgba(255,255,255,.25) !important; font-weight: 300; }
-.ic{
-  border-radius: 12px !important;
-  box-shadow: 0 6px 16px rgba(0,0,0,.3);
-}
-
-/* ---- Buttons ---- */
-.bar{
-  background: rgba(12,15,20,.88) !important;
-  border-top: 1px solid var(--lux-border) !important;
-  backdrop-filter: blur(28px) saturate(1.3) !important;
-  -webkit-backdrop-filter: blur(28px) saturate(1.3) !important;
-  padding: 12px 16px calc(var(--bot) + 12px) !important;
-  gap: 10px !important;
-}
-button, .primary, button.primary{
-  font: inherit;
-  font-weight: 650 !important;
-  height: 52px !important;
-  padding: 0 20px !important;
-  border: 0 !important;
-  border-radius: 14px !important;
-  background: linear-gradient(180deg, #ffc14a 0%, #f2a71b 45%, #d4890f 100%) !important;
-  color: #1a1205 !important;
-  flex: 1;
-  letter-spacing: -.01em;
-  box-shadow:
-    0 1px 0 rgba(255,255,255,.25) inset,
-    0 8px 24px rgba(242,167,27,.28),
-    0 2px 6px rgba(0,0,0,.25) !important;
-  transition: transform .18s var(--lux-ease), box-shadow .2s ease, filter .2s ease !important;
-  position: relative;
-  overflow: hidden;
-}
-button::after, .primary::after{
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,.22) 50%, transparent 60%);
-  background-size: 200% 100%;
-  opacity: 0;
-  transition: opacity .3s ease;
-  pointer-events: none;
-}
-button:hover::after, .primary:hover::after{ opacity: 1; animation: luxShimmer 1.2s ease; }
-button:active, .primary:active{
-  transform: scale(.975) !important;
-  filter: brightness(.95);
-  box-shadow:
-    0 1px 0 rgba(255,255,255,.15) inset,
-    0 4px 12px rgba(242,167,27,.2) !important;
-}
-button.g, button.secondary, .secondary{
-  background: var(--lux-surface-2) !important;
-  color: var(--tx) !important;
-  border: 1px solid var(--lux-border-strong) !important;
-  box-shadow: 0 4px 16px rgba(0,0,0,.2) !important;
-}
-button.g:active, .secondary:active{ filter: brightness(1.08); }
-button.r{
-  background: linear-gradient(180deg, #ff7a6a, #e04535) !important;
-  color: #fff !important;
-  box-shadow: 0 8px 22px rgba(224,69,53,.3) !important;
-}
-.row button{
-  background: var(--lux-surface-2) !important;
-  border: 1px solid var(--lux-border) !important;
-  box-shadow: none !important;
-  color: var(--amber) !important;
-}
-.row button.w{
-  background: linear-gradient(180deg, #ffc14a, #f2a71b) !important;
-  color: #1a1205 !important;
-  border: 0 !important;
-}
-
-/* ---- Overlay / sheets ---- */
-.ov{
-  background: rgba(0,0,0,.62) !important;
-  backdrop-filter: blur(8px) !important;
-  -webkit-backdrop-filter: blur(8px) !important;
-  animation: luxFade .25s ease !important;
-}
-@keyframes luxFade{ from{ opacity: 0; } to{ opacity: 1; } }
-.sh .box{
-  background: linear-gradient(180deg, rgba(40,46,56,.98), rgba(28,32,40,.98)) !important;
-  border: 1px solid var(--lux-border-strong) !important;
-  border-radius: 20px !important;
-  padding: 22px 20px !important;
-  box-shadow: 0 24px 64px rgba(0,0,0,.5);
-  animation: luxIn .35s var(--lux-ease) both;
-}
-.sh .box b{ font-size: 18px; letter-spacing: -.02em; }
-.sh .box .m{ margin-top: 8px; text-transform: none !important; letter-spacing: 0 !important; font-size: 14px !important; line-height: 1.45; }
-.sh button{
-  border-radius: 14px !important;
-  margin-top: 6px;
-}
-
-/* ---- Toast ---- */
-.toast{
-  background: rgba(36,42,52,.94) !important;
-  border: 1px solid var(--lux-border-strong);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  box-shadow: 0 12px 40px rgba(0,0,0,.4) !important;
-  border-radius: 24px !important;
-  animation: luxIn .3s var(--lux-ease) both !important;
-}
-
-/* ---- Signature canvas ---- */
-canvas#cv, canvas{
-  border-radius: var(--lux-radius-sm) !important;
-  border: 1px solid var(--lux-border) !important;
-  background: rgba(255,255,255,.03) !important;
-  box-shadow: inset 0 2px 8px rgba(0,0,0,.2);
-}
-
-/* ---- Timesheet mode ---- */
-#app.ts-mode{
-  background:
-    radial-gradient(100% 50% at 80% 0%, rgba(30,100,220,.2), transparent 55%),
-    radial-gradient(80% 40% at 10% 100%, rgba(242,167,27,.07), transparent 50%),
-    #0c0f14 !important;
-}
-#app.ts-mode header{
-  background: rgba(12,15,20,.8) !important;
-  border-bottom: 1px solid var(--lux-border) !important;
-  backdrop-filter: blur(28px) saturate(1.4) !important;
-  -webkit-backdrop-filter: blur(28px) saturate(1.4) !important;
-  align-items: center;
-  gap: 10px;
-}
-#tsBack{
-  background: rgba(255,255,255,.06) !important;
-  border: 1px solid var(--lux-border-strong) !important;
-  border-radius: 20px !important;
-  padding: 8px 14px !important;
-  color: var(--amber) !important;
-  font-weight: 650 !important;
-  transition: background .2s ease, transform .15s ease !important;
-}
-#tsBack:active{ transform: scale(.96); background: var(--lux-glow-soft) !important; }
-#app.ts-mode .brand{
-  font-size: 11px;
-  letter-spacing: .04em;
-  color: var(--dim);
-  text-transform: uppercase;
-}
-#app.ts-mode .brand strong{
-  display: block;
-  font-size: 15px;
-  letter-spacing: -.01em;
-  text-transform: none;
-  color: #eef0f2;
-  margin-top: 2px;
-  background: linear-gradient(180deg,#fff,#c8d0dc);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-.shaft-wrap{ padding: 10px 18px 6px !important; }
-.shaft{
-  height: 3px !important;
-  background: rgba(255,255,255,.06) !important;
-  border-radius: 99px !important;
-  overflow: hidden;
-}
-.shaft-fill, #shaftFill{
-  background: linear-gradient(90deg, #c4820a, #f2a71b 50%, #ffd27a) !important;
-  box-shadow: 0 0 12px var(--lux-glow);
-  border-radius: 99px;
-  transition: width .45s var(--lux-ease) !important;
-}
-.floor-label{
-  display: flex;
-  justify-content: space-between;
-  margin-top: 8px;
-  font-size: 11px;
-  letter-spacing: .06em;
-  text-transform: uppercase;
-  color: var(--dim);
-  font-weight: 600;
-}
-.floor-label b{ color: var(--amber); font-variant-numeric: tabular-nums; }
-
-#app.ts-mode main{
-  animation: luxIn .4s var(--lux-ease) both !important;
-}
-#app.ts-mode footer, #app.ts-mode #footer{
-  background: rgba(12,15,20,.88) !important;
-  border-top: 1px solid var(--lux-border) !important;
-  backdrop-filter: blur(28px) !important;
-  -webkit-backdrop-filter: blur(28px) !important;
-  padding: 12px 16px calc(var(--bot) + 12px) !important;
-  display: flex;
-  gap: 10px;
-}
-
-/* Segmented controls */
-.seg{
-  display: flex;
-  gap: 6px;
-  padding: 4px;
-  background: rgba(0,0,0,.25);
-  border-radius: 14px;
-  border: 1px solid var(--lux-border);
-}
-.seg-btn, .seg button{
-  flex: 1;
-  height: 42px !important;
-  border-radius: 10px !important;
-  background: transparent !important;
-  color: var(--dim) !important;
-  box-shadow: none !important;
-  border: 0 !important;
-  font-size: 14px !important;
-  font-weight: 600 !important;
-}
-.seg-btn.active, .seg button.active, .seg-btn[aria-pressed="true"]{
-  background: linear-gradient(180deg, #ffc14a, #f2a71b) !important;
-  color: #1a1205 !important;
-  box-shadow: 0 4px 14px rgba(242,167,27,.3) !important;
-}
-
-/* Toggle / checkbox rows */
-.gl-chk, .gl-all, .toggle-row{
-  background: var(--lux-surface) !important;
-  border: 1px solid var(--lux-border) !important;
-  border-radius: var(--lux-radius-sm) !important;
-  transition: background .2s ease, border-color .2s ease;
-}
-.gl-chk:active, .gl-all:active{ background: var(--lux-surface-2) !important; }
-
-/* Receipt thumbs */
-.receipt-thumbs{ display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
-.receipt-thumb{
-  width: 72px; height: 72px;
-  border-radius: 12px;
-  overflow: hidden;
-  border: 1px solid var(--lux-border-strong);
-  position: relative;
-  box-shadow: 0 6px 16px rgba(0,0,0,.3);
-  animation: luxIn .35s var(--lux-ease) both;
-}
-.receipt-thumb img{ width: 100%; height: 100%; object-fit: cover; }
-.receipt-thumb .rm{
-  position: absolute; top: 4px; right: 4px;
-  width: 24px !important; height: 24px !important;
-  border-radius: 50% !important;
-  padding: 0 !important;
-  font-size: 14px !important;
-  background: rgba(0,0,0,.65) !important;
-  color: #fff !important;
-  box-shadow: none !important;
-}
-
-/* Day cards / summary */
-.summary-list li, .day-badge{
-  background: var(--lux-surface) !important;
-  border: 1px solid var(--lux-border) !important;
-  border-radius: var(--lux-radius) !important;
-  box-shadow: 0 8px 28px rgba(0,0,0,.2);
-  animation: luxIn .4s var(--lux-ease) both;
-}
-.checkmark{
-  width: 64px; height: 64px;
-  margin: 0 auto 16px;
-  border-radius: 50%;
-  background: linear-gradient(180deg, #ffc14a, #f2a71b);
-  color: #1a1205;
-  font-size: 32px;
-  display: grid;
-  place-items: center;
-  box-shadow: 0 12px 36px rgba(242,167,27,.35);
-  animation: luxIn .5s var(--lux-ease) both;
-}
-
-/* Datalist / shuffle row polish */
-.row{ gap: 10px !important; }
-.row input, .row textarea{ flex: 1; }
-
-/* History cards */
-.h .row button{
-  height: 40px !important;
-  font-size: 14px !important;
-  border-radius: 10px !important;
-}
-
-/* Reduced motion */
-
-/* ---- Redesigned form chrome (fx-*) ---- */
-.fx-top{
-  flex:none;
-  background:rgba(12,15,20,.82);
-  border-bottom:1px solid rgba(255,255,255,.06);
-  backdrop-filter:blur(28px) saturate(1.4);
-  -webkit-backdrop-filter:blur(28px) saturate(1.4);
-  padding:calc(var(--top) + 10px) 16px 14px;
-  z-index:5;
-}
-.fx-nav{
-  display:grid;
-  grid-template-columns:1fr auto 1fr;
-  align-items:center;
-  gap:8px;
-  margin-bottom:14px;
-}
-.fx-nav .fx-back, .fx-nav .fx-home, .fx-back, .fx-home{
-  color:var(--amber)!important;
-  font-weight:650;
-  font-size:15px;
-  padding:8px 12px;
-  border-radius:20px;
-  background:rgba(255,255,255,.05);
-  border:1px solid rgba(255,255,255,.08);
-  text-decoration:none;
-  width:fit-content;
-  transition:background .2s ease, transform .15s ease;
-}
-.fx-nav .fx-home, a.fx-home{ justify-self:end; }
-.fx-back:active, .fx-home:active{ transform:scale(.96); background:rgba(242,167,27,.12); }
-.fx-brand{
-  display:flex;
-  align-items:center;
-  gap:8px;
-  justify-content:center;
-}
-.fx-brand img{
-  height:28px;
-  background:#eceded;
-  border-radius:7px;
-  padding:4px 7px;
-}
-.fx-brand span{
-  display:none;
-}
-.fx-progress{ margin-bottom:12px; }
-.fx-progress-track{
-  height:3px;
-  background:rgba(255,255,255,.06);
-  border-radius:99px;
-  overflow:hidden;
-}
-.fx-progress-track i{
-  display:block;
-  height:100%;
-  background:linear-gradient(90deg,#c4820a,#f2a71b 45%,#ffd27a);
-  box-shadow:0 0 12px rgba(242,167,27,.4);
-  border-radius:99px;
-  transition:width .45s cubic-bezier(.22,1,.36,1);
-}
-.fx-progress-meta{
-  display:flex;
-  justify-content:space-between;
-  margin-top:8px;
-  font-size:11px;
-  letter-spacing:.08em;
-  text-transform:uppercase;
-  color:var(--dim);
-  font-weight:650;
-}
-.fx-progress-meta b{ color:var(--amber); font-variant-numeric:tabular-nums; }
-.fx-title h1{
-  margin:0!important;
-  font-size:26px!important;
-  font-weight:700!important;
-  letter-spacing:-.03em!important;
-  background:linear-gradient(180deg,#fff 25%,#b8c2d0);
-  -webkit-background-clip:text;
-  background-clip:text;
-  color:transparent;
-}
-.fx-kicker{
-  font-size:11px;
-  font-weight:700;
-  letter-spacing:.12em;
-  text-transform:uppercase;
-  color:var(--amber);
-  margin-bottom:6px;
-  opacity:.9;
-}
-.fx-main{
-  animation:luxIn .4s cubic-bezier(.22,1,.36,1) both!important;
-}
-.fx-stack{
-  display:flex;
-  flex-direction:column;
-  gap:12px;
-}
-.fcard{
-  background:rgba(45,52,64,.55);
-  border:1px solid rgba(255,255,255,.08);
-  border-radius:14px;
-  padding:14px 14px 12px;
-  box-shadow:0 8px 28px rgba(0,0,0,.18);
-  transition:border-color .2s ease, box-shadow .25s ease;
-}
-.fcard:focus-within{
-  border-color:rgba(242,167,27,.4);
-  box-shadow:0 0 0 3px rgba(242,167,27,.1), 0 10px 32px rgba(0,0,0,.25);
-}
-.fcard label{
-  margin:0 0 8px!important;
-}
-.fcard input, .fcard textarea{
-  background:rgba(20,24,30,.55)!important;
-  border:1px solid rgba(255,255,255,.06)!important;
-}
-.hint{
-  font-size:13px!important;
-  color:var(--dim)!important;
-  line-height:1.45;
-  margin:0 0 4px;
-  letter-spacing:0!important;
-  text-transform:none!important;
-  font-weight:500!important;
-}
-.topic-card{
-  background:rgba(45,52,64,.55);
-  border:1px solid rgba(255,255,255,.08);
-  border-radius:16px;
-  padding:14px;
-  box-shadow:0 10px 32px rgba(0,0,0,.2);
-  animation:luxIn .4s cubic-bezier(.22,1,.36,1) both;
-}
-.topic-card:nth-child(2){ animation-delay:.03s; }
-.topic-card:nth-child(3){ animation-delay:.06s; }
-.topic-card:nth-child(4){ animation-delay:.09s; }
-.topic-card:nth-child(5){ animation-delay:.12s; }
-.topic-card:nth-child(6){ animation-delay:.15s; }
-.topic-head{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  margin-bottom:10px;
-  font-size:12px;
-  font-weight:700;
-  letter-spacing:.08em;
-  text-transform:uppercase;
-  color:var(--dim);
-}
-.topic-num{
-  width:28px;height:28px;
-  border-radius:9px;
-  display:grid;place-items:center;
-  background:linear-gradient(180deg,#ffc14a,#f2a71b);
-  color:#1a1205;
-  font-size:13px;
-  font-weight:800;
-  box-shadow:0 4px 12px rgba(242,167,27,.3);
-}
-.topic-head .icon-btn, .icon-btn{
-  margin-left:auto;
-  width:40px!important;
-  height:40px!important;
-  flex:none!important;
-  border-radius:12px!important;
-  background:rgba(255,255,255,.06)!important;
-  border:1px solid rgba(255,255,255,.1)!important;
-  color:var(--amber)!important;
-  box-shadow:none!important;
-  font-size:16px!important;
-  padding:0!important;
-}
-.topic-card label{ margin:12px 0 8px!important; }
-.topic-card textarea{
-  width:100%;
-  background:rgba(20,24,30,.55)!important;
-  border:1px solid rgba(255,255,255,.06)!important;
-}
-.sig-card{
-  background:rgba(45,52,64,.55);
-  border:1px solid rgba(255,255,255,.08);
-  border-radius:16px;
-  padding:16px;
-  box-shadow:0 12px 36px rgba(0,0,0,.22);
-}
-.sig-label{
-  font-size:13px;
-  font-weight:650;
-  margin-bottom:12px;
-  color:var(--tx);
-}
-.sig-card canvas{
-  width:100%!important;
-  height:170px;
-  border-radius:12px!important;
-  background:rgba(255,255,255,.04)!important;
-  border:1px dashed rgba(255,255,255,.12)!important;
-  touch-action:none;
-}
-.sig-clear{
-  margin-top:12px!important;
-  width:100%;
-}
-.review-hero{
-  display:flex;
-  align-items:center;
-  gap:16px;
-  padding:18px;
-  background:rgba(45,52,64,.55);
-  border:1px solid rgba(255,255,255,.08);
-  border-radius:18px;
-  box-shadow:0 12px 40px rgba(0,0,0,.25);
-}
-.review-icon{
-  width:52px;height:52px;
-  border-radius:14px;
-  display:grid;place-items:center;
-  flex-shrink:0;
-  box-shadow:0 8px 20px rgba(0,0,0,.3);
-}
-.review-icon svg{ width:26px; height:26px; fill:none; stroke:#fff; stroke-width:1.8; }
-.review-hero b{ display:block; font-size:18px; letter-spacing:-.02em; margin-bottom:4px; }
-.review-hero small{ color:var(--dim); font-size:13px; }
-.choice-card{
-  padding:20px 18px;
-  background:rgba(45,52,64,.55);
-  border:1px solid rgba(255,255,255,.08);
-  border-radius:16px;
-  line-height:1.5;
-  color:var(--dim);
-}
-.fx-bar{ gap:10px; }
-
-
-.draft-card .li span{display:flex;flex-direction:column;gap:3px;min-width:0}
-.draft-card .li b{font-size:16px;letter-spacing:-.01em}
-.draft-detail{color:var(--tx)!important;opacity:.88;font-size:13px!important;line-height:1.35;white-space:normal!important;display:block}
-.draft-when{color:var(--dim)!important;font-size:12px!important;margin-top:2px}
-
-
-/* Phone readability */
-.sub, p.sub, .hint, .m, .step-eyebrow, .floor-label, label, .draft-when {
-  color: #c5cdd8 !important;
-  opacity: 1 !important;
-}
-.draft-detail, .fx-kicker { opacity: 1 !important; }
-h1, .fx-title h1 { opacity: 1 !important; }
-#app.ts-mode .sub, #app.ts-mode .hint, #app.ts-mode label { color: #d0d7e0 !important; }
-input, textarea { color: #eef0f2 !important; }
-
-@media (prefers-reduced-motion: reduce){
-  *, *::before, *::after{
-    animation-duration: .01ms !important;
-    transition-duration: .01ms !important;
-  }
-}
-</style>
-
+<link rel="stylesheet" href="lux.css">
 </head><body><div id="app"></div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
 <script src="seed.js"></script>
+<script src="lux.js"></script>
 <script>
 const LOGO='data:image/png;base64,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';
 // ===== SHARED BACKEND (Supabase): paste your values, see README. Blank = this phone only =====
@@ -1412,6 +671,13 @@ function askLeave(onLeft){
   $('#nd').onclick=()=>{o.remove();removeDraft(cap.id);clearActiveForm();onLeft&&onLeft()};
   $('#yd').onclick=()=>{o.remove();putDraft(cap);clearActiveForm();toast('Draft saved');onLeft&&onLeft()};
 }
+/** Explicit "save draft and close": no dialog, one tap. Resumes at the exact step you left. */
+function saveDraftClose(){
+  const cap=captureActiveForm();
+  if(!cap){home(true);return}
+  putDraft(cap);clearActiveForm();home(true);
+  toast('Draft saved. Find it under Resume drafts.');
+}
 /** legacy name used by signature pad mid-form autosave — keep as no-op so peeks don't spam drafts */
 const saveDraft=()=>{};
 
@@ -1446,7 +712,7 @@ return[
 {k:'info'+d,ok:()=>jobOk(D().job),r:()=>({t:n+' · Job',b:`<div class="fx-stack">${fld('Date',p+'date','date')}${fld('Job # (T / H / MT / MH)',p+'job')}<p class="hint">Library: ${dpd(d)=='H'?'Hydro (H, MH)':'Traction (T, MT)'}</p>${fld('Job location',p+'loc')}<div class="fcard"><label>Scope of work</label><div class="row"><input data-p="${p}scope" list="sl${d}" value="${esc(D().scope)}" placeholder="Describe the scope"><button type="button" class="icon-btn" onclick="rS(${d})">${SHUF}</button></div><datalist id="sl${d}">${jS(dpd(d)).map(s=>`<option value="${esc(s)}">`).join('')}</datalist></div></div>`})},
 {k:'haz'+d,r:()=>({t:n+' · Hazards',b:`<div class="fx-stack"><p class="hint" style="margin-top:0">Scope: <b style="color:var(--tx);font-weight:600;text-transform:none;letter-spacing:0">${esc(D().scope)||'Not set'}</b></p>${[0,1,2,3,4].map(hazCard).join('')}</div>`})},
 {k:'crew'+d,r:()=>({t:n+' · Crew',b:`<div class="fx-stack"><div class="fcard"><label>Notes</label><textarea rows="5" data-p="${p}notes" placeholder="Additional notes">${esc(D().notes)}</textarea></div>${fld('Foreman',p+'foreman')}${[0,1,2,3].map(i=>fld('Mechanic '+(i+1),p+'mech.'+i)).join('')}</div>`})}]}
-const jF=()=>[...dayF(0),...(S.days[1]?dayF(1):[{k:'more',r:()=>({t:'Add Day 2?',b:`<div class="fx-stack"><div class="choice-card"><p>Day 1 is ready. Add Day 2 on the same sheet, or finish and add it later from History.</p></div></div>`,nx:null,x:`<button class="g" onclick="at='done';draw()">Finish Day 1</button><button onclick="d2()">Add Day 2</button>`})}]),{k:'done',r:doneR}];
+const jF=()=>[...dayF(0),...(S.days[1]?dayF(1):[{k:'more',r:()=>({t:'Add Day 2?',b:`<div class="fx-stack"><div class="choice-card"><p><b>Day 1 is ready.</b> A Daily Hazard Assessment covers two days on one sheet. Add Day 2 now, or save a draft and come back to it.</p></div><button type="button" class="g" onclick="saveDraftClose()">Save draft and finish later</button></div>`,nx:null,x:`<button class="g" onclick="at='done';draw()">Day 1 only</button><button onclick="d2()">Add Day 2</button>`})}]),{k:'done',r:doneR}];
 function d2(){const a=S.days[0],b=blankDay();Object.assign(b,{job:a.job,loc:a.loc,foreman:a.foreman||savedName()});S.days[1]=b;at='info1';draw()}
 const rS=d=>{const all=jS(dpd(d)),cur=S.days[d].scope,c=all.filter(s=>!eq(s,cur)),pick=rnd(c.length?c:all);if(pick){S.days[d].scope=pick;draw()}};
 function opts(d,i){const D=S.days[d],R=D.rows[i],o=jR(dpd(d),D.scope,i),m=o.filter(x=>eq(x.st,R.s));return{o,hz:[...new Set(m.map(x=>x.h))],cs:[...new Set(m.filter(x=>!R.h||eq(x.h,R.h)).map(x=>x.c))]}}
@@ -1456,18 +722,18 @@ function rSt(d,i){const R=S.days[d].rows[i],{o}=opts(d,i);if(!o.length)return;co
 function rH(d,i){const R=S.days[d].rows[i],{hz}=opts(d,i),c=hz.filter(x=>!eq(x,R.h));if(!c.length)return;R.h=rnd(c);R.c=opts(d,i).cs[0]||R.c;draw()}
 function rC(d,i){const R=S.days[d].rows[i],{cs}=opts(d,i),c=cs.filter(x=>!eq(x,R.c));if(!c.length)return;R.c=rnd(c);draw()}
 // ===== review / save / history =====
-const doneR=()=>({t:'Review & Save',b:`<div class="fx-stack"><div class="review-hero"><div class="review-icon" style="background:${S.type=='tb'?'linear-gradient(135deg,#1f7bff,#0a2f8c)':'linear-gradient(135deg,#ff9a1f,#a14a00)'}">${S.type=='tb'?ICO.tb:ICO.jha}</div><div><b>${esc(jobOf())||'No job #'}</b><small>${S.type=='tb'?'ToolBox Meeting':'Daily Hazard Assessment'}${S.type=='jha'?' · '+S.days.length+(S.days.length>1?' days':' day'):''}</small></div></div>${S.type=='jha'&&S.days.length<2?'<p class="hint">Only Day 1 is filled. You can add Day 2 later from History — both print on one page.</p>':''}<p class="hint">Use Back to edit anything. Save generates the PDF on this device.</p></div>`,nx:null,x:`<button class="g" onclick="home()">Home</button><button class="primary" onclick="save()">Save PDF</button>`});
+const doneR=()=>({t:'Review & Save',b:`<div class="fx-stack"><div class="review-hero"><div class="review-icon" style="background:${S.type=='tb'?'linear-gradient(135deg,#1f7bff,#0a2f8c)':'linear-gradient(135deg,#ff9a1f,#a14a00)'}">${S.type=='tb'?ICO.tb:ICO.jha}</div><div><b>${esc(jobOf())||'No job #'}</b><small>${S.type=='tb'?'ToolBox Meeting':'Daily Hazard Assessment'}${S.type=='jha'?' · '+S.days.length+(S.days.length>1?' days':' day'):''}</small></div></div>${S.type=='jha'&&S.days.length<2?'<p class="hint">Only Day 1 is filled. Go Back to add Day 2 now, or Save draft and finish it later. Both days print on one page.</p>':'<p class="hint">Go Back to edit anything, or Save draft to finish later.</p>'}<p class="hint">Save PDF stores the finished form in History on this phone.</p></div>`,nx:null,x:`<button class="g" onclick="saveDraftClose()">Save draft</button><button class="primary" onclick="save()">Save PDF</button>`});
 async function img(u){const b=await(await fetch(u)).blob();return new Promise(r=>{const f=new FileReader;f.onload=()=>r(f.result);f.readAsDataURL(b)})}
 async function pdf(){const{jsPDF}=window.jspdf,d=new jsPDF({unit:'pt',format:'letter'}),kx=612/1086,ky=792/1448;
-const T=(t,x,y,w,z=10)=>{t=(t||'')+'';if(!t.trim())return;d.setFontSize(z);while(z>4.5&&d.getTextWidth(t)>w*kx)d.setFontSize(z-=.5);d.text(t,x*kx,(y-5)*ky)};
+const T=(t,x,y,w,z=11.5)=>{t=(t||'')+'';if(!t.trim())return;d.setFontSize(z);while(z>4.5&&d.getTextWidth(t)>w*kx)d.setFontSize(z-=.5);d.text(t,x*kx,(y-5)*ky)};
 d.addImage(await img(S.type=='tb'?'tb.png':'jha.png'),'PNG',0,0,612,792);
-if(S.type=='tb'){T(S.foreman,358,288,660,11);T(S.date,120,340,430,11);T(S.job,640,340,380,11);T(S.loc,158,390,860,11);T(S.att.filter(x=>x.trim()).join(', '),170,441,850,11);
-S.items.forEach((x,i)=>{T(x.t,62,[535,568,601,634,667][i],960);T(x.a,62,[776,809,843,876,909][i],960)});S.sugg.forEach((x,i)=>T(x,62,[1018,1053,1088][i],960));
+if(S.type=='tb'){T(S.foreman,358,288,660,12.5);T(S.date,120,340,430,12.5);T(S.job,640,340,380,12.5);T(S.loc,158,390,860,12.5);T(S.att.filter(x=>x.trim()).join(', '),170,441,850,12.5);
+S.items.forEach((x,i)=>{T(x.t,62,[535,568,601,634,667][i],960,12);T(x.a,62,[776,809,843,876,909][i],960,12)});S.sugg.forEach((x,i)=>T(x,62,[1018,1053,1088][i],960,12));
 const P=[[262,1184],[133,1220],[133,1255],[133,1289],[612,1184],[612,1220],[612,1255],[612,1289]];
 Object.entries(S.sig).forEach(([s,u])=>{const[x,y]=P[s];d.addImage(u,'PNG',x*kx,(y-44)*ky,112*kx,42*ky)})}
 else S.days.forEach((D,n)=>{const o=n*508;T(D.date,110+o,243,410);T(D.job,207+o,273,310);T(D.loc,180+o,305,335);T(D.scope,197+o,336,322);
-D.rows.forEach((R,i)=>{T(R.s,80+o,[427,457,487,517,547][i],440,9);T(R.h,80+o,[610,640,670,700,730][i],440,9);T(R.c,80+o,[793,823,853,883,913][i],440,9)});
-d.setFontSize(9);d.splitTextToSize(D.notes||'',445*kx).slice(0,5).forEach((l,i)=>d.text(l,(58+o)*kx,([978,1008,1038,1068,1098][i]-5)*ky));
+D.rows.forEach((R,i)=>{T(R.s,80+o,[427,457,487,517,547][i],440,10.5);T(R.h,80+o,[610,640,670,700,730][i],440,10.5);T(R.c,80+o,[793,823,853,883,913][i],440,10.5)});
+let nz=10.5,nl;for(;;){d.setFontSize(nz);nl=d.splitTextToSize(D.notes||'',445*kx);if(nl.length<=5||nz<=7)break;nz-=.5}nl.slice(0,5).forEach((l,i)=>d.text(l,(58+o)*kx,([978,1008,1038,1068,1098][i]-5)*ky));
 T(D.foreman,145+o,1172,370);D.mech.forEach((m,i)=>T(m,150+o,[1203,1233,1262,1293][i],365))});
 return{d,name:`${jobOf()}_${S.type=='tb'?'ToolBox_'+S.date:'JHA_'+S.days[0].date}.pdf`.replace(/[^\w.-]/g,'')}}
 
@@ -1566,7 +832,7 @@ async function save(){try{
   removeDraft(S.id);
   K('draft',null);
   // Stay on a clean done screen
-  $('#app').innerHTML=`${hdr('<a class="fx-back" onclick="home(true)">‹ Home</a>','Saved','<span></span>')}<main class="fx-main"><div class="fx-stack" style="text-align:center;padding-top:24px"><div class="checkmark">✓</div><h1 style="text-align:center">Saved</h1><p class="hint" style="text-align:center">${esc(name)}</p><p class="hint" style="text-align:center">Stored in History on this phone. You can view or share the PDF anytime.</p></div></main><div class="bar fx-bar"><button type="button" class="g" onclick="openLocalPdf('${S.id}')">View PDF</button><button type="button" class="primary" onclick="home(true)">Done</button></div>`;
+  $('#app').innerHTML=`${hdr('<a class="fx-back" onclick="home(true)">‹ Home</a>','Saved','<span></span>')}<main class="fx-main"><div class="fx-stack" style="text-align:center;padding-top:24px"><div class="checkmark"><svg viewBox="0 0 52 52" aria-hidden="true"><circle class="ck-ring" cx="26" cy="26" r="23"/><path class="ck-tick" d="M15.5 27l7.5 7.5L37 19"/></svg></div><h1 style="text-align:center">Saved</h1><p class="hint" style="text-align:center">${esc(name)}</p><p class="hint" style="text-align:center">Stored in History on this phone. You can view or share the PDF anytime.</p></div></main><div class="bar fx-bar"><button type="button" class="g" onclick="openLocalPdf('${S.id}')">View PDF</button><button type="button" class="primary" onclick="home(true)">Done</button></div>`;
   toast('Saved to History');
 }catch(e){console.error(e);toast('Could not save. Try again.')}}
 async function saveFile(n,b){try{const dl=window.claude&&await claude.use('downloads');if(dl){await dl.save({filename:n,data:b});return}}catch(e){if(e&&e.code=='declined')return}const u=URL.createObjectURL(b),a=document.createElement('a');a.href=u;a.download=n;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),4000)}
@@ -1592,7 +858,7 @@ window.hist=async function hist(){
     return t?new Date(t).toLocaleString():(x.date||(x.days&&x.days[0]&&x.days[0].date)||'');
   };
   const icon=x=>x.type==='ts'?ICO.ts:x.type==='tb'?ICO.tb:ICO.jha;
-  const bg=x=>x.type==='ts'?'linear-gradient(135deg,#ff9a1f,#a14a00)':x.type==='tb'?'linear-gradient(135deg,#1f7bff,#0a2f8c)':'linear-gradient(135deg,#17c77f,#06603f)';
+  const bg=x=>x.type==='ts'?'linear-gradient(135deg,#17c77f,#06603f)':x.type==='tb'?'linear-gradient(135deg,#1f7bff,#0a2f8c)':'linear-gradient(135deg,#ff9a1f,#a14a00)';
   const cards=f.map(x=>`
     <div class="h draft-card">
       <div class="li" style="pointer-events:none">
@@ -1620,12 +886,12 @@ window.del=function del(id){ask('Delete this form?','Removes it from History and
 const flow=()=>S.type=='tb'?tbF():jF();
 const ICO={'tb': '<svg viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="12" rx="2.6"/><path d="M9 8V6.2A1.7 1.7 0 0110.7 4.5h2.6A1.7 1.7 0 0115 6.2V8M3 13.2h18M10.6 12.2v2.6h2.8v-2.6"/></svg>', 'jha': '<svg viewBox="0 0 24 24"><path d="M12 3.8l9.2 16H2.8z"/><path d="M12 9.8v4.6M12 17.4v.1"/></svg>', 'ts': '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.2 2"/></svg>', 'hist': '<svg viewBox="0 0 24 24"><path d="M3 7.5a2 2 0 012-2h4.2l2 2.2H19a2 2 0 012 2V17a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>', 'play': '<svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="4.5"/><path d="M10 8.6l5 3.4-5 3.4z"/></svg>'};
 const SHUF='<svg class="sv" viewBox="0 0 24 24"><path d="M16 3.5h4.5V8M3.5 20.5L20.5 3.5M20.5 16v4.5H16M14.5 14.5l6 6M3.5 3.5L9 9"/></svg>';
-const hdr=(l,t,r,p)=>`<div class="top"><div class="nav">${l}<span class="lg"><img src="${LOGO}" alt="Richmond Elevator"></span>${r}</div><h1 class="pt">${t}</h1>${p==null?'':`<div class="prog"><i style="width:${p}%"></i></div>`}</div>`;
+const hdr=(l,t,r,p,m)=>`<div class="top"><div class="nav">${l}<span class="lg"><img src="${LOGO}" alt="Richmond Elevator"></span>${r}</div><h1 class="pt">${t}</h1>${p==null?'':`<div class="prog"><i style="width:${p}%"></i></div>`}${m?`<div class="stepmeta">${m}</div>`:''}</div>`;
 window.draw=function draw(){const f=flow();if(!f.some(x=>x.k==at))at=f[0].k;const i=f.findIndex(x=>x.k==at),o=f[i].r();
 const pct=Math.round((i+1)/f.length*100);
 const meta=`Step ${i+1} of ${f.length}`;
 const kind=S.type==='tb'?'ToolBox Meeting':'Hazard Assessment';
-$('#app').innerHTML=`${hdr(`<a id="bk" class="fx-back">‹ ${i?'Back':'Home'}</a>`,o.t,i?`<a class="fx-home" onclick="home()">Home</a>`:'<span></span>',pct,meta)}<main class="fx-main"><div class="fx-kicker">${kind}</div>${o.b}</main><div class="bar fx-bar">${o.x||''}${o.nx===null?'':'<button id="nx" class="primary">Continue</button>'}</div>`;
+$('#app').innerHTML=`${hdr(`<a id="bk" class="fx-back">‹ ${i?'Back':'Home'}</a>`,o.t,i?`<a class="fx-home" onclick="home()">Close</a>`:'<span></span>',pct,`<span>${kind}</span><span>${meta}</span>`)}<main class="fx-main">${o.b}</main><div class="bar fx-bar">${o.x||''}${o.nx===null?'':'<button id="nx" class="primary">Continue</button>'}</div>`;
 $('#bk').onclick=()=>{if(!i)return home();let j=i-1;while(j>0&&f[j].sk&&f[j].sk())j--;at=f[j].k;draw()};
 $('#nx')&&($('#nx').onclick=()=>{const s=f[i];if(s.ok&&!s.ok()){const e=$('main input,main textarea');if(e){e.classList.add('bad');e.focus()}return}at=s.skip&&s.skip()?s.to:f[i+1].k;draw()});
 document.querySelectorAll('[data-p]').forEach(e=>{const p=e.dataset.p,jb=/(^|\.)job$/.test(p);e.oninput=()=>{if(jb)e.value=e.value.toUpperCase();e.classList.remove('bad');sp(p,e.value)};e.onchange=()=>{hook(p)&&draw()}});o.bind&&o.bind()}
@@ -1639,7 +905,7 @@ window.openFormsList=function openFormsList(){
     // Recompute detail from stored data so older drafts still get a rich preview
     const detail=draftLabel(x.type,x.data||{})||prev.detail||'In progress';
     const icon=isTS?ICO.ts:isTB?ICO.tb:ICO.jha;
-    const bg=isTS?'linear-gradient(135deg,#ff9a1f,#a14a00)':isTB?'linear-gradient(135deg,#1f7bff,#0a2f8c)':'linear-gradient(135deg,#17c77f,#06603f)';
+    const bg=isTS?'linear-gradient(135deg,#17c77f,#06603f)':isTB?'linear-gradient(135deg,#1f7bff,#0a2f8c)':'linear-gradient(135deg,#ff9a1f,#a14a00)';
     const badge=isTS?'Timesheet':isTB?'ToolBox':'JHA';
     return `<div class="h draft-card"><div class="li" onclick="resumeDraft('${x.id}')"><div class="ic" style="background:${bg}">${icon}</div><span><b>${esc(prev.title)}</b><small class="draft-detail">${esc(detail)}</small><small class="draft-when">${esc(prev.when)}</small></span></div><div class="row" style="margin-top:8px"><button type="button" onclick="resumeDraft('${x.id}')">Resume</button><button type="button" class="g" onclick="deleteDraft('${x.id}')">Delete</button></div></div>`;
   }).join('')||'<div class="empty">No drafts saved.</div>';
@@ -1685,7 +951,7 @@ window.openFormPrompt=function openFormPrompt(id){resumeDraft(id)};
 
 window.home=function home(force){if(!force&&(S&&!S.done||window.__tsActive)){askLeave(()=>home(true));return}clearActiveForm();let p=K('profile')||{};if(!p.name){const x=(K('forms')||[]).find(x=>x.name||x.foreman||x.days?.[0]?.foreman),nm=x&&(x.name||x.foreman||x.days?.[0]?.foreman);if(nm){saveName(nm);p={name:nm.trim()}}}
 const li=(f,c,i,b,s)=>`<a class="li" onclick="${f}"><div class="ic" style="background:${c}">${i}</div><span><b>${b}</b><small>${s}</small></span></a>`,dr=K('draft'),fn=((p.name||'').trim().split(/\s+/)[0]||''),openForms=getOpenForms();
-$('#app').innerHTML=`<main class="home" style="padding:0"><div class="hero"><div class="hero-img"></div><div class="hero-top"><span class="lgb"><img src="${LOGO}" alt="Richmond Elevator"></span><i class="vr"></i><span class="hb">Richmond Elevator<br>Safety &amp; Timesheet</span></div><div class="hero-txt"><small>Field Operations Portal</small><h2>Welcome</h2><p>${fn?esc(fn)+', your':'Your'} safety, reporting and time tracking in one place.</p><i class="uline"></i></div></div><div class="cards"><a class="card" style="--i:0;--rgb:47,140,255;--c1:#1f7bff;--c2:#0a2f8c" onclick="start('tb')"><span class="cp"><svg viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="12" rx="2.6"/><path d="M9 8V6.2A1.7 1.7 0 0110.7 4.5h2.6A1.7 1.7 0 0115 6.2V8M3 13.2h18M10.6 12.2v2.6h2.8v-2.6"/></svg></span><span class="ct"><b>ToolBox Meeting</b><small>Weekly safety talk report</small></span><span class="cimg" style="background-image:url(img/hardhat.jpg)"></span><span class="cc"><svg viewBox="0 0 24 24"><path d="M9.5 6l6 6-6 6"/></svg></span></a><a class="card" style="--i:1;--rgb:255,150,30;--c1:#ff9a1f;--c2:#a14a00" onclick="start('jha')"><span class="cp"><svg viewBox="0 0 24 24"><path d="M12 3.8l9.2 16H2.8z"/><path d="M12 9.8v4.6M12 17.4v.1"/></svg></span><span class="ct"><b>Daily Hazard Assessment</b><small>Job hazard analysis, 2 days per page</small></span><span class="cimg" style="background-image:url(img/clipboard.jpg)"></span><span class="cc"><svg viewBox="0 0 24 24"><path d="M9.5 6l6 6-6 6"/></svg></span></a><a class="card" style="--i:2;--rgb:30,217,140;--c1:#17c77f;--c2:#06603f" onclick="start('ts')"><span class="cp"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.2 2"/></svg></span><span class="ct"><b>Timesheet</b><small>Two-week pay period, PDF with receipts</small></span><span class="cimg" style="background-image:url(img/tablet.jpg)"></span><span class="cc"><svg viewBox="0 0 24 24"><path d="M9.5 6l6 6-6 6"/></svg></span></a></div><div class="mini${openForms.length?'':' one'}"><a class="mc" onclick="hist()"><span class="mi"><svg viewBox="0 0 24 24"><path d="M3 7.5a2 2 0 012-2h4.2l2 2.2H19a2 2 0 012 2V17a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg></span><span class="mt"><b>History</b><small>Everything you saved on this phone</small></span><span class="mch">›</span></a>${openForms.length?`<a class="mc" onclick="openFormsList()"><span class="mi"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="4.5"/><path d="M10 8.6l5 3.4-5 3.4z"/></svg></span><span class="mt"><b>Resume drafts</b><small>${openForms.length} draft${openForms.length>1?'s':''}</small></span><span class="mch">›</span></a>`:''}</div><div class="foot">Richmond Elevator Maintenance</div></main>`}
+$('#app').innerHTML=`<main class="home" style="padding:0"><div class="hero"><div class="hero-img"></div><div class="hero-top"><span class="lgb"><img src="${LOGO}" alt="Richmond Elevator"></span><i class="vr"></i><span class="hb">Richmond Elevator<br>Safety &amp; Timesheet</span></div><div class="hero-txt"><small>Field Operations Portal</small><h2>${(h=>h<12?'Good morning':h<18?'Good afternoon':'Good evening')(new Date().getHours())}</h2><p>${fn?esc(fn)+', your':'Your'} safety, reporting and time tracking in one place.</p><i class="uline"></i></div></div><div class="cards"><a class="card" style="--i:0;--rgb:47,140,255;--c1:#1f7bff;--c2:#0a2f8c" onclick="start('tb')"><span class="cp"><svg viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="12" rx="2.6"/><path d="M9 8V6.2A1.7 1.7 0 0110.7 4.5h2.6A1.7 1.7 0 0115 6.2V8M3 13.2h18M10.6 12.2v2.6h2.8v-2.6"/></svg></span><span class="ct"><b>ToolBox Meeting</b><small>Weekly safety talk report</small></span><span class="cimg" style="background-image:url(img/hardhat.jpg)"></span><span class="cc"><svg viewBox="0 0 24 24"><path d="M9.5 6l6 6-6 6"/></svg></span></a><a class="card" style="--i:1;--rgb:255,150,30;--c1:#ff9a1f;--c2:#a14a00" onclick="start('jha')"><span class="cp"><svg viewBox="0 0 24 24"><path d="M12 3.8l9.2 16H2.8z"/><path d="M12 9.8v4.6M12 17.4v.1"/></svg></span><span class="ct"><b>Daily Hazard Assessment</b><small>Job hazard analysis, 2 days per page</small></span><span class="cimg" style="background-image:url(img/clipboard.jpg)"></span><span class="cc"><svg viewBox="0 0 24 24"><path d="M9.5 6l6 6-6 6"/></svg></span></a><a class="card" style="--i:2;--rgb:30,217,140;--c1:#17c77f;--c2:#06603f" onclick="start('ts')"><span class="cp"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.2 2"/></svg></span><span class="ct"><b>Timesheet</b><small>Two-week pay period, PDF with receipts</small></span><span class="cimg" style="background-image:url(img/tablet.jpg)"></span><span class="cc"><svg viewBox="0 0 24 24"><path d="M9.5 6l6 6-6 6"/></svg></span></a></div><div class="mini${openForms.length?'':' one'}"><a class="mc" onclick="hist()"><span class="mi"><svg viewBox="0 0 24 24"><path d="M3 7.5a2 2 0 012-2h4.2l2 2.2H19a2 2 0 012 2V17a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg></span><span class="mt"><b>History</b><small>Your saved forms</small></span><span class="mch">›</span></a>${openForms.length?`<a class="mc" onclick="openFormsList()"><span class="mi"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="4.5"/><path d="M10 8.6l5 3.4-5 3.4z"/></svg></span><span class="mt"><b>Resume drafts</b><small>${openForms.length} draft${openForms.length>1?'s':''}</small></span><span class="mch">›</span></a>`:''}</div><div class="foot">Richmond Elevator Maintenance</div></main>`}
 // ===== timesheet (inline, no iframe) =====
 /* ts redefined below */window.__tsId=crypto.randomUUID();// Init directly — no cross-window postMessage needed (was previously via iframe message)// Inline mode: initialize state from localStorage profile cookie if available; rec may carry {name, startDate} if called programmaticallyif(m&&m.name&&!state.name){state.name=m.name;}if(state.startDate){buildDays();}render();}// No cross-window postMessage in inline mode — state is managed locally via K() / localStorage
 
@@ -2251,6 +1517,7 @@ function renderSummary(main,footer){
   footer.innerHTML = `
     <div class="final-actions" style="width:100%">
       <button class="primary" onclick="finalizeAndGenerate()">Continue → Generate PDF</button>
+      <button class="secondary" type="button" onclick="saveDraftClose()">Save draft</button>
     </div>
   `;
 }
@@ -2458,7 +1725,7 @@ async function finalizeAndGenerate(){
 
     main.innerHTML = `
       <div style="padding-top:30px;text-align:center;">
-        <div class="checkmark">✓</div>
+        <div class="checkmark"><svg viewBox="0 0 52 52" aria-hidden="true"><circle class="ck-ring" cx="26" cy="26" r="23"/><path class="ck-tick" d="M15.5 27l7.5 7.5L37 19"/></svg></div>
         <h1 style="text-align:center;">Saved to History</h1>
         <p class="sub" style="text-align:center;color:var(--tx)">${escHtml(state.name)} · ${periodRangeText()}</p>
         <p class="hint" style="text-align:center">PDF is on this phone. View, share, or find it later under History.</p>
@@ -2551,10 +1818,10 @@ function drawReceiptPage(doc, font, bold, imgs, sheetNum, sheetCount, firstRecei
   let y = 742;
   page.drawText('EXPENSE RECEIPTS', {x:M, y, size:14, font:bold, color:ink});
   const label = `Page ${3+sheetNum} of ${totalPages}`;
-  page.drawText(label, {x:612-M-bold.widthOfTextAtSize(label,9), y:y+3, size:9, font:bold, color:ink});
+  page.drawText(label, {x:612-M-bold.widthOfTextAtSize(label,10), y:y+3, size:10, font:bold, color:ink});
   y -= 16;
   page.drawText(`${state.name} \u00b7 ${periodRangeText()} \u00b7 Photos ${firstReceipt+1}-${firstReceipt+imgs.length} of ${receiptCount}`,
-    {x:M, y, size:9, font, color:dim});
+    {x:M, y, size:10, font, color:dim});
 
   const cols=2, rows=3, gap=10, top=708, bottom=sheetNum===sheetCount ? 62 : 30;
   const cellW=(612-2*M-gap)/cols, cellH=(top-bottom-(rows-1)*gap)/rows;
@@ -2566,7 +1833,7 @@ function drawReceiptPage(doc, font, bold, imgs, sheetNum, sheetCount, firstRecei
     const ix=x+(cellW-w)/2, iy=cellTop-cellH+(cellH-h)/2;
     page.drawImage(img,{x:ix,y:iy,width:w,height:h});
     page.drawRectangle({x:ix,y:iy,width:w,height:h,borderColor:rgb(0.4,0.4,0.4),borderWidth:0.75});
-    page.drawText(`Receipt ${firstReceipt+i+1}`,{x,y:cellTop-cellH+3,size:8,font,color:dim});
+    page.drawText(`Receipt ${firstReceipt+i+1}`,{x,y:cellTop-cellH+3,size:9,font,color:dim});
   });
   if(sheetNum===sheetCount){
     const text=`TOTAL EXPENSES FOR THIS PAY PERIOD: $${computeTotals().expenses.toFixed(2)}`;
@@ -2574,6 +1841,45 @@ function drawReceiptPage(doc, font, bold, imgs, sheetNum, sheetCount, firstRecei
   }
 }
 
+/* fit-to-width: shrink only as far as needed (never below minSize), then ellipsis as a last resort */
+function fitText(f, s, maxW, size, minSize){
+  s = String(s||'');
+  while(size>minSize && f.widthOfTextAtSize(s,size)>maxW) size -= 0.25;
+  let t = s;
+  while(t.length>1 && f.widthOfTextAtSize(t,size)>maxW){ s = s.slice(0,-1); t = s.trimEnd()+'\u2026'; }
+  return {t, size};
+}
+/* wrap entries onto spare rows at a larger size; null if they cannot fit in maxRows */
+function wrapDesc(f, lines, maxW, maxRows, sizes){
+  for(const sz of sizes){
+    const out = []; let ok = true;
+    for(const ln of lines){
+      let cur = '';
+      for(const w of ln.split(/\s+/)){
+        const test = cur ? cur+' '+w : w;
+        if(f.widthOfTextAtSize(test,sz) <= maxW) cur = test;
+        else { if(cur) out.push(cur); cur = w; if(f.widthOfTextAtSize(cur,sz) > maxW){ ok = false; break; } }
+      }
+      if(!ok) break;
+      out.push(cur);
+    }
+    if(ok && out.length <= maxRows) return {rows:out, size:sz};
+  }
+  return null;
+}
+function drawDescRows(page, f, lines, x, topY, rowH, maxW, maxRows, color){
+  const wr = wrapDesc(f, lines, maxW, maxRows, [9.5, 9, 8.5, 8]);
+  if(wr){ wr.rows.forEach((t,r)=>page.drawText(t,{x, y:topY - r*rowH - 10.5, size:wr.size, font:f, color})); return; }
+  /* one consistent size for every row; ellipsis only if it still cannot fit at the floor */
+  const keep = lines.slice(0,maxRows);
+  let sz = 9.5;
+  keep.forEach(ln=>{ while(sz>6.5 && f.widthOfTextAtSize(ln,sz)>maxW) sz -= 0.25; });
+  keep.forEach((ln,r)=>drawFit(page, f, ln, x, topY - r*rowH - 10.5, maxW, sz, 6.5, color));
+}
+function drawFit(page, f, s, x, y, maxW, size, minSize, color){
+  const r = fitText(f, s, maxW, size, minSize);
+  if(r.t) page.drawText(r.t, {x, y, size:r.size, font:f, color});
+}
 function truncate(s, colWidth){
   const maxChars = Math.max(4, Math.floor(colWidth/4.6));
   s = String(s||'');
@@ -2607,24 +1913,24 @@ function drawWeekPage(doc, font, bold, weekNum, days, pageLabel){
   const rowH = 14, notesH = 15, totalH = 14;
 
   // ---- identity row: white cells with black borders, bold labels (like the paper) ----
-  const idH = 18;
+  const idH = 20;
   page.drawRectangle({x:M, y:y-idH, width:W, height:idH, borderColor:border, borderWidth:1});
-  page.drawText('NAME:', {x:c0+3, y:y-idH+5.5, size:9, font:bold, color:ink});
-  page.drawText(state.name||'', {x:c0+42, y:y-idH+5.5, size:9, font, color:ink});
+  page.drawText('NAME:', {x:c0+3, y:y-idH+6, size:10.5, font:bold, color:ink});
+  drawFit(page, font, state.name||'', c0+46, y-idH+6, cDivider-25-(c0+46)-6, 10.5, 8, ink);
   page.drawLine({start:{x:cDivider-25,y:y}, end:{x:cDivider-25,y:y-idH}, thickness:0.8, color:border});
-  page.drawText('DATE:', {x:cDivider-20, y:y-idH+5.5, size:9, font:bold, color:ink});
-  page.drawText(periodRangeText(), {x:cDivider+16, y:y-idH+5.5, size:9, font, color:ink});
+  page.drawText('DATE:', {x:cDivider-20, y:y-idH+6, size:10.5, font:bold, color:ink});
+  drawFit(page, font, periodRangeText(), cDivider+22, y-idH+6, (c5-10)-(cDivider+22)-4, 10.5, 8, ink);
   page.drawLine({start:{x:c5-10,y:y}, end:{x:c5-10,y:y-idH}, thickness:0.8, color:border});
-  page.drawText(pageLabel, {x:c5-6, y:y-idH+5.5, size:8.5, font:bold, color:ink});
+  page.drawText(pageLabel, {x:c5-6, y:y-idH+6, size:9.5, font:bold, color:ink});
   y -= idH;
 
   // ---- grey column header row, centered small labels ----
-  const hdrH = 12;
+  const hdrH = 14;
   page.drawRectangle({x:M, y:y-hdrH, width:W, height:hdrH, color:rgb(0.84,0.84,0.84), borderColor:border, borderWidth:0.8});
-  const hdrY = y-hdrH+3.5;
+  const hdrY = y-hdrH+4;
   function centerHdr(txt, x1, x2){
-    const w = font.widthOfTextAtSize(txt, 6);
-    page.drawText(txt, {x:(x1+x2-w)/2, y:hdrY, size:6, font, color:ink});
+    const w = bold.widthOfTextAtSize(txt, 7.5);
+    page.drawText(txt, {x:(x1+x2-w)/2, y:hdrY, size:7.5, font:bold, color:ink});
   }
   centerHdr('Job # or Address', c1, c2);
   centerHdr('Time', c2, cDivider);
@@ -2646,8 +1952,8 @@ function drawWeekPage(doc, font, bold, weekNum, days, pageLabel){
     page.drawRectangle({x:M, y:b, width:c5-M, height:totalH, color:rgb(0.05,0.05,0.05)});
     page.drawRectangle({x:c5, y:b, width:end-c5, height:totalH, borderColor:border, borderWidth:0.8});
     page.drawLine({start:{x:c6,y:topY-0}, end:{x:c6,y:b}, thickness:0.4, color:faint});
-    page.drawText('TOTAL', {x:c5+3, y:b+4, size:7, font:bold, color:ink});
-    if(val) page.drawText(val, {x:c6+4, y:b+4, size:7.5, font:bold, color:ink});
+    page.drawText('TOTAL', {x:c5+3, y:b+4, size:8.5, font:bold, color:ink});
+    if(val) page.drawText(val, {x:c6+4, y:b+4, size:9.5, font:bold, color:ink});
     return b;
   }
 
@@ -2665,25 +1971,23 @@ function drawWeekPage(doc, font, bold, weekNum, days, pageLabel){
       const rowY = blockTop - (r+1)*rowH;
       page.drawLine({start:{x:M,y:rowY}, end:{x:M+W,y:rowY}, thickness:0.4, color:faint});
     }
-    page.drawText(DAY_LABEL[dow], {x:c0+3, y:blockTop-10, size:7.5, font, color:ink});
-    page.drawText(truncate(dd.jobAddress, 150), {x:c1+4, y:blockTop-10, size:8, font, color:ink});
-    descLinesOf(dd.desc).slice(0,5).forEach((ln,r)=>{
-      page.drawText(truncate(ln, 170), {x:c3+4, y:blockTop - r*rowH - 10, size:7.5, font, color:ink});
-    });
+    page.drawText(DAY_LABEL[dow], {x:c0+3, y:blockTop-10.5, size:9.5, font, color:ink});
+    drawFit(page, font, dd.jobAddress, c1+4, blockTop-10.5, (c2-c1)-8, 10, 7, ink);
+    drawDescRows(page, font, descLinesOf(dd.desc), c3+4, blockTop, rowH, (c4-c3)-8, 5, ink);
     const regRowY = blockTop - 3*rowH;
-    page.drawText('Reg Hrs', {x:c5+3, y:regRowY+4, size:7, font, color:rgb(0.25,0.25,0.25)});
-    if(dd.rt) page.drawText(String(dd.rt), {x:c6+4, y:regRowY+4, size:7.5, font, color:ink});
+    page.drawText('Reg Hrs', {x:c5+3, y:regRowY+4, size:8.5, font, color:rgb(0.25,0.25,0.25)});
+    if(dd.rt) page.drawText(String(dd.rt), {x:c6+4, y:regRowY+4, size:10, font, color:ink});
     const otRowY = blockTop - 5*rowH;
-    page.drawText('OT Hrs', {x:c5+3, y:otRowY+4, size:7, font, color:rgb(0.25,0.25,0.25)});
-    if(dd.ot) page.drawText(String(dd.ot), {x:c6+4, y:otRowY+4, size:7.5, font, color:ink});
+    page.drawText('OT Hrs', {x:c5+3, y:otRowY+4, size:8.5, font, color:rgb(0.25,0.25,0.25)});
+    if(dd.ot) page.drawText(String(dd.ot), {x:c6+4, y:otRowY+4, size:10, font, color:ink});
 
     let bottom = blockTop - 5*rowH;
     const notesY = bottom - notesH;
     page.drawLine({start:{x:M,y:notesY}, end:{x:M+W,y:notesY}, thickness:0.4, color:faint});
-    page.drawText('NOTES', {x:c0+14, y:bottom-notesH+4.5, size:6.5, font, color:ink});
+    page.drawText('NOTES', {x:c0+8, y:bottom-notesH+4.5, size:8, font, color:ink});
     const notesExtra = notesExtraFor(dd);
-    if(notesExtra) page.drawText(truncate(notesExtra, 190), {x:c1+4, y:bottom-notesH+4.5, size:7, font, color:rgb(0.25,0.25,0.25)});
-    page.drawText('OT Approval by:', {x:c3+4, y:bottom-notesH+4.5, size:7, font, color:ink});
+    drawFit(page, font, notesExtra, c1+4, bottom-notesH+4.5, (c3-c1)-8, 9, 7, rgb(0.2,0.2,0.2));
+    page.drawText('OT Approval by:', {x:c3+4, y:bottom-notesH+4.5, size:9, font, color:ink});
     bottom = notesY;
     vLines(blockTop, bottom);
     const tot = (parseFloat(dd.rt)||0)+(parseFloat(dd.ot)||0);
@@ -2699,34 +2003,32 @@ function drawWeekPage(doc, font, bold, weekNum, days, pageLabel){
       const rowY = blockTop - (r+1)*rowH;
       page.drawLine({start:{x:M,y:rowY}, end:{x:M+W,y:rowY}, thickness:0.4, color:faint});
     }
-    page.drawText('Sat/Sun', {x:c0+3, y:blockTop-10, size:7.5, font, color:ink});
-    page.drawText(truncate(sat.jobAddress||sun.jobAddress||'', 150), {x:c1+4, y:blockTop-10, size:8, font, color:ink});
+    page.drawText('Sat/Sun', {x:c0+3, y:blockTop-10.5, size:9.5, font, color:ink});
+    drawFit(page, font, sat.jobAddress||sun.jobAddress||'', c1+4, blockTop-10.5, (c2-c1)-8, 10, 7, ink);
 
     const wkndLines = []
       .concat(descLinesOf(sat.desc).map(s=>'Sat: '+s))
       .concat(descLinesOf(sun.desc).map(s=>'Sun: '+s))
       .slice(0,6);
-    wkndLines.forEach((ln,r)=>{
-      page.drawText(truncate(ln, 170), {x:c3+4, y:blockTop - r*rowH - 10, size:7.5, font, color:ink});
-    });
+    drawDescRows(page, font, wkndLines, c3+4, blockTop, rowH, (c4-c3)-8, 6, ink);
 
     const satRowY = blockTop - 1*rowH;
-    page.drawText('SAT', {x:c5+3, y:satRowY+4, size:7, font, color:rgb(0.25,0.25,0.25)});
-    if(sat.rt) page.drawText(String(sat.rt), {x:c6+4, y:satRowY+4, size:7.5, font, color:ink});
+    page.drawText('SAT', {x:c5+3, y:satRowY+4, size:8.5, font, color:rgb(0.25,0.25,0.25)});
+    if(sat.rt) page.drawText(String(sat.rt), {x:c6+4, y:satRowY+4, size:10, font, color:ink});
     const sunRowY = blockTop - 3*rowH;
-    page.drawText('SUN', {x:c5+3, y:sunRowY+4, size:7, font, color:rgb(0.25,0.25,0.25)});
-    if(sun.rt) page.drawText(String(sun.rt), {x:c6+4, y:sunRowY+4, size:7.5, font, color:ink});
+    page.drawText('SUN', {x:c5+3, y:sunRowY+4, size:8.5, font, color:rgb(0.25,0.25,0.25)});
+    if(sun.rt) page.drawText(String(sun.rt), {x:c6+4, y:sunRowY+4, size:10, font, color:ink});
     const otRowY = blockTop - 5*rowH;
-    page.drawText('OT Hrs', {x:c5+3, y:otRowY+4, size:7, font, color:rgb(0.25,0.25,0.25)});
+    page.drawText('OT Hrs', {x:c5+3, y:otRowY+4, size:8.5, font, color:rgb(0.25,0.25,0.25)});
     const weekendOT = (parseFloat(sat.ot)||0)+(parseFloat(sun.ot)||0);
-    if(weekendOT) page.drawText(weekendOT.toFixed(2), {x:c6+4, y:otRowY+4, size:7.5, font, color:ink});
+    if(weekendOT) page.drawText(weekendOT.toFixed(2), {x:c6+4, y:otRowY+4, size:10, font, color:ink});
 
     let bottom = blockTop - 6*rowH;
     const notesY = bottom - notesH;
     page.drawLine({start:{x:M,y:notesY}, end:{x:M+W,y:notesY}, thickness:0.4, color:faint});
-    page.drawText('NOTES', {x:c0+14, y:bottom-notesH+4.5, size:6.5, font, color:ink});
+    page.drawText('NOTES', {x:c0+8, y:bottom-notesH+4.5, size:8, font, color:ink});
     const wkNotes = [sat.notes?('Sat: '+sat.notes):'', sun.notes?('Sun: '+sun.notes):''].filter(Boolean).join('   ');
-    if(wkNotes) page.drawText(truncate(wkNotes, 190), {x:c1+4, y:bottom-notesH+4.5, size:7, font, color:rgb(0.25,0.25,0.25)});
+    drawFit(page, font, wkNotes, c1+4, bottom-notesH+4.5, (c3-c1)-8, 9, 7, rgb(0.2,0.2,0.2));
     bottom = notesY;
     vLines(blockTop, bottom);
 
@@ -2744,11 +2046,11 @@ function drawWeekPage(doc, font, bold, weekNum, days, pageLabel){
   }
   function weekLine(rowIdx, label, t){
     const baseY = botTop - (rowIdx+1)*rowH + 4;
-    page.drawText(label, {x:c3+4, y:baseY, size:8, font:bold, color:ink});
-    page.drawText('Reg Hrs:', {x:c3+82, y:baseY, size:8, font:bold, color:ink});
-    page.drawText(t.rt.toFixed(2), {x:c3+122, y:baseY, size:8, font, color:ink});
-    page.drawText('OT:', {x:c5+3, y:baseY, size:8, font:bold, color:ink});
-    page.drawText(t.ot.toFixed(2), {x:c6+4, y:baseY, size:8, font, color:ink});
+    page.drawText(label, {x:c3+4, y:baseY, size:9, font:bold, color:ink});
+    page.drawText('Reg Hrs:', {x:c3+64, y:baseY, size:9, font:bold, color:ink});
+    page.drawText(t.rt.toFixed(2), {x:c3+110, y:baseY, size:9.5, font, color:ink});
+    page.drawText('OT:', {x:c5+3, y:baseY, size:9, font:bold, color:ink});
+    page.drawText(t.ot.toFixed(2), {x:c6+4, y:baseY, size:9.5, font, color:ink});
   }
   if(weekNum===1){
     weekLine(2, 'WEEK ONE:', w1);
@@ -2799,18 +2101,18 @@ function drawSummaryPage(doc, font, bold, pageLabel){
   page.drawText('CONSTRUCTION / MODERNIZATION TIMESHEET', {x:430, y, size:11.5, font:bold, color:ink});
   y -= 15;
   const subT = 'All time must be recorded on this timesheet, no other timesheet will be accepted';
-  const subW = bold.widthOfTextAtSize(subT, 8);
-  page.drawText(subT, {x:(792-subW)/2 - 60, y, size:8, font:bold, color:ink});
+  const subW = bold.widthOfTextAtSize(subT, 9.5);
+  page.drawText(subT, {x:(792-subW)/2, y, size:9.5, font:bold, color:ink});
   y -= 18;
 
   // ---- employee / pay period boxes ----
-  const boxH = 20;
+  const boxH = 22;
   page.drawRectangle({x:M, y:y-boxH, width:330, height:boxH, borderColor:lineC, borderWidth:0.9});
-  page.drawText('Employee (1st and last name)', {x:M+4, y:y-boxH+6, size:7.5, font, color:ink});
-  page.drawText(state.name||'', {x:M+140, y:y-boxH+6, size:9, font:bold, color:ink});
+  page.drawText('Employee (1st and last name)', {x:M+4, y:y-boxH+7, size:9, font, color:ink});
+  drawFit(page, bold, state.name||'', M+134, y-boxH+7, 190, 11.5, 8, ink);
   page.drawRectangle({x:M+330, y:y-boxH, width:310, height:boxH, borderColor:lineC, borderWidth:0.9});
-  page.drawText('Pay Period dates', {x:M+334, y:y-boxH+6, size:7.5, font, color:ink});
-  page.drawText(periodRangeText(), {x:M+430, y:y-boxH+6, size:9, font:bold, color:ink});
+  page.drawText('Pay Period dates', {x:M+334, y:y-boxH+7, size:9, font, color:ink});
+  drawFit(page, bold, periodRangeText(), M+420, y-boxH+7, 205, 11.5, 8, ink);
   y -= boxH + 8;
 
   // ---- main table ----
@@ -2845,10 +2147,10 @@ function drawSummaryPage(doc, font, bold, pageLabel){
   let cx = tableX;
   cols.forEach((c,ci)=>{
     if(c.lines.length===2){
-      centerText(c.lines[0], ci, tableTop-hdrH+13, bold, 7);
-      centerText(c.lines[1], ci, tableTop-hdrH+4.5, bold, 7);
+      centerText(c.lines[0], ci, tableTop-hdrH+14, bold, 8.5);
+      centerText(c.lines[1], ci, tableTop-hdrH+4.5, bold, 8.5);
     } else {
-      centerText(c.lines[0], ci, tableTop-hdrH+9, bold, 7.5);
+      centerText(c.lines[0], ci, tableTop-hdrH+9, bold, 8.5);
     }
     cx += c.w;
   });
@@ -2866,15 +2168,16 @@ function drawSummaryPage(doc, font, bold, pageLabel){
   function dayRow(week, dow){
     const rowBottom = ry - rowH;
     const dd = byWeekDow[`${week}-${dow}`];
-    page.drawText(DOWFULL[dow], {x:tableX+4, y:rowBottom+9, size:8, font, color:ink});
+    page.drawText(DOWFULL[dow], {x:tableX+4, y:rowBottom+9, size:10, font, color:ink});
     if(hasData(dd)){
-      centerText(truncate(dd.jobAddress, 50), 1, rowBottom+9, font, 7.5);
-      centerText(state.wageLevel, 2, rowBottom+9, font, 7.5);
-      if(dd.rt) centerText(String(dd.rt), 3, rowBottom+9, font, 7.5);
-      if(dd.ot) centerText(String(dd.ot), 4, rowBottom+9, font, 7.5);
-      if(dd.travel) centerText(String(dd.travel), 6, rowBottom+9, font, 7.5);
-      if(dd.mileage) centerText(String(dd.mileage), 7, rowBottom+9, font, 7.5);
-      if(dd.expenses) centerText('$'+dd.expenses, 9, rowBottom+9, font, 7.5);
+      const jf = fitText(font, dd.jobAddress, cols[1].w-6, 10.5, 6.5);
+      centerText(jf.t, 1, rowBottom+9, font, jf.size);
+      centerText(state.wageLevel, 2, rowBottom+9, font, 10.5);
+      if(dd.rt) centerText(String(dd.rt), 3, rowBottom+9, font, 10.5);
+      if(dd.ot) centerText(String(dd.ot), 4, rowBottom+9, font, 10.5);
+      if(dd.travel) centerText(String(dd.travel), 6, rowBottom+9, font, 10.5);
+      if(dd.mileage) centerText(String(dd.mileage), 7, rowBottom+9, font, 10.5);
+      if(dd.expenses) centerText('$'+dd.expenses, 9, rowBottom+9, font, 10);
     }
     rowsMeta.push(rowBottom);
     ry = rowBottom;
@@ -2886,7 +2189,7 @@ function drawSummaryPage(doc, font, bold, pageLabel){
   {
     const rowBottom = ry - rowH;
     page.drawRectangle({x:tableX, y:rowBottom, width:tableW, height:rowH, color:grey});
-    page.drawText('Week 2', {x:tableX+4, y:rowBottom+9, size:8, font:bold, color:ink});
+    page.drawText('Week 2', {x:tableX+4, y:rowBottom+9, size:10, font:bold, color:ink});
     rowsMeta.push(rowBottom);
     ry = rowBottom;
   }
@@ -2898,12 +2201,13 @@ function drawSummaryPage(doc, font, bold, pageLabel){
     const rowBottom = ry - rowH;
     // grey patch under JOB# + WAGE LEVEL cells, like the paper
     page.drawRectangle({x:tableX+cols[0].w, y:rowBottom, width:cols[1].w+cols[2].w, height:rowH, color:grey});
-    page.drawText('Totals for Pay Period', {x:tableX+3, y:rowBottom+9, size:6.8, font:bold, color:ink});
-    centerText(t.rt?t.rt.toFixed(2):'', 3, rowBottom+9, bold, 7.5);
-    centerText(t.ot?t.ot.toFixed(2):'', 4, rowBottom+9, bold, 7.5);
-    centerText(t.travel?t.travel.toFixed(2):'', 6, rowBottom+9, bold, 7.5);
-    centerText(t.mileage?String(t.mileage):'', 7, rowBottom+9, bold, 7.5);
-    centerText(t.expenses?('$'+t.expenses.toFixed(2)):'', 9, rowBottom+9, bold, 7.5);
+    page.drawText('Totals for', {x:tableX+4, y:rowBottom+14.5, size:8.5, font:bold, color:ink});
+    page.drawText('Pay Period', {x:tableX+4, y:rowBottom+5, size:8.5, font:bold, color:ink});
+    centerText(t.rt?t.rt.toFixed(2):'', 3, rowBottom+9, bold, 10.5);
+    centerText(t.ot?t.ot.toFixed(2):'', 4, rowBottom+9, bold, 10.5);
+    centerText(t.travel?t.travel.toFixed(2):'', 6, rowBottom+9, bold, 10.5);
+    centerText(t.mileage?String(t.mileage):'', 7, rowBottom+9, bold, 10.5);
+    centerText(t.expenses?('$'+t.expenses.toFixed(2)):'', 9, rowBottom+9, bold, 10);
     rowsMeta.push(rowBottom);
     ry = rowBottom;
   }
@@ -2922,8 +2226,8 @@ function drawSummaryPage(doc, font, bold, pageLabel){
   const nX = tableX + tableW + 14;
   const nW = 792 - M - nX;
   page.drawRectangle({x:nX, y:tableTop-hdrH, width:nW, height:hdrH, color:grey, borderColor:lineC, borderWidth:0.8});
-  const ntw = bold.widthOfTextAtSize('NOTES', 8.5);
-  page.drawText('NOTES', {x:nX+(nW-ntw)/2, y:tableTop-hdrH+8, size:8.5, font:bold, color:ink});
+  const ntw = bold.widthOfTextAtSize('NOTES', 10);
+  page.drawText('NOTES', {x:nX+(nW-ntw)/2, y:tableTop-hdrH+8, size:10, font:bold, color:ink});
 
   const noteLines = [
     {b:'Job #:', r:' must be entered', u:true},
@@ -2956,7 +2260,7 @@ function drawSummaryPage(doc, font, bold, pageLabel){
     {b:'Sick Pay:', r:' 5 days per annum', u:true},
   ];
   let ny = tableTop - hdrH - 16;
-  const nSize = 7.2, nLead = 10.6;
+  const nSize = 8.4, nLead = 12.4;
   noteLines.forEach(ln=>{
     if(ln){
       let tx = nX + 2;
@@ -2976,9 +2280,9 @@ function drawSummaryPage(doc, font, bold, pageLabel){
   // ---- signature boxes ----
   const sigY = tableBottom - 30;
   page.drawRectangle({x:M, y:sigY-boxH, width:330, height:boxH, borderColor:lineC, borderWidth:0.9});
-  page.drawText('Employee Signature', {x:M+4, y:sigY-boxH+6, size:8, font:bold, color:ink});
+  page.drawText('Employee Signature', {x:M+4, y:sigY-boxH+7, size:10, font:bold, color:ink});
   page.drawRectangle({x:432, y:sigY-boxH, width:330, height:boxH, borderColor:lineC, borderWidth:0.9});
-  page.drawText('Supervisor Signature', {x:436, y:sigY-boxH+6, size:8, font:bold, color:ink});
+  page.drawText('Supervisor Signature', {x:436, y:sigY-boxH+7, size:10, font:bold, color:ink});
 }
 
 /** Launch timesheet mode inside #app */
@@ -2987,15 +2291,11 @@ window.ts = function ts(rec){
     // Mount timesheet chrome
     document.getElementById('app').classList.add('ts-mode');
     document.getElementById('app').innerHTML = `
-      <header>
-        <button type="button" id="tsBack" aria-label="Back to home">‹ Home</button>
-        <div class="brand" style="flex:1">Richmond Elevator Maintenance
-          <strong id="brandTitle">Timesheet</strong>
-        </div>
-      </header>
-      <div class="shaft-wrap">
-        <div class="shaft"><div class="shaft-fill" id="shaftFill" style="width:4%"></div></div>
-        <div class="floor-label"><span id="floorText">Starting up…</span><b id="floorPct">1%</b></div>
+      <div class="top">
+        <div class="nav"><a id="tsBack" class="fx-back" role="button" aria-label="Close and save a draft or discard">Close</a><span class="lg"><img src="${LOGO}" alt="Richmond Elevator"></span><span></span></div>
+        <h1 class="pt" id="brandTitle">Timesheet</h1>
+        <div class="prog"><i id="shaftFill" style="width:4%"></i></div>
+        <div class="stepmeta"><span id="floorText">Starting up…</span><b id="floorPct">1%</b></div>
       </div>
       <main id="main"></main>
       <footer id="footer"></footer>
@@ -3032,7 +2332,8 @@ window.ts = function ts(rec){
       const resumeStep = m._resumeStep;
       delete m._resumeStep;
       Object.assign(state, m, {
-        days: (m.days||[]).map(d => Object.assign({}, d)),
+        /* drafts are stored as JSON, which flattens Dates to text: restore them */
+        days: (m.days||[]).map(d => Object.assign({}, d, {date: d.date instanceof Date ? d.date : new Date(d.date)})),
         receipts: m.receipts || []
       });
       if(typeof rebuildSteps === 'function') rebuildSteps();
